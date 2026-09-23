@@ -17,7 +17,7 @@
 
     <style>
         :root {
-            --bg-dark: #020202; 
+            --bg-dark: #000000; 
             --text-light: #f5f5f5;
             --accent-gold: #c5a059; 
         }
@@ -28,136 +28,136 @@
             font-family: 'Montserrat', sans-serif;
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
-            background-color: #000;
         }
 
-        /* --- EFFETTO STRIATURE VERTICALI (FIAMME/VELLUTO) --- */
-        .zuma-ambient {
+        /* --- NUOVO EFFETTO FIAMME ORGANICO (CSS PURO) --- */
+   /* --- NUOVO EFFETTO FIAMME ORGANICO (FLUTTUAZIONE CASUALE) --- */
+        .fire-ambient {
             position: fixed;
-            top: -50%;
+            top: 0;
             left: 0;
-            width: 100%;
-            height: 200%;
+            width: 100vw;
+            height: 100vh;
             z-index: 1;
             pointer-events: none;
-            display: flex;
-            justify-content: space-around;
-            opacity: 0.4;
-            mask-image: linear-gradient(to bottom, transparent, black 20%, black 80%, transparent);
-            -webkit-mask-image: linear-gradient(to bottom, transparent, black 20%, black 80%, transparent);
-        }
-
-        .glow-streak {
-            width: 15vw;
-            height: 100%;
-            filter: blur(40px);
-            animation: floatGlow 15s ease-in-out infinite alternate;
-        }
-
-        .streak-1 { background: linear-gradient(180deg, transparent, rgba(60, 30, 10, 0.8), transparent); animation-delay: 0s; width: 25vw;}
-        .streak-2 { background: linear-gradient(180deg, transparent, rgba(10, 20, 40, 0.6), transparent); animation-delay: -5s; width: 10vw;}
-        .streak-3 { background: linear-gradient(180deg, transparent, rgba(50, 20, 5, 0.7), transparent); animation-delay: -10s; width: 30vw;}
-        .streak-4 { background: linear-gradient(180deg, transparent, rgba(15, 25, 35, 0.6), transparent); animation-delay: -7s; width: 15vw;}
-
-        @keyframes floatGlow {
-            0% { transform: translateY(0) scaleX(1); opacity: 0.6; }
-            100% { transform: translateY(-10%) scaleX(1.3); opacity: 1; }
-        }
-        
-        .zuma-font {
-            font-family: 'Cinzel', serif;
-        }
-
-        /* Hero Section */
-        .hero-section {
-            position: relative;
-            height: 100vh;
-            width: 100vw;
             overflow: hidden;
             background-color: #000;
-            z-index: 10;
+        }
+
+        .fire-container {
+            position: absolute;
+            bottom: -30vh; 
+            left: 0;
+            width: 100%;
+            height: 130vh;
+            filter: blur(45px); 
+            opacity: 0.65; 
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-end;
+        }
+
+        /* Le singole "fiamme" */
+        .flame {
+            width: 30vw;
+            height: 50vh;
+            border-radius: 50%;
+            background: radial-gradient(ellipse at center, rgba(160, 60, 10, 0.9) 0%, rgba(80, 20, 5, 0.4) 40%, transparent 70%);
+            mix-blend-mode: screen; 
+            /* COMBINIAMO 3 ANIMAZIONI SFALSATE PER CREARE CAOS */
+            animation: 
+                driftY 5s ease-in-out infinite alternate,
+                driftX 3.5s ease-in-out infinite alternate,
+                pulse 4.2s ease-in-out infinite alternate;
+        }
+
+        /* Variabiliamo pesantemente ogni fiamma per rompere ogni simmetria */
+        .flame:nth-child(1) {
+            background: radial-gradient(ellipse at center, rgba(200, 80, 20, 0.8) 0%, transparent 70%);
+            width: 40vw; height: 70vh; 
+            animation-duration: 6s, 4.5s, 5.1s; 
+            animation-delay: 0s, -1s, -2s;
+        }
+        .flame:nth-child(2) {
+            background: radial-gradient(ellipse at center, rgba(120, 40, 10, 0.7) 0%, transparent 60%);
+            width: 25vw; height: 60vh; 
+            animation-duration: 4.8s, 5.2s, 3.9s; 
+            animation-delay: -1.5s, -0.5s, -1s;
+        }
+        .flame:nth-child(3) {
+            background: radial-gradient(ellipse at center, rgba(180, 70, 15, 0.9) 0%, transparent 70%);
+            width: 35vw; height: 80vh; 
+            animation-duration: 7s, 6s, 5.5s; 
+            animation-delay: -3.5s, -2s, -4s;
+        }
+        .flame:nth-child(4) {
+            background: radial-gradient(ellipse at center, rgba(90, 20, 5, 0.8) 0%, transparent 60%);
+            width: 25vw; height: 50vh; 
+            animation-duration: 5.5s, 4.1s, 6.2s; 
+            animation-delay: -1s, -3s, 0s;
+        }
+
+        /* 1. Movimento Verticale Indipendente */
+        @keyframes driftY {
+            0% { transform: translateY(15%); opacity: 0.3; }
+            100% { transform: translateY(-40%); opacity: 0.9; }
+        }
+
+        /* 2. Movimento Orizzontale Indipendente */
+        @keyframes driftX {
+            0% { margin-left: -15vw; }
+            100% { margin-left: 15vw; }
+        }
+
+        /* 3. Deformazione/Vibrazione Indipendente */
+        @keyframes pulse {
+            0% { transform: scaleX(0.8) scaleY(1.1); }
+            100% { transform: scaleX(1.3) scaleY(0.9); }
+        }
+
+        .fire-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to bottom, #000 10%, transparent 50%, #000 95%);
+            z-index: 2;
+        }
+        /* ------------------------------------------------- */
+
+        .zuma-font { font-family: 'Cinzel', serif; }
+
+        .hero-section {
+            position: relative; height: 100vh; width: 100vw; overflow: hidden;
+            background-color: transparent; z-index: 10;
         }
 
         .hero-video {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            transform: translateX(-50%) translateY(-50%);
-            z-index: 11;
-            object-fit: cover;
+            position: absolute; top: 50%; left: 50%; min-width: 100%; min-height: 100%; width: auto; height: auto;
+            transform: translateX(-50%) translateY(-50%); z-index: 11; object-fit: cover;
             filter: brightness(0.4) saturate(0.8);
         }
 
         .hero-content {
-            position: relative;
-            z-index: 12;
-            height: 100%;
-            display: flex;
-            flex-col;
-            align-items: center;
-            justify-content: center;
+            position: relative; z-index: 12; height: 100%; display: flex; flex-col; align-items: center; justify-content: center;
         }
 
-        .content-wrapper {
-            position: relative;
-            z-index: 10;
-        }
+        .content-wrapper { position: relative; z-index: 10; }
 
-        .content-section {
-            background-color: transparent;
-            backdrop-filter: blur(3px); 
-        }
-        
-        .content-section-darker {
-            background-color: rgba(0, 0, 0, 0.6);
-        }
+        .content-section { background-color: rgba(0, 0, 0, 0.1); backdrop-filter: blur(2px); }
+        .content-section-darker { background-color: rgba(0, 0, 0, 0.4); backdrop-filter: blur(4px); }
 
-        /* Navigazione */
-        .nav-scrolled {
-            background-color: rgba(5, 5, 5, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-        }
+        .nav-scrolled { background-color: rgba(5, 5, 5, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255,255,255,0.05); }
 
-        #nav-logo-container {
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
-        }
-        #nav-logo-container.show-logo {
-            opacity: 1;
-            visibility: visible;
-        }
+        #nav-logo-container { opacity: 0; visibility: hidden; transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out; }
+        #nav-logo-container.show-logo { opacity: 1; visibility: visible; }
 
-        /* Stili bottoni */
         .btn-outline {
-            border: 1px solid rgba(255,255,255,0.3);
-            padding: 0.75rem 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 0.2em;
-            font-size: 0.75rem;
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-            position: relative;
-            overflow: hidden;
-            display: inline-block;
-            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255,255,255,0.3); padding: 0.75rem 1.5rem; text-transform: uppercase;
+            letter-spacing: 0.2em; font-size: 0.75rem; transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            position: relative; overflow: hidden; display: inline-block; backdrop-filter: blur(5px);
         }
         .btn-outline::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #fff;
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-            z-index: -1;
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: #fff;
+            transform: scaleX(0); transform-origin: left; transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); z-index: -1;
         }
         .btn-outline:hover { color: #000; border-color: #fff; }
         .btn-outline:hover::before { transform: scaleX(1); }
@@ -170,28 +170,22 @@
         .img-zoom-container img { transition: transform 1.5s cubic-bezier(0.165, 0.84, 0.44, 1); }
         .img-zoom-container:hover img { transform: scale(1.08); }
 
-        /* Correzione Carosello Mobile: forza un box quadrato 1:1 o 4:3 invece del verticale 3:4 */
-        @media (max-width: 768px) {
-            .mobile-carousel-aspect {
-                aspect-ratio: 4 / 3; /* Un rettangolo orizzontale che riempie bene lo schermo mobile */
-                width: 100%;
-            }
-        }
-        @media (min-width: 769px) {
-            .mobile-carousel-aspect {
-                aspect-ratio: 3 / 4; /* Verticale su desktop per mantenere il layout originale a colonne */
-            }
-        }
+        @media (max-width: 768px) { .mobile-carousel-aspect { aspect-ratio: 4 / 3; width: 100%; } }
+        @media (min-width: 769px) { .mobile-carousel-aspect { aspect-ratio: 3 / 4; } }
 
     </style>
 </head>
 <body>
 
-    <div class="zuma-ambient">
-        <div class="glow-streak streak-1"></div>
-        <div class="glow-streak streak-2"></div>
-        <div class="glow-streak streak-3"></div>
-        <div class="glow-streak streak-4"></div>
+    <!-- EFFETTO FIAMME ORGANICHE -->
+    <div class="fire-ambient">
+        <div class="fire-container">
+            <div class="flame"></div>
+            <div class="flame"></div>
+            <div class="flame"></div>
+            <div class="flame"></div>
+        </div>
+        <div class="fire-overlay"></div>
     </div>
 
     <!-- Navigazione -->
@@ -269,13 +263,12 @@
             </div>
         </section>
 
-        <!-- Slider Concetti Orizzontale (Con Auto-Scroll e Mobile-Friendly Aspect) -->
+        <!-- Slider Concetti Orizzontale -->
         <section class="content-section-darker py-20 overflow-hidden border-t border-b border-white/5 relative">
             <div class="max-w-[100vw] mx-auto pl-6 md:pl-12">
                 <div id="horizontal-carousel" class="flex gap-6 md:gap-12 overflow-x-auto hide-scrollbar scroll-smooth pb-12 pt-6 snap-x snap-mandatory">
                     
                     <div class="snap-start shrink-0 w-[85vw] md:w-80 flex flex-col items-center text-center opacity-80 hover:opacity-100 transition-opacity cursor-pointer group">
-                        <!-- Aggiunta classe mobile-carousel-aspect per sistemare le proporzioni su mobile -->
                         <div class="mobile-carousel-aspect mb-6 img-zoom-container bg-black border border-white/10 w-full overflow-hidden flex items-center justify-center">
                             <img src="img/cucina.jpg" onerror="this.src='https://www.hatasanrestaurant.it/wp-content/uploads/2025/03/hata-san-bologna-16-1.jpg'" alt="Cucina a vista" class="w-full h-full object-cover filter brightness-75 group-hover:brightness-100 transition-all duration-500">
                         </div>
@@ -311,11 +304,10 @@
             </div>
         </section>
 
-        <!-- Gli Spazi (Immagine FISSA interno.webp) -->
+        <!-- Gli Spazi -->
         <section class="content-section py-24 md:py-36 px-6">
             <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12 md:gap-20">
                 <div class="w-full md:w-1/2" data-aos="fade-right">
-                    <!-- Immagine FISSA interno.webp -->
                     <div class="aspect-[4/5] w-full relative group shadow-2xl border border-white/10 img-zoom-container">
                          <div class="absolute inset-0 border border-[var(--accent-gold)] opacity-30 translate-x-4 translate-y-4 -z-10 transition-transform duration-500 group-hover:translate-x-6 group-hover:translate-y-6"></div>
                          <img src="img/interno.webp" onerror="this.src='https://www.hatasanrestaurant.it/wp-content/uploads/2025/03/hata-san-bologna-16-1.jpg'" alt="Interni Hata San" class="w-full h-full object-cover">
@@ -379,7 +371,6 @@
                 <!-- Orari -->
                 <div data-aos="fade-up" data-aos-delay="300">
                     <h4 class="zuma-font text-xl mb-6 tracking-wider text-white">Orari</h4>
-                    
                     <div class="mb-4">
                         <h5 class="text-xs tracking-[0.2em] uppercase text-gray-400 mb-2">Pranzo</h5>
                         <ul class="space-y-1">
@@ -388,9 +379,7 @@
                             <li class="flex justify-between text-sm font-light text-gray-300"><span class="w-32 text-left">Sabato - Domenica</span><span>12:00 - 14:30</span></li>
                         </ul>
                     </div>
-                    
                     <div class="w-full h-[1px] bg-white/10 mb-4"></div>
-
                     <div>
                         <h5 class="text-xs tracking-[0.2em] uppercase text-gray-400 mb-2">Cena</h5>
                         <ul class="space-y-1">
@@ -401,8 +390,7 @@
                     </div>
                 </div>
             </div>
-
-            <div class="border-t border-white/10 pt-8 text-center text-[10px] md:text-xs font-light text-gray-500 tracking-[0.1em] flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="border-t border-white/10 pt-8 mt-12 text-center text-[10px] md:text-xs font-light text-gray-500 tracking-[0.1em] flex flex-col md:flex-row justify-between items-center gap-4">
                 <p>&copy; 2026 Hata San Restaurant. Tutti i diritti riservati.</p>
                 <p>P.IVA 03965231206</p>
             </div>
@@ -413,7 +401,6 @@
     <script>
         AOS.init({ once: true, offset: 100, duration: 800, easing: 'ease-out-cubic' });
 
-        // Logica Navbar e apparizione Logo piccolo
         const navbar = document.getElementById('navbar');
         const navLogo = document.getElementById('nav-logo-container');
         const heroLogo = document.getElementById('hero-logo-container');
@@ -439,11 +426,10 @@
             }
         });
 
-        // Script per Auto-scroll del carosello orizzontale
         const carousel = document.getElementById('horizontal-carousel');
         let isHovered = false;
         let scrollAmount = 0;
-        const speed = 1;
+        const speed = 1.5; // Aumentato leggermente la velocità del carosello orizzontale
 
         if (carousel) {
             carousel.addEventListener('mouseenter', () => isHovered = true);
