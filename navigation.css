@@ -1,4 +1,15 @@
-html { scroll-behavior: smooth; }
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    overscroll-behavior-x: none;
+}
+
+/* Contiene le animazioni laterali senza aggiungere un contenitore di scorrimento. */
+@supports (overflow-x: clip) {
+    html { overflow-x: clip; }
+    .content-wrapper { overflow-x: clip; }
+}
+
 #contatti { scroll-margin-top: 5rem; }
 
 .back-to-top-holder { display: flex; justify-content: flex-end; margin-bottom: 1.5rem; }
