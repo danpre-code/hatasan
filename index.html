@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hata San | Japanese Sushi & Robatayaki Bologna</title>
+    <link rel="stylesheet" href="navigation.css">
+    <link rel="stylesheet" href="fire-background.css">
+    <script src="navigation.js" defer></script>
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -28,91 +31,6 @@
             font-family: 'Montserrat', sans-serif;
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
-        }
-
-        /* --- EFFETTO FIAMME ORGANICO (POTENZIATO) --- */
-        .fire-ambient {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: 1;
-            pointer-events: none;
-            overflow: hidden;
-            background-color: #050200;
-        }
-
-        .fire-container {
-            position: absolute;
-            bottom: -15vh; 
-            left: 0;
-            width: 100%;
-            height: 110vh;
-            filter: blur(35px); 
-            opacity: 0.85; 
-            display: flex;
-            justify-content: space-around;
-            align-items: flex-end;
-        }
-
-        .flame {
-            width: 35vw;
-            height: 60vh;
-            border-radius: 50%;
-            background: radial-gradient(ellipse at center, rgba(180, 70, 10, 0.95) 0%, rgba(100, 25, 5, 0.6) 40%, transparent 70%);
-            mix-blend-mode: screen; 
-            animation: 
-                driftY 5s ease-in-out infinite alternate,
-                driftX 3.5s ease-in-out infinite alternate,
-                pulse 4.2s ease-in-out infinite alternate;
-        }
-
-        .flame:nth-child(1) {
-            background: radial-gradient(ellipse at center, rgba(220, 90, 20, 0.9) 0%, transparent 70%);
-            width: 45vw; height: 75vh; 
-            animation-duration: 6s, 4.5s, 5.1s; 
-            animation-delay: 0s, -1s, -2s;
-        }
-        .flame:nth-child(2) {
-            background: radial-gradient(ellipse at center, rgba(140, 50, 10, 0.8) 0%, transparent 60%);
-            width: 30vw; height: 65vh; 
-            animation-duration: 4.8s, 5.2s, 3.9s; 
-            animation-delay: -1.5s, -0.5s, -1s;
-        }
-        .flame:nth-child(3) {
-            background: radial-gradient(ellipse at center, rgba(200, 80, 15, 0.95) 0%, transparent 70%);
-            width: 40vw; height: 85vh; 
-            animation-duration: 7s, 6s, 5.5s; 
-            animation-delay: -3.5s, -2s, -4s;
-        }
-        .flame:nth-child(4) {
-            background: radial-gradient(ellipse at center, rgba(110, 30, 5, 0.85) 0%, transparent 60%);
-            width: 30vw; height: 55vh; 
-            animation-duration: 5.5s, 4.1s, 6.2s; 
-            animation-delay: -1s, -3s, 0s;
-        }
-
-        @keyframes driftY {
-            0% { transform: translateY(10%); opacity: 0.5; }
-            100% { transform: translateY(-30%); opacity: 1; }
-        }
-
-        @keyframes driftX {
-            0% { margin-left: -10vw; }
-            100% { margin-left: 10vw; }
-        }
-
-        @keyframes pulse {
-            0% { transform: scaleX(0.9) scaleY(1.05); }
-            100% { transform: scaleX(1.2) scaleY(0.95); }
-        }
-
-        .fire-overlay {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(to bottom, #000 5%, transparent 30%, transparent 80%, #000 98%);
-            z-index: 2;
         }
 
         .zuma-font { font-family: 'Cinzel', serif; }
@@ -166,10 +84,10 @@
 
     </style>
 </head>
-<body>
+<body id="inizio">
 
     <!-- EFFETTO FIAMME ORGANICHE -->
-    <div class="fire-ambient">
+    <div class="fire-ambient" aria-hidden="true">
         <div class="fire-container">
             <div class="flame"></div>
             <div class="flame"></div>
@@ -181,14 +99,15 @@
 
     <!-- Navigazione -->
     <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-6 px-4 md:px-12 flex justify-between items-center">
-        <div class="hidden md:flex gap-8 w-1/3">
-            <a href="#" class="text-xs tracking-[0.2em] uppercase relative group">Menu<span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-[var(--accent-gold)] transition-all duration-300 group-hover:w-full"></span></a>
-            <a href="#" class="text-xs tracking-[0.2em] uppercase relative group">Contatti<span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-[var(--accent-gold)] transition-all duration-300 group-hover:w-full"></span></a>
+        <div class="hidden lg:flex gap-6 xl:gap-8 w-1/3">
+            <a href="menu.html" class="text-xs tracking-[0.2em] uppercase relative group">Il nostro menu<span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-[var(--accent-gold)] transition-all duration-300 group-hover:w-full"></span></a>
+            <a href="eventi.html" class="text-xs tracking-[0.2em] uppercase relative group">Eventi<span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-[var(--accent-gold)] transition-all duration-300 group-hover:w-full"></span></a>
+            <a href="#contatti" class="text-xs tracking-[0.2em] uppercase relative group">Contatti<span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-[var(--accent-gold)] transition-all duration-300 group-hover:w-full"></span></a>
         </div>
         
-        <div class="md:hidden w-1/3">
-            <button class="text-white hover:text-[var(--accent-gold)] transition-colors">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        <div class="lg:hidden w-1/3">
+            <button id="mobile-menu-toggle" type="button" aria-label="Apri navigazione" aria-expanded="false" aria-controls="mobile-menu" class="text-white hover:text-[var(--accent-gold)] transition-colors">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path class="burger-line burger-top" stroke-linecap="round" stroke-width="2" d="M4 6h16"></path><path class="burger-line burger-middle" stroke-linecap="round" stroke-width="2" d="M4 12h16"></path><path class="burger-line burger-bottom" stroke-linecap="round" stroke-width="2" d="M4 18h16"></path></svg>
             </button>
         </div>
         
@@ -199,6 +118,11 @@
         <div class="w-1/3 flex justify-end gap-3 md:gap-6 items-center">
             <a href="#" class="hidden sm:block text-[10px] md:text-xs tracking-[0.2em] uppercase border-b border-transparent hover:border-[var(--accent-gold)] hover:text-[var(--accent-gold)] transition-all py-1">Ordina Ora</a>
             <a href="#" class="btn-outline text-[10px] md:text-xs px-3 py-2 md:px-6 md:py-3">Prenota</a>
+        </div>
+        <div id="mobile-menu" hidden>
+            <a href="menu.html">Il nostro menu</a>
+            <a href="eventi.html">Eventi</a>
+            <a href="#contatti">Contatti</a>
         </div>
     </nav>
 
@@ -233,17 +157,6 @@
 
     <div class="content-wrapper">
         
-        <!-- Business Lunch Promo -->
-        <section class="content-section border-b border-white/5 py-10">
-            <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left" data-aos="fade-up" data-aos-delay="200">
-                <div>
-                    <h3 class="zuma-font text-xl md:text-2xl mb-1 text-[var(--accent-gold)]">Business Lunch</h3>
-                    <p class="text-xs md:text-sm font-light text-gray-300 tracking-wide">Una pausa pranzo alternativa, scopri il nostro pacchetto speciale.</p>
-                </div>
-                <a href="#" class="text-[10px] uppercase tracking-[0.2em] border-b border-gray-500 text-gray-300 pb-1 hover:text-white hover:border-white transition-all">Scopri il menu</a>
-            </div>
-        </section>
-
         <!-- Chi Siamo -->
         <section class="content-section py-24 md:py-36 px-6">
             <div class="max-w-4xl mx-auto text-center">
@@ -470,46 +383,44 @@ Dal mare al piatto, ogni dettaglio conta.</p>
                 </div>
 
                 <!-- Prossimo Evento in Evidenza -->
-                <div class="bg-black/80 backdrop-blur-sm border border-[var(--accent-gold)]/30 p-8 md:p-12 mb-20 text-center relative overflow-hidden group" data-aos="zoom-in">
-                    <div class="absolute inset-0 bg-[var(--accent-gold)]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div class="bg-black/80 backdrop-blur-sm border border-[var(--accent-gold)]/30 p-8 md:p-12 mb-8 text-center relative overflow-hidden group" data-aos="zoom-in">
+                    <div class="pointer-events-none absolute inset-0 bg-[var(--accent-gold)]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                     <span class="text-xs font-bold tracking-widest text-[var(--accent-gold)] block mb-2">PROSSIMO EVENTO</span>
                     <span class="text-sm tracking-widest text-white block mb-6">28 NOVEMBRE 2026</span>
                     <h3 class="text-2xl md:text-3xl zuma-font text-white mb-4">Sake & Robata Pairing</h3>
                     <p class="text-gray-300 font-light text-sm max-w-xl mx-auto mb-8">Un percorso degustazione esclusivo in cui le intensità delle cotture alla brace incontrano una selezione di Sake artigianali premium.</p>
-                    <a href="#" class="btn-outline text-white border-[var(--accent-gold)] hover:bg-[var(--accent-gold)] hover:text-black">Prenota il tuo posto</a>
+                    <a href="eventi.html#sake-robata" class="btn-outline text-white border-[var(--accent-gold)] hover:bg-[var(--accent-gold)] hover:text-black">Scopri l’evento</a>
+                </div>
+
+                <!-- Tutti i prossimi eventi -->
+                <div class="text-center mb-16 md:mb-20" data-aos="fade-up">
+                    <a href="eventi.html" class="text-xs tracking-[0.2em] uppercase border-b border-[var(--accent-gold)] text-[var(--accent-gold)] pb-1 hover:text-white hover:border-white transition-all">
+                        Scopri i prossimi eventi
+                    </a>
                 </div>
 
                 <!-- Eventi Passati / Storytelling -->
                 <h4 class="text-lg zuma-font text-white mb-8 border-b border-white/10 pb-4">Storie passate. Esperienze future.</h4>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                     
                     <!-- Storia Evento 1 -->
-                    <div class="bg-black/40 backdrop-blur-sm border border-white/5 hover:border-white/20 transition-all p-6 group cursor-pointer" data-aos="fade-up">
+                    <a href="eventi.html#bluefin-experience" class="bg-black/40 backdrop-blur-sm border border-white/5 hover:border-white/20 transition-all p-6 group cursor-pointer" data-aos="fade-up">
                         <h5 class="text-[var(--accent-gold)] text-xs tracking-[0.2em] uppercase mb-2">Bluefin Experience</h5>
                         <h3 class="text-xl zuma-font text-white mb-3">Una serata dedicata al Tonno Rosso</h3>
                         <p class="text-gray-300 font-light text-sm mb-4 leading-relaxed">
                             Una serata interamente dedicata al Bluefin, dalla selezione delle diverse parti alla loro interpretazione. Un percorso attraverso Akami, Chutoro e Otoro, accompagnato da sake selezionati.
                         </p>
                         <span class="text-[10px] uppercase tracking-widest text-white/50 group-hover:text-[var(--accent-gold)] transition-colors">Scopri l'evento →</span>
-                    </div>
+                    </a>
 
                     <!-- Storia Evento 2 -->
-                    <div class="bg-black/40 backdrop-blur-sm border border-white/5 hover:border-white/20 transition-all p-6 group cursor-pointer" data-aos="fade-up" data-aos-delay="100">
+                    <a href="eventi.html#omakase-guest" class="bg-black/40 backdrop-blur-sm border border-white/5 hover:border-white/20 transition-all p-6 group cursor-pointer" data-aos="fade-up" data-aos-delay="100">
                         <h5 class="text-[var(--accent-gold)] text-xs tracking-[0.2em] uppercase mb-2">Hata-San × Omakase Guest</h5>
                         <h3 class="text-xl zuma-font text-white mb-3">Il mare senza regole</h3>
                         <p class="text-gray-300 font-light text-sm mb-4 leading-relaxed">
                             Un viaggio a mano libera guidato esclusivamente dal pescato del giorno. Nessun menu, solo pura tecnica giapponese e il massimo rispetto per le eccellenze ittiche stagionali.
                         </p>
                         <span class="text-[10px] uppercase tracking-widest text-white/50 group-hover:text-[var(--accent-gold)] transition-colors">Scopri l'evento →</span>
-                    </div>
-                </div>
-
-                <!-- Chiusura Eventi (Marketing Call) -->
-                <div class="text-center" data-aos="fade-up">
-                    <h3 class="text-xl zuma-font text-white mb-3">Ti sei perso questi eventi?</h3>
-                    <p class="text-gray-300 font-light text-sm mb-6">Serate speciali, collaborazioni e nuove esperienze prendono vita continuamente da Hata-san.</p>
-                    <a href="#" class="text-xs tracking-[0.2em] uppercase border-b border-[var(--accent-gold)] text-[var(--accent-gold)] pb-1 hover:text-white hover:border-white transition-all">
-                        Scopri i prossimi appuntamenti
                     </a>
                 </div>
 
@@ -517,7 +428,7 @@ Dal mare al piatto, ogni dettaglio conta.</p>
         </section>
 
         <!-- Footer -->
-        <footer class="content-section border-t border-white/10 pt-20 pb-10 px-6 backdrop-blur-md">
+        <footer id="contatti" class="content-section border-t border-white/10 pt-20 pb-10 px-6 backdrop-blur-md">
             <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 text-center md:text-left mb-16">
                 <!-- Contatti -->
                 <div data-aos="fade-up" data-aos-delay="100">
@@ -536,10 +447,10 @@ Dal mare al piatto, ogni dettaglio conta.</p>
 
                     <!-- Social Icons FB / IG -->
                     <div class="flex items-center justify-center md:justify-start gap-4">
-                        <a href="#" class="text-gray-400 hover:text-[var(--accent-gold)] transition-colors">
+                        <a href="https://www.instagram.com/hatasan_robata/" class="text-gray-400 hover:text-[var(--accent-gold)] transition-colors">
                             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
                         </a>
-                        <a href="#" class="text-gray-400 hover:text-[var(--accent-gold)] transition-colors">
+                        <a href="https://www.facebook.com/profile.php?id=61583444012025" class="text-gray-400 hover:text-[var(--accent-gold)] transition-colors">
                             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg>
                         </a>
                     </div>
@@ -561,16 +472,12 @@ Dal mare al piatto, ogni dettaglio conta.</p>
                     <div class="mb-5">
                         <h5 class="text-xs tracking-[0.2em] uppercase text-gray-400 mb-3">Pranzo</h5>
                         <ul class="space-y-2">
-                            <li class="flex justify-between items-center text-sm font-light text-gray-300">
-                                <span class="whitespace-nowrap">Lunedì - Venerdì</span>
-                                <span class="whitespace-nowrap ml-4 text-right">12:00 - 14:30</span>
-                            </li>
                             <li class="flex justify-between items-center text-sm font-light text-[var(--accent-gold)]">
-                                <span class="whitespace-nowrap">Martedì</span>
+                                <span class="whitespace-nowrap">Lunedì - Giovedì</span>
                                 <span class="whitespace-nowrap ml-4 text-right">CHIUSO</span>
                             </li>
                             <li class="flex justify-between items-center text-sm font-light text-gray-300">
-                                <span class="whitespace-nowrap">Sabato - Domenica</span>
+                                <span class="whitespace-nowrap">Venerdì - Domenica</span>
                                 <span class="whitespace-nowrap ml-4 text-right">12:00 - 14:30</span>
                             </li>
                         </ul>
@@ -582,15 +489,11 @@ Dal mare al piatto, ogni dettaglio conta.</p>
                         <h5 class="text-xs tracking-[0.2em] uppercase text-gray-400 mb-3">Cena</h5>
                         <ul class="space-y-2">
                             <li class="flex justify-between items-center text-sm font-light text-gray-300">
-                                <span class="whitespace-nowrap">Lunedì - Venerdì</span>
-                                <span class="whitespace-nowrap ml-4 text-right">19:30 - 23:30</span>
-                            </li>
-                            <li class="flex justify-between items-center text-sm font-light text-[var(--accent-gold)]">
-                                <span class="whitespace-nowrap">Martedì</span>
-                                <span class="whitespace-nowrap ml-4 text-right">CHIUSO</span>
+                                <span class="whitespace-nowrap">Lunedì - Giovedì</span>
+                                <span class="whitespace-nowrap ml-4 text-right">19:00 - 23:30</span>
                             </li>
                             <li class="flex justify-between items-center text-sm font-light text-gray-300">
-                                <span class="whitespace-nowrap">Sabato - Domenica</span>
+                                <span class="whitespace-nowrap">Venerdì - Domenica</span>
                                 <span class="whitespace-nowrap ml-4 text-right">19:30 - 23:30</span>
                             </li>
                         </ul>
@@ -599,6 +502,12 @@ Dal mare al piatto, ogni dettaglio conta.</p>
 
             </div>
             
+            <div class="back-to-top-holder">
+                <a href="#inizio" class="back-to-top" aria-label="Torna in alto" title="Torna in alto">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5m-7 7 7-7 7 7"></path></svg>
+                </a>
+            </div>
+
             <div class="border-t border-white/10 pt-8 mt-12 text-center text-[10px] md:text-xs font-light text-gray-500 tracking-[0.1em] flex flex-col md:flex-row justify-between items-center gap-4">
                 <p>&copy; 2026 Hata San Restaurant. Tutti i diritti riservati.</p>
                 <p>P.IVA 03965231206</p>

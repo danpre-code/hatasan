@@ -1,0 +1,96 @@
+/* --- EFFETTO FIAMME ORGANICO (POTENZIATO) --- */
+.fire-ambient {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+    pointer-events: none;
+    overflow: hidden;
+    background-color: #050200;
+}
+
+.fire-container {
+    position: absolute;
+    bottom: -15vh; 
+    left: 0;
+    width: 100%;
+    height: 110vh;
+    filter: blur(35px); 
+    opacity: 0.85; 
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+}
+
+.flame {
+    width: 35vw;
+    height: 60vh;
+    border-radius: 50%;
+    background: radial-gradient(ellipse at center, rgba(180, 70, 10, 0.95) 0%, rgba(100, 25, 5, 0.6) 40%, transparent 70%);
+    mix-blend-mode: screen; 
+    animation: 
+        driftY 5s ease-in-out infinite alternate,
+        driftX 3.5s ease-in-out infinite alternate,
+        pulse 4.2s ease-in-out infinite alternate;
+}
+
+.flame:nth-child(1) {
+    background: radial-gradient(ellipse at center, rgba(220, 90, 20, 0.9) 0%, transparent 70%);
+    width: 45vw; height: 75vh; 
+    animation-duration: 6s, 4.5s, 5.1s; 
+    animation-delay: 0s, -1s, -2s;
+}
+.flame:nth-child(2) {
+    background: radial-gradient(ellipse at center, rgba(140, 50, 10, 0.8) 0%, transparent 60%);
+    width: 30vw; height: 65vh; 
+    animation-duration: 4.8s, 5.2s, 3.9s; 
+    animation-delay: -1.5s, -0.5s, -1s;
+}
+.flame:nth-child(3) {
+    background: radial-gradient(ellipse at center, rgba(200, 80, 15, 0.95) 0%, transparent 70%);
+    width: 40vw; height: 85vh; 
+    animation-duration: 7s, 6s, 5.5s; 
+    animation-delay: -3.5s, -2s, -4s;
+}
+.flame:nth-child(4) {
+    background: radial-gradient(ellipse at center, rgba(110, 30, 5, 0.85) 0%, transparent 60%);
+    width: 30vw; height: 55vh; 
+    animation-duration: 5.5s, 4.1s, 6.2s; 
+    animation-delay: -1s, -3s, 0s;
+}
+
+@keyframes driftY {
+    0% { transform: translateY(10%); opacity: 0.5; }
+    100% { transform: translateY(-30%); opacity: 1; }
+}
+
+@keyframes driftX {
+    0% { margin-left: -10vw; }
+    100% { margin-left: 10vw; }
+}
+
+@keyframes pulse {
+    0% { transform: scaleX(0.9) scaleY(1.05); }
+    100% { transform: scaleX(1.2) scaleY(0.95); }
+}
+
+.fire-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(to bottom, #000 5%, transparent 30%, transparent 80%, #000 98%);
+    z-index: 2;
+}
+
+/* Mantiene i contenuti delle pagine interne sopra lo sfondo animato. */
+.fire-content {
+    position: relative;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(4px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .flame { animation: none; }
+}
