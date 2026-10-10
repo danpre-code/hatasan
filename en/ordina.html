@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our menu | Hata San Bologna</title>
-    <link rel="alternate" hreflang="it" href="../menu.html">
-    <link rel="alternate" hreflang="en" href="menu.html">
-    <link rel="alternate" hreflang="x-default" href="../menu.html">
+    <title>Order | Hata San Bologna</title>
+    <link rel="alternate" hreflang="it" href="../ordina.html">
+    <link rel="alternate" hreflang="en" href="ordina.html">
+    <link rel="alternate" hreflang="x-default" href="../ordina.html">
+    <meta name="robots" content="noindex, follow">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../navigation.css">
@@ -34,8 +35,6 @@
         }
         .btn-outline:hover { color: #000; border-color: #fff; }
         .btn-outline:hover::before { transform: scaleX(1); }
-        .menu-title { font-size: 1.5rem; line-height: 1.3; }
-        @media (min-width: 768px) { .menu-title { font-size: 2.25rem; } }
         @media (prefers-reduced-motion: reduce) {
             .btn-outline, .btn-outline::before { transition: none; }
         }
@@ -55,9 +54,9 @@
     </div>
 
     <!-- Navigazione -->
-    <nav id="navbar" class="nav-scrolled fixed w-full z-50 transition-all duration-300 py-6 px-4 md:px-12 flex justify-between items-center">
+    <nav id="navbar" class="nav-scrolled fixed top-0 w-full z-50 transition-all duration-300 py-6 px-4 md:px-12 flex justify-between items-center">
         <div class="hidden lg:flex gap-6 xl:gap-8 w-1/3">
-            <a href="menu.html" aria-current="page" class="text-xs tracking-[0.2em] uppercase relative group">Our menu<span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-[var(--accent-gold)] transition-all duration-300 group-hover:w-full"></span></a>
+            <a href="menu.html" class="text-xs tracking-[0.2em] uppercase relative group">Our menu<span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-[var(--accent-gold)] transition-all duration-300 group-hover:w-full"></span></a>
             <a href="eventi.html" class="text-xs tracking-[0.2em] uppercase relative group">Events<span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-[var(--accent-gold)] transition-all duration-300 group-hover:w-full"></span></a>
             <a href="contatti.html" class="text-xs tracking-[0.2em] uppercase relative group">Contact<span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-[var(--accent-gold)] transition-all duration-300 group-hover:w-full"></span></a>
         </div>
@@ -67,8 +66,8 @@
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path class="burger-line burger-top" stroke-linecap="round" stroke-width="2" d="M4 6h16"></path><path class="burger-line burger-middle" stroke-linecap="round" stroke-width="2" d="M4 12h16"></path><path class="burger-line burger-bottom" stroke-linecap="round" stroke-width="2" d="M4 18h16"></path></svg>
             </button>
             <div class="language-switch" role="group" aria-label="Website language">
-                <a href="../menu.html" lang="it" hreflang="it" data-language-link aria-label="Leggi in italiano">IT</a>
-                <a href="menu.html" lang="en" hreflang="en" data-language-link aria-label="Read in English" aria-current="page">EN</a>
+                <a href="../ordina.html" lang="it" hreflang="it" data-language-link aria-label="Leggi in italiano">IT</a>
+                <a href="ordina.html" lang="en" hreflang="en" data-language-link aria-label="Read in English" aria-current="page">EN</a>
             </div>
         </div>
         
@@ -78,39 +77,28 @@
         
         <div class="nav-actions w-1/3 flex justify-end gap-3 md:gap-6 items-center">
             <div class="language-switch language-switch-desktop" role="group" aria-label="Website language">
-                <a href="../menu.html" lang="it" hreflang="it" data-language-link aria-label="Leggi in italiano">IT</a>
-                <a href="menu.html" lang="en" hreflang="en" data-language-link aria-label="Read in English" aria-current="page">EN</a>
+                <a href="../ordina.html" lang="it" hreflang="it" data-language-link aria-label="Leggi in italiano">IT</a>
+                <a href="ordina.html" lang="en" hreflang="en" data-language-link aria-label="Read in English" aria-current="page">EN</a>
             </div>
             <a href="#" class="nav-order hidden sm:block text-[10px] md:text-xs tracking-[0.2em] uppercase border-b border-transparent hover:border-[var(--accent-gold)] hover:text-[var(--accent-gold)] transition-all py-1">Order online</a>
             <a href="#" class="nav-booking btn-outline text-[10px] md:text-xs px-3 py-2 md:px-6 md:py-3">Book</a>
         </div>
         <div id="mobile-menu" hidden>
-            <a href="menu.html" aria-current="page">Our menu</a>
+            <a href="menu.html">Our menu</a>
             <a href="eventi.html">Events</a>
             <a href="contatti.html">Contact</a>
-            <a href="ordina.html">Order</a>
+            <a href="ordina.html" aria-current="page">Order</a>
         </div>
     </nav>
 
-    <main class="fire-content menu-layout min-h-screen pt-36 md:pt-44 pb-20 px-6 md:px-12">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
-            <div>
-                <a href="index.html" class="inline-block text-[10px] tracking-[0.2em] uppercase text-gray-400 hover:text-[var(--accent-gold)] transition-colors mb-8"><svg class="icon-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg> Back to home</a>
-                <h1 class="menu-title zuma-font tracking-tight uppercase">Discover Robata, the traditional Japanese grill</h1>
-                <div class="w-16 h-[1px] bg-[var(--accent-gold)] mt-10" aria-hidden="true"></div>
-            </div>
-
-            <div class="pt-8 md:pt-10">
-                <img src="../img/carbone_binchotan.jpg" alt="Binchotan charcoal in the Robata grill" width="2560" height="1707" class="w-full aspect-[12/5] object-cover mb-10 md:mb-12">
-                <h2 class="zuma-font text-xl md:text-2xl tracking-[0.1em] text-white pb-5 mb-7">Our menu</h2>
-                <p class="text-sm md:text-base font-light text-gray-300 leading-loose">
-                    Our Robatayaki and sushi menu brings together the tradition of slow Japanese grilling with the freshness and elegance of sushi. An experience that pairs the rich flavour of perfectly grilled ingredients with the delicacy of expertly prepared nigiri, sashimi and maki.
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4 sm:gap-6 mt-10 md:mt-12">
-                    <a href="../Manu-Hata-San-Aprile-2026.pdf" target="_blank" rel="noopener" hreflang="it" aria-label="Food menu, PDF in Italian — opens in a new tab" class="btn-outline text-center text-white flex-1">Food menu <span class="ml-2 text-[var(--accent-gold)]" aria-hidden="true"><svg class="icon-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 19 19 5M5 5h14v14"></path></svg></span></a>
-                    <a href="../Menu-drink.pdf" target="_blank" rel="noopener" hreflang="it" aria-label="Drinks menu, PDF in Italian — opens in a new tab" class="btn-outline text-center text-white flex-1">Drinks menu <span class="ml-2 text-[var(--accent-gold)]" aria-hidden="true"><svg class="icon-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 19 19 5M5 5h14v14"></path></svg></span></a>
-                </div>
-                <p class="mt-4 text-xs font-light text-gray-400">PDF menus are available in Italian.</p>
+    <main class="fire-content min-h-screen pt-36 md:pt-44 pb-20 px-6 md:px-12">
+        <div class="max-w-6xl mx-auto">
+            <a href="index.html" class="inline-flex items-center gap-2 text-[10px] tracking-[0.2em] uppercase text-gray-400 hover:text-[var(--accent-gold)] transition-colors">
+                <svg class="icon-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg> Back to home
+            </a>
+            <div class="py-16 md:py-24 text-center">
+                <h1 class="zuma-font text-2xl md:text-4xl mb-8">Order</h1>
+                <p lang="en" class="text-sm md:text-base tracking-[0.2em] text-[var(--accent-gold)]">Work in Progress</p>
             </div>
         </div>
     </main>
@@ -123,6 +111,7 @@
         </div>
 
         <p>&copy; 2026 Hata San Restaurant. All rights reserved.</p>
+        <p class="mt-4">VAT no. 03965231206</p>
     </footer>
 </body>
 </html>
