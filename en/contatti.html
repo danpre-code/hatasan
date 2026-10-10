@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Hata San Bologna</title>
+    <link rel="alternate" hreflang="it" href="../contatti.html">
+    <link rel="alternate" hreflang="en" href="contatti.html">
+    <link rel="alternate" hreflang="x-default" href="../contatti.html">
+    <meta name="description" content="Contact Hata San in Bologna: opening hours, phone, WhatsApp and directions to Via Augusto Murri 77.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../navigation.css">
+    <link rel="stylesheet" href="../fire-background.css">
+    <script src="../navigation.js" defer></script>
+    <style>
+        :root { --bg-dark: #000000; --text-light: #f5f5f5; --accent-gold: #c5a059; }
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+        .zuma-font { font-family: 'Cinzel', serif; }
+        .nav-scrolled { background-color: rgba(5, 5, 5, 0.95); backdrop-filter: blur(10px); }
+        .btn-outline {
+            border: 1px solid rgba(255,255,255,0.3); padding: 0.75rem 1.5rem; text-transform: uppercase;
+            letter-spacing: 0.2em; font-size: 0.75rem; transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            position: relative; overflow: hidden; display: inline-block; backdrop-filter: blur(5px);
+        }
+        .btn-outline::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: #fff;
+            transform: scaleX(0); transform-origin: left; transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); z-index: -1;
+        }
+        .btn-outline:hover { color: #000; border-color: #fff; }
+        .btn-outline:hover::before { transform: scaleX(1); }
+        @media (prefers-reduced-motion: reduce) {
+            .btn-outline, .btn-outline::before { transition: none; }
+        }
+    </style>
+    <link rel="stylesheet" href="../contatti.css">
+</head>
+<body id="inizio">
+
+    <!-- EFFETTO FIAMME ORGANICHE -->
+    <div class="fire-ambient" aria-hidden="true">
+        <div class="fire-container">
+            <div class="flame"></div>
+            <div class="flame"></div>
+            <div class="flame"></div>
+            <div class="flame"></div>
+        </div>
+        <div class="fire-overlay"></div>
+    </div>
+
+    <!-- Navigazione -->
+    <nav id="navbar" class="nav-scrolled fixed top-0 w-full z-50 transition-all duration-300 py-6 px-4 md:px-12 flex justify-between items-center">
+        <div class="hidden lg:flex gap-6 xl:gap-8 w-1/3">
+            <a href="menu.html" class="text-xs tracking-[0.2em] uppercase relative group">Our menu<span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-[var(--accent-gold)] transition-all duration-300 group-hover:w-full"></span></a>
+            <a href="eventi.html" class="text-xs tracking-[0.2em] uppercase relative group">Events<span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-[var(--accent-gold)] transition-all duration-300 group-hover:w-full"></span></a>
+            <a href="contatti.html" aria-current="page" class="text-xs tracking-[0.2em] uppercase relative group">Contact<span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-[var(--accent-gold)] transition-all duration-300 group-hover:w-full"></span></a>
+        </div>
+        
+        <div class="nav-mobile-controls flex lg:hidden w-1/3">
+            <button id="mobile-menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="mobile-menu" class="text-gray-300 hover:text-[var(--accent-gold)] transition-colors">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path class="burger-line burger-top" stroke-linecap="round" stroke-width="2" d="M4 6h16"></path><path class="burger-line burger-middle" stroke-linecap="round" stroke-width="2" d="M4 12h16"></path><path class="burger-line burger-bottom" stroke-linecap="round" stroke-width="2" d="M4 18h16"></path></svg>
+            </button>
+            <div class="language-switch" role="group" aria-label="Website language">
+                <a href="../contatti.html" lang="it" hreflang="it" data-language-link aria-label="Leggi in italiano">IT</a>
+                <a href="contatti.html" lang="en" hreflang="en" data-language-link aria-label="Read in English" aria-current="page">EN</a>
+            </div>
+        </div>
+        
+        <a href="index.html" aria-label="Hata San — home" class="w-1/3 flex justify-center">
+            <img src="../img/hatasan-logo-orizzontale.svg" onerror="this.src='https://www.hatasanrestaurant.it/wp-content/uploads/2025/03/Livello_1.svg'" alt="Hata San" class="h-8 md:h-10 w-auto filter drop-shadow-md">
+        </a>
+        
+        <div class="nav-actions w-1/3 flex justify-end gap-3 md:gap-6 items-center">
+            <div class="language-switch language-switch-desktop" role="group" aria-label="Website language">
+                <a href="../contatti.html" lang="it" hreflang="it" data-language-link aria-label="Leggi in italiano">IT</a>
+                <a href="contatti.html" lang="en" hreflang="en" data-language-link aria-label="Read in English" aria-current="page">EN</a>
+            </div>
+            <a href="#" class="nav-order hidden sm:block text-[10px] md:text-xs tracking-[0.2em] uppercase border-b border-transparent hover:border-[var(--accent-gold)] hover:text-[var(--accent-gold)] transition-all py-1">Order online</a>
+            <a href="#" class="nav-booking btn-outline text-[10px] md:text-xs px-3 py-2 md:px-6 md:py-3">Book</a>
+        </div>
+        <div id="mobile-menu" hidden>
+            <a href="menu.html">Our menu</a>
+            <a href="eventi.html">Events</a>
+            <a href="contatti.html" aria-current="page">Contact</a>
+        </div>
+    </nav>
+
+    <main id="contatti" class="fire-content contact-page">
+        <div class="contact-container">
+            <a href="index.html" class="contact-back"><svg class="icon-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg> Back to home</a>
+            <header class="contact-heading">
+                <h1 class="zuma-font">Contact</h1>
+            </header>
+            <div class="contact-grid">
+                <section class="contact-section" aria-label="Contact details">
+                    <dl class="contact-details">
+                        <div><dt>Phone</dt><dd><a href="tel:+390510224747">051 0224747</a></dd></div>
+                        <div><dt>WhatsApp</dt><dd><a href="https://wa.me/393758067748">+39 375 8067748</a></dd></div>
+                        <div><dt>Email</dt><dd><a href="mailto:hatasanbologna@gmail.com">hatasanbologna@gmail.com</a></dd></div>
+                    </dl>
+                    <div class="contact-actions">
+                        <a class="contact-button contact-button-primary" href="tel:+390510224747">Call us</a>
+                        <a class="contact-button" href="https://wa.me/393758067748">Message us on WhatsApp <svg class="icon-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 19 19 5M5 5h14v14"></path></svg></a>
+                    </div>
+                    <div class="contact-social">
+                        <p class="contact-eyebrow">Follow Hata San</p>
+                        <div class="contact-social-links">
+                            <a class="contact-text-link" href="https://www.instagram.com/hatasan_robata/" target="_blank" rel="noopener noreferrer">Instagram <svg class="icon-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 19 19 5M5 5h14v14"></path></svg></a>
+                            <a class="contact-text-link" href="https://www.facebook.com/profile.php?id=61583444012025" target="_blank" rel="noopener noreferrer">Facebook <svg class="icon-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 19 19 5M5 5h14v14"></path></svg></a>
+                        </div>
+                    </div>
+                </section>
+                <div class="contact-location">
+                    <section class="contact-section contact-hours" aria-label="Opening hours">
+                        <h2 class="contact-eyebrow">Lunch</h2>
+                        <dl class="contact-schedule">
+                            <div class="contact-closed"><dt>Monday – Thursday</dt><dd>Closed</dd></div>
+                            <div><dt>Friday – Sunday</dt><dd>12:00 – 14:30</dd></div>
+                        </dl>
+                        <h2 class="contact-eyebrow">Dinner</h2>
+                        <dl class="contact-schedule">
+                            <div><dt>Monday – Thursday</dt><dd>19:00 – 23:30</dd></div>
+                            <div><dt>Friday – Sunday</dt><dd>19:30 – 23:30</dd></div>
+                        </dl>
+                    </section>
+                    <section class="contact-section" aria-label="Address">
+                        <address>Via Augusto Murri, 77<br>40137 Bologna BO</address>
+                        <a class="contact-text-link" href="https://share.google/mctnz8QLFHpUPzEWT" target="_blank" rel="noopener noreferrer">Get directions <svg class="icon-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 19 19 5M5 5h14v14"></path></svg></a>
+                    </section>
+                </div>
+            </div>
+            <section class="contact-map" aria-label="Hata San location">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2846.685565139014!2d11.362082499999998!3d44.48061759999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477e2b006c6c0b3b%3A0x78346c389f636b44!2sHata%20San%20Sushi%20%26%20Robata!5e0!3m2!1sen!2sit!4v1791609839051!5m2!1sen!2sit"
+                    title="Google Maps: Hata San, Via Augusto Murri 77, Bologna"
+                    width="1152" height="360"
+                    loading="lazy"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    allowfullscreen>
+                </iframe>
+            </section>
+        </div>
+    </main>
+
+    <footer class="fire-content py-8 px-6 text-center text-[10px] md:text-xs font-light text-gray-500 tracking-[0.1em]">
+        <div class="back-to-top-holder">
+            <a href="#inizio" class="back-to-top" aria-label="Back to top" title="Back to top">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5m-7 7 7-7 7 7"></path></svg>
+            </a>
+        </div>
+
+        <p>&copy; 2026 Hata San Restaurant. All rights reserved.</p>
+        <p class="mt-4">VAT no. 03965231206</p>
+    </footer>
+</body>
+</html>

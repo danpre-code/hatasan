@@ -82,7 +82,6 @@ html {
     padding: 1rem 1.5rem 1.5rem;
     background: rgba(5, 5, 5, 0.97);
     backdrop-filter: blur(16px);
-    border-bottom: 1px solid rgba(197, 160, 89, 0.3);
     animation: navigation-reveal 0.25s ease-out;
 }
 #mobile-menu a {
@@ -95,7 +94,6 @@ html {
     text-decoration: none;
     transition: color 0.2s;
 }
-#mobile-menu a + a { border-top: 1px solid rgba(255, 255, 255, 0.1); }
 #mobile-menu a:hover, #mobile-menu a:focus-visible { color: var(--accent-gold); }
 .burger-line { transform-origin: 12px 12px; transition: transform 0.25s, opacity 0.25s; }
 [aria-expanded="true"] .burger-top { transform: translateY(6px) rotate(45deg); transform-origin: 12px 6px; }

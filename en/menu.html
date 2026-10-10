@@ -22,7 +22,7 @@
             -webkit-font-smoothing: antialiased;
         }
         .zuma-font { font-family: 'Cinzel', serif; }
-        .nav-scrolled { background-color: rgba(5, 5, 5, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .nav-scrolled { background-color: rgba(5, 5, 5, 0.95); backdrop-filter: blur(10px); }
         .btn-outline {
             border: 1px solid rgba(255,255,255,0.3); padding: 0.75rem 1.5rem; text-transform: uppercase;
             letter-spacing: 0.2em; font-size: 0.75rem; transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
@@ -34,7 +34,8 @@
         }
         .btn-outline:hover { color: #000; border-color: #fff; }
         .btn-outline:hover::before { transform: scaleX(1); }
-        .menu-title { font-size: clamp(2rem, 4.4vw, 4.75rem); line-height: 1.18; }
+        .menu-title { font-size: 1.5rem; line-height: 1.3; }
+        @media (min-width: 768px) { .menu-title { font-size: 2.25rem; } }
         @media (prefers-reduced-motion: reduce) {
             .btn-outline, .btn-outline::before { transition: none; }
         }
@@ -58,11 +59,11 @@
         <div class="hidden lg:flex gap-6 xl:gap-8 w-1/3">
             <a href="menu.html" aria-current="page" class="text-xs tracking-[0.2em] uppercase relative group">Our menu<span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-[var(--accent-gold)] transition-all duration-300 group-hover:w-full"></span></a>
             <a href="eventi.html" class="text-xs tracking-[0.2em] uppercase relative group">Events<span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-[var(--accent-gold)] transition-all duration-300 group-hover:w-full"></span></a>
-            <a href="index.html#contatti" class="text-xs tracking-[0.2em] uppercase relative group">Contact<span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-[var(--accent-gold)] transition-all duration-300 group-hover:w-full"></span></a>
+            <a href="contatti.html" class="text-xs tracking-[0.2em] uppercase relative group">Contact<span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-[var(--accent-gold)] transition-all duration-300 group-hover:w-full"></span></a>
         </div>
         
         <div class="nav-mobile-controls flex lg:hidden w-1/3">
-            <button id="mobile-menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="mobile-menu" class="text-white hover:text-[var(--accent-gold)] transition-colors">
+            <button id="mobile-menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="mobile-menu" class="text-gray-300 hover:text-[var(--accent-gold)] transition-colors">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path class="burger-line burger-top" stroke-linecap="round" stroke-width="2" d="M4 6h16"></path><path class="burger-line burger-middle" stroke-linecap="round" stroke-width="2" d="M4 12h16"></path><path class="burger-line burger-bottom" stroke-linecap="round" stroke-width="2" d="M4 18h16"></path></svg>
             </button>
             <div class="language-switch" role="group" aria-label="Website language">
@@ -86,7 +87,7 @@
         <div id="mobile-menu" hidden>
             <a href="menu.html" aria-current="page">Our menu</a>
             <a href="eventi.html">Events</a>
-            <a href="index.html#contatti">Contact</a>
+            <a href="contatti.html">Contact</a>
         </div>
     </nav>
 
@@ -98,9 +99,9 @@
                 <div class="w-16 h-[1px] bg-[var(--accent-gold)] mt-10" aria-hidden="true"></div>
             </div>
 
-            <div class="border-t border-white/20 pt-8 md:pt-10">
+            <div class="pt-8 md:pt-10">
                 <img src="../img/carbone_binchotan.jpg" alt="Binchotan charcoal in the Robata grill" width="2560" height="1707" class="w-full aspect-[12/5] object-cover mb-10 md:mb-12">
-                <h2 class="zuma-font text-xl md:text-2xl tracking-[0.1em] text-white border-b border-white/20 pb-5 mb-7">Our menu</h2>
+                <h2 class="zuma-font text-xl md:text-2xl tracking-[0.1em] text-white pb-5 mb-7">Our menu</h2>
                 <p class="text-sm md:text-base font-light text-gray-300 leading-loose">
                     Our Robatayaki and sushi menu brings together the tradition of slow Japanese grilling with the freshness and elegance of sushi. An experience that pairs the rich flavour of perfectly grilled ingredients with the delicacy of expertly prepared nigiri, sashimi and maki.
                 </p>
@@ -113,7 +114,7 @@
         </div>
     </main>
 
-    <footer class="fire-content border-t border-white/10 py-8 px-6 text-center text-[10px] md:text-xs font-light text-gray-500 tracking-[0.1em]">
+    <footer class="fire-content py-8 px-6 text-center text-[10px] md:text-xs font-light text-gray-500 tracking-[0.1em]">
         <div class="back-to-top-holder">
             <a href="#inizio" class="back-to-top" aria-label="Back to top" title="Back to top">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5m-7 7 7-7 7 7"></path></svg>
