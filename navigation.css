@@ -2,12 +2,14 @@ html {
     scroll-behavior: smooth;
     overflow-x: hidden;
     overscroll-behavior-x: none;
+    overscroll-behavior-y: none;
 }
 
-/* Contiene le animazioni laterali senza aggiungere un contenitore di scorrimento. */
+/* Un solo scorrimento verticale; le animazioni non estendono il fondo pagina. */
 @supports (overflow-x: clip) {
     html { overflow-x: clip; }
-    .content-wrapper { overflow-x: clip; }
+    html body { overflow-x: clip; }
+    .content-wrapper { overflow: clip; }
 }
 
 #contatti { scroll-margin-top: 5rem; }

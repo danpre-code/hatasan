@@ -8,6 +8,8 @@
     z-index: 1;
     pointer-events: none;
     overflow: hidden;
+    /* Isola anche il blur e le trasformazioni durante il caricamento. */
+    contain: strict;
     background-color: #050200;
 }
 
