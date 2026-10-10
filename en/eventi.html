@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events | Hata San Bologna</title>
+    <link rel="alternate" hreflang="it" href="../eventi.html">
+    <link rel="alternate" hreflang="en" href="eventi.html">
+    <link rel="alternate" hreflang="x-default" href="../eventi.html">
+    <meta name="description" content="Events at Hata-san in Bologna: Robatayaki tasting menus, sake pairings and evenings celebrating Japanese cuisine.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../navigation.css">
+    <link rel="stylesheet" href="../fire-background.css">
+    <link rel="stylesheet" href="../eventi.css">
+    <script src="../navigation.js" defer></script>
+    <style>
+        :root { --bg-dark: #000000; --text-light: #f5f5f5; --accent-gold: #c5a059; }
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+        .zuma-font { font-family: 'Cinzel', serif; }
+        .nav-scrolled { background-color: rgba(5, 5, 5, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .btn-outline {
+            border: 1px solid rgba(255,255,255,0.3); padding: 0.75rem 1.5rem; text-transform: uppercase;
+            letter-spacing: 0.2em; font-size: 0.75rem; transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            position: relative; overflow: hidden; display: inline-block; backdrop-filter: blur(5px);
+        }
+        .btn-outline::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: #fff;
+            transform: scaleX(0); transform-origin: left; transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); z-index: -1;
+        }
+        .btn-outline:hover { color: #000; border-color: #fff; }
+        .btn-outline:hover::before { transform: scaleX(1); }
+        @media (prefers-reduced-motion: reduce) {
+            .btn-outline, .btn-outline::before { transition: none; }
+        }
+    </style>
+</head>
+<body id="inizio">
+
+    <!-- EFFETTO FIAMME ORGANICHE -->
+    <div class="fire-ambient" aria-hidden="true">
+        <div class="fire-container">
+            <div class="flame"></div>
+            <div class="flame"></div>
+            <div class="flame"></div>
+            <div class="flame"></div>
+        </div>
+        <div class="fire-overlay"></div>
+    </div>
+
+    <!-- Navigazione -->
+    <nav id="navbar" class="nav-scrolled fixed top-0 w-full z-50 transition-all duration-300 py-6 px-4 md:px-12 flex justify-between items-center">
+        <div class="hidden lg:flex gap-6 xl:gap-8 w-1/3">
+            <a href="menu.html" class="text-xs tracking-[0.2em] uppercase relative group">Our menu<span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-[var(--accent-gold)] transition-all duration-300 group-hover:w-full"></span></a>
+            <a href="eventi.html" aria-current="page" class="text-xs tracking-[0.2em] uppercase relative group">Events<span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-[var(--accent-gold)] transition-all duration-300 group-hover:w-full"></span></a>
+            <a href="index.html#contatti" class="text-xs tracking-[0.2em] uppercase relative group">Contact<span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-[var(--accent-gold)] transition-all duration-300 group-hover:w-full"></span></a>
+        </div>
+        
+        <div class="nav-mobile-controls flex lg:hidden w-1/3">
+            <button id="mobile-menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="mobile-menu" class="text-white hover:text-[var(--accent-gold)] transition-colors">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path class="burger-line burger-top" stroke-linecap="round" stroke-width="2" d="M4 6h16"></path><path class="burger-line burger-middle" stroke-linecap="round" stroke-width="2" d="M4 12h16"></path><path class="burger-line burger-bottom" stroke-linecap="round" stroke-width="2" d="M4 18h16"></path></svg>
+            </button>
+            <div class="language-switch" role="group" aria-label="Website language">
+                <a href="../eventi.html" lang="it" hreflang="it" data-language-link aria-label="Leggi in italiano">IT</a>
+                <a href="eventi.html" lang="en" hreflang="en" data-language-link aria-label="Read in English" aria-current="page">EN</a>
+            </div>
+        </div>
+        
+        <a href="index.html" aria-label="Hata San — home" class="w-1/3 flex justify-center">
+            <img src="../img/hatasan-logo-orizzontale.svg" onerror="this.src='https://www.hatasanrestaurant.it/wp-content/uploads/2025/03/Livello_1.svg'" alt="Hata San" class="h-8 md:h-10 w-auto filter drop-shadow-md">
+        </a>
+        
+        <div class="nav-actions w-1/3 flex justify-end gap-3 md:gap-6 items-center">
+            <div class="language-switch language-switch-desktop" role="group" aria-label="Website language">
+                <a href="../eventi.html" lang="it" hreflang="it" data-language-link aria-label="Leggi in italiano">IT</a>
+                <a href="eventi.html" lang="en" hreflang="en" data-language-link aria-label="Read in English" aria-current="page">EN</a>
+            </div>
+            <a href="#" class="nav-order hidden sm:block text-[10px] md:text-xs tracking-[0.2em] uppercase border-b border-transparent hover:border-[var(--accent-gold)] hover:text-[var(--accent-gold)] transition-all py-1">Order online</a>
+            <a href="#" class="nav-booking btn-outline text-[10px] md:text-xs px-3 py-2 md:px-6 md:py-3">Book</a>
+        </div>
+        <div id="mobile-menu" hidden>
+            <a href="menu.html">Our menu</a>
+            <a href="eventi.html" aria-current="page">Events</a>
+            <a href="index.html#contatti">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Eventi, date e prezzi dimostrativi per la fase di costruzione del sito. -->
+    <main class="fire-content events-page">
+        <div class="events-container">
+            <a href="index.html" class="events-back"><svg class="icon-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg> Back to home</a>
+            <header class="events-intro">
+                <div>
+                    <p class="events-eyebrow">Experiences beyond the menu</p>
+                    <h1 class="zuma-font">Hata-san Events</h1>
+                </div>
+                <p class="events-copy">Fire, the sea and the pleasure of coming together. Evenings that explore a different side of our kitchen, with tasting menus, sake pairings and conversations with chefs and producers.</p>
+            </header>
+            <nav class="events-sections" aria-label="Event sections">
+                <a href="#in-programma">Coming up <svg class="events-section-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 5l14 14M7 19h12V7"></path></svg></a>
+                <a href="#eventi-passati">Nights to remember <svg class="events-section-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 5l14 14M7 19h12V7"></path></svg></a>
+            </nav>
+
+            <section id="in-programma" class="events-section" aria-labelledby="upcoming-title">
+                <div class="events-section-heading">
+                    <h2 id="upcoming-title" class="zuma-font">Upcoming events</h2>
+                    <p>Three occasions to join us at the table.</p>
+                </div>
+
+                <article id="sake-robata" class="event-feature">
+                    <div class="event-feature-photo">
+                        <img src="../img/robata-2.webp" alt="Cooking over an open flame on the Robata grill" width="1080" height="720">
+                        <span class="event-photo-label">Our next event</span>
+                    </div>
+                    <div class="event-feature-content">
+                        <p class="events-eyebrow"><time datetime="2026-11-28T20:00">28 November 2026 · 8 pm</time></p>
+                        <h3 class="zuma-font">Sake &amp; Robata Pairing</h3>
+                        <p class="events-copy">Charcoal meets sake in a dinner designed as a conversation: each course is paired with a glass that complements its aromas, textures and intensity.</p>
+                        <p class="events-copy">Begin with a taste from the Sushi Bar, followed by fish and vegetables from the Robata, and finish with the delicate flavour of black sesame. Three carefully selected sakes offer three different perspectives on Japanese dining.</p>
+                        <dl class="event-details">
+                            <div><dt>The tasting menu</dt><dd>5 courses · 3 paired sakes</dd></div>
+                            <div><dt>Per person</dt><dd>€95 · sake pairing included</dd></div>
+                        </dl>
+                        <a class="btn-outline event-booking" href="https://wa.me/393758067748?text=Hello%2C%20I%20would%20like%20information%20and%20availability%20for%20Sake%20%26%20Robata%20Pairing%20on%2028%20November%202026.">Enquire about availability <span aria-hidden="true"><svg class="icon-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 19 19 5M5 5h14v14"></path></svg></span></a>
+                    </div>
+                </article>
+
+                <div class="events-grid">
+                    <article id="wagyu-carbone" class="event-card">
+                        <img src="../img/carbone_binchotan.jpg" alt="Binchotan charcoal ready for the grill" width="2560" height="1707" loading="lazy">
+                        <div class="event-card-content">
+                            <p class="events-eyebrow"><time datetime="2026-12-12T20:00">12 December 2026 · 8 pm</time></p>
+                            <h3 class="zuma-font">Wagyu &amp; Charcoal</h3>
+                            <p class="events-copy">An evening exploring the meeting of Wagyu marbling and the heat of Binchotan charcoal. Six courses, from delicate preparations to charcoal grilling, with seasonal accompaniments and bright touches of acidity.</p>
+                            <dl class="event-details">
+                                <div><dt>The tasting menu</dt><dd>6-course tasting menu</dd></div>
+                                <div><dt>Per person</dt><dd>€110 · drinks not included</dd></div>
+                            </dl>
+                            <a class="event-text-link" href="https://wa.me/393758067748?text=Hello%2C%20I%20would%20like%20information%20and%20availability%20for%20Wagyu%20%26%20Charcoal%20on%2012%20December%202026.">Enquire about availability <span aria-hidden="true"><svg class="icon-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 19 19 5M5 5h14v14"></path></svg></span></a>
+                        </div>
+                    </article>
+                    <article id="umami-inverno" class="event-card">
+                        <img src="../img/cucina_contemporanea.jpg" alt="Contemporary cuisine at Hata-san" loading="lazy">
+                        <div class="event-card-content">
+                            <p class="events-eyebrow"><time datetime="2027-01-22T20:00">22 January 2027 · 8 pm</time></p>
+                            <h3 class="zuma-font">Winter Umami</h3>
+                            <p class="events-copy">Clear broths, roasted root vegetables, mushrooms and seasonal fish. A five-course tasting menu exploring the comforting side of Japanese cuisine, from the depth of dashi to the aromas of the Robata.</p>
+                            <dl class="event-details">
+                                <div><dt>The tasting menu</dt><dd>5-course tasting menu</dd></div>
+                                <div><dt>Per person</dt><dd>€85 · drinks not included</dd></div>
+                            </dl>
+                            <a class="event-text-link" href="https://wa.me/393758067748?text=Hello%2C%20I%20would%20like%20information%20and%20availability%20for%20Winter%20Umami%20on%2022%20January%202027.">Enquire about availability <span aria-hidden="true"><svg class="icon-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 19 19 5M5 5h14v14"></path></svg></span></a>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <section id="eventi-passati" class="events-section events-archive" aria-labelledby="past-title">
+                <div class="events-section-heading">
+                    <div>
+                        <p class="events-eyebrow">Past stories. Future experiences.</p>
+                        <h2 id="past-title" class="zuma-font">Nights to remember</h2>
+                    </div>
+                    <p>The story continues, one gathering at a time.</p>
+                </div>
+                <div class="events-grid">
+                    <article id="bluefin-experience" class="event-story">
+                        <img src="../img/sushi.jpg" alt="Tuna nigiri prepared at the Sushi Bar" width="2560" height="1707" loading="lazy">
+                        <p class="events-eyebrow"><time datetime="2026-09-24">24 September 2026</time> · Past event</p>
+                        <h3 class="zuma-font">Bluefin Experience</h3>
+                        <p class="event-story-subtitle">An Evening of Bluefin Tuna</p>
+                        <p class="events-copy">Akami, Chutoro and Otoro: three expressions of bluefin tuna, explored through cuts, temperatures and textures. With sashimi and nigiri prepared to order, the tasting followed a simple idea: let the ingredient speak for itself.</p>
+                        <p class="events-copy">A selection of sakes accompanied the menu, chosen to complement the progression from clean, lean flavours to richer, more indulgent cuts.</p>
+                    </article>
+                    <article id="omakase-guest" class="event-story">
+                        <img src="../img/interno.webp" alt="The intimate atmosphere of Hata-san’s dining rooms" loading="lazy">
+                        <p class="events-eyebrow"><time datetime="2026-07-16">16 July 2026</time> · Past event</p>
+                        <h3 class="zuma-font">Hata-san × Omakase Guest</h3>
+                        <p class="event-story-subtitle">The Sea, Unscripted</p>
+                        <p class="events-copy">For one evening, our kitchen welcomed a guest chef for a menu inspired by the day’s catch. With no set sequence announced, each course led naturally to the next, moving between raw fish, light marinades and charcoal grilling.</p>
+                        <p class="events-copy">A dinner in our dining rooms celebrating the pleasure of leaving the choices to the chef — a preview of our future Omakase counter.</p>
+                    </article>
+                </div>
+            </section>
+
+            <section class="events-contact" aria-labelledby="events-contact-title">
+                <p class="events-eyebrow">See you at Hata-san</p>
+                <h2 id="events-contact-title" class="zuma-font">An evening to share</h2>
+                <p class="events-copy">For availability, tasting menu details or dietary requirements, get in touch before booking. We’ll help you choose the right experience.</p>
+                <div class="events-contact-actions">
+                    <a href="https://wa.me/393758067748" class="btn-outline">Message us on WhatsApp</a>
+                    <a href="index.html#contatti" class="event-text-link">Contact details <span aria-hidden="true"><svg class="icon-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span></a>
+                </div>
+                <p class="event-address">Via Augusto Murri, 77 · Bologna</p>
+            </section>
+        </div>
+    </main>
+
+    <footer class="fire-content border-t border-white/10 py-8 px-6 text-center text-[10px] md:text-xs font-light text-gray-500 tracking-[0.1em]">
+        <div class="back-to-top-holder">
+            <a href="#inizio" class="back-to-top" aria-label="Back to top" title="Back to top">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5m-7 7 7-7 7 7"></path></svg>
+            </a>
+        </div>
+
+        <p>&copy; 2026 Hata San Restaurant. All rights reserved.</p>
+        <p class="mt-3">VAT no. 03965231206</p>
+    </footer>
+</body>
+</html>

@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eventi | Hata San Bologna</title>
+    <link rel="alternate" hreflang="it" href="eventi.html">
+    <link rel="alternate" hreflang="en" href="en/eventi.html">
+    <link rel="alternate" hreflang="x-default" href="eventi.html">
     <meta name="description" content="Gli eventi di Hata-san a Bologna: degustazioni Robatayaki, sake pairing e incontri intorno alla cucina giapponese.">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
@@ -59,19 +62,27 @@
             <a href="index.html#contatti" class="text-xs tracking-[0.2em] uppercase relative group">Contatti<span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-[var(--accent-gold)] transition-all duration-300 group-hover:w-full"></span></a>
         </div>
         
-        <div class="lg:hidden w-1/3">
+        <div class="nav-mobile-controls flex lg:hidden w-1/3">
             <button id="mobile-menu-toggle" type="button" aria-label="Apri navigazione" aria-expanded="false" aria-controls="mobile-menu" class="text-white hover:text-[var(--accent-gold)] transition-colors">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path class="burger-line burger-top" stroke-linecap="round" stroke-width="2" d="M4 6h16"></path><path class="burger-line burger-middle" stroke-linecap="round" stroke-width="2" d="M4 12h16"></path><path class="burger-line burger-bottom" stroke-linecap="round" stroke-width="2" d="M4 18h16"></path></svg>
             </button>
+            <div class="language-switch" role="group" aria-label="Lingua del sito">
+                <a href="eventi.html" lang="it" hreflang="it" data-language-link aria-label="Leggi in italiano" aria-current="page">IT</a>
+                <a href="en/eventi.html" lang="en" hreflang="en" data-language-link aria-label="Read in English">EN</a>
+            </div>
         </div>
         
         <a href="index.html" aria-label="Hata San — homepage" class="w-1/3 flex justify-center">
             <img src="img/hatasan-logo-orizzontale.svg" onerror="this.src='https://www.hatasanrestaurant.it/wp-content/uploads/2025/03/Livello_1.svg'" alt="Hata San" class="h-8 md:h-10 w-auto filter drop-shadow-md">
         </a>
         
-        <div class="w-1/3 flex justify-end gap-3 md:gap-6 items-center">
-            <a href="#" class="hidden sm:block text-[10px] md:text-xs tracking-[0.2em] uppercase border-b border-transparent hover:border-[var(--accent-gold)] hover:text-[var(--accent-gold)] transition-all py-1">Ordina Ora</a>
-            <a href="#" class="btn-outline text-[10px] md:text-xs px-3 py-2 md:px-6 md:py-3">Prenota</a>
+        <div class="nav-actions w-1/3 flex justify-end gap-3 md:gap-6 items-center">
+            <div class="language-switch language-switch-desktop" role="group" aria-label="Lingua del sito">
+                <a href="eventi.html" lang="it" hreflang="it" data-language-link aria-label="Leggi in italiano" aria-current="page">IT</a>
+                <a href="en/eventi.html" lang="en" hreflang="en" data-language-link aria-label="Read in English">EN</a>
+            </div>
+            <a href="#" class="nav-order hidden sm:block text-[10px] md:text-xs tracking-[0.2em] uppercase border-b border-transparent hover:border-[var(--accent-gold)] hover:text-[var(--accent-gold)] transition-all py-1">Ordina Ora</a>
+            <a href="#" class="nav-booking btn-outline text-[10px] md:text-xs px-3 py-2 md:px-6 md:py-3">Prenota</a>
         </div>
         <div id="mobile-menu" hidden>
             <a href="menu.html">Il nostro menu</a>
@@ -83,7 +94,7 @@
     <!-- Eventi, date e prezzi dimostrativi per la fase di costruzione del sito. -->
     <main class="fire-content events-page">
         <div class="events-container">
-            <a href="index.html" class="events-back">← Torna alla home</a>
+            <a href="index.html" class="events-back"><svg class="icon-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg> Torna alla home</a>
             <header class="events-intro">
                 <div>
                     <p class="events-eyebrow">Esperienze oltre il menu</p>
@@ -116,7 +127,7 @@
                             <div><dt>Il percorso</dt><dd>5 portate · 3 sake in abbinamento</dd></div>
                             <div><dt>Per persona</dt><dd>€95 · abbinamento incluso</dd></div>
                         </dl>
-                        <a class="btn-outline event-booking" href="https://wa.me/393758067748?text=Ciao%2C%20vorrei%20informazioni%20e%20disponibilit%C3%A0%20per%20Sake%20%26%20Robata%20Pairing%20del%2028%20novembre%202026.">Richiedi disponibilità <span aria-hidden="true">↗</span></a>
+                        <a class="btn-outline event-booking" href="https://wa.me/393758067748?text=Ciao%2C%20vorrei%20informazioni%20e%20disponibilit%C3%A0%20per%20Sake%20%26%20Robata%20Pairing%20del%2028%20novembre%202026.">Richiedi disponibilità <span aria-hidden="true"><svg class="icon-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 19 19 5M5 5h14v14"></path></svg></span></a>
                     </div>
                 </article>
 
@@ -131,7 +142,7 @@
                                 <div><dt>Il percorso</dt><dd>6 portate di degustazione</dd></div>
                                 <div><dt>Per persona</dt><dd>€110 · bevande escluse</dd></div>
                             </dl>
-                            <a class="event-text-link" href="https://wa.me/393758067748?text=Ciao%2C%20vorrei%20informazioni%20e%20disponibilit%C3%A0%20per%20Wagyu%20%26%20Carbone%20del%2012%20dicembre%202026.">Richiedi disponibilità <span aria-hidden="true">↗</span></a>
+                            <a class="event-text-link" href="https://wa.me/393758067748?text=Ciao%2C%20vorrei%20informazioni%20e%20disponibilit%C3%A0%20per%20Wagyu%20%26%20Carbone%20del%2012%20dicembre%202026.">Richiedi disponibilità <span aria-hidden="true"><svg class="icon-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 19 19 5M5 5h14v14"></path></svg></span></a>
                         </div>
                     </article>
                     <article id="umami-inverno" class="event-card">
@@ -144,7 +155,7 @@
                                 <div><dt>Il percorso</dt><dd>5 portate di degustazione</dd></div>
                                 <div><dt>Per persona</dt><dd>€85 · bevande escluse</dd></div>
                             </dl>
-                            <a class="event-text-link" href="https://wa.me/393758067748?text=Ciao%2C%20vorrei%20informazioni%20e%20disponibilit%C3%A0%20per%20Umami%20d%E2%80%99inverno%20del%2022%20gennaio%202027.">Richiedi disponibilità <span aria-hidden="true">↗</span></a>
+                            <a class="event-text-link" href="https://wa.me/393758067748?text=Ciao%2C%20vorrei%20informazioni%20e%20disponibilit%C3%A0%20per%20Umami%20d%E2%80%99inverno%20del%2022%20gennaio%202027.">Richiedi disponibilità <span aria-hidden="true"><svg class="icon-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 19 19 5M5 5h14v14"></path></svg></span></a>
                         </div>
                     </article>
                 </div>
@@ -184,7 +195,7 @@
                 <p class="events-copy">Per disponibilità, dettagli sui percorsi o esigenze alimentari, scrivici prima di prenotare. Ti aiutiamo a scegliere l’esperienza più adatta.</p>
                 <div class="events-contact-actions">
                     <a href="https://wa.me/393758067748" class="btn-outline">Scrivici su WhatsApp</a>
-                    <a href="index.html#contatti" class="event-text-link">Tutti i contatti <span aria-hidden="true">→</span></a>
+                    <a href="index.html#contatti" class="event-text-link">Tutti i contatti <span aria-hidden="true"><svg class="icon-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span></a>
                 </div>
                 <p class="event-address">Via Augusto Murri, 77 · Bologna</p>
             </section>

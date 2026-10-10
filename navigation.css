@@ -12,6 +12,53 @@ html {
 
 #contatti { scroll-margin-top: 5rem; }
 
+/* Frecce vettoriali: stesso tratto e colore anche sui browser che usano emoji. */
+.icon-arrow {
+    display: inline-block;
+    vertical-align: -0.15em;
+    flex-shrink: 0;
+}
+
+.nav-mobile-controls { align-items: center; gap: 0.5rem; }
+#navbar .nav-actions { gap: 0.75rem; }
+#navbar .nav-actions > a { white-space: nowrap; }
+.language-switch {
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0;
+    padding: 2px;
+    border: 1px solid rgba(197, 160, 89, 0.3);
+    border-radius: 2px;
+    background: rgba(0, 0, 0, 0.2);
+}
+.language-switch a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 26px;
+    min-height: 30px;
+    color: #9ca3af;
+    font-size: 10px;
+    line-height: 1;
+    letter-spacing: 0.1em;
+    text-decoration: none;
+    transition: color 0.2s, background-color 0.2s;
+}
+.language-switch a + a { border-left: 1px solid rgba(255, 255, 255, 0.12); }
+.language-switch a[aria-current="page"] { color: var(--accent-gold); background: rgba(197, 160, 89, 0.12); }
+.language-switch a:hover { color: #fff; }
+.language-switch a:focus-visible { outline: 1px solid var(--accent-gold); outline-offset: 2px; }
+#navbar .language-switch-desktop { display: none; }
+
+@media (min-width: 1024px) {
+    #navbar .language-switch-desktop { display: inline-flex; }
+}
+@media (max-width: 767px) {
+    #navbar .nav-order { display: none; }
+    #navbar .nav-booking { padding: 0.6rem 0.75rem; font-size: 10px; letter-spacing: 0.12em; }
+    #navbar > a img, #navbar > #nav-logo-container img { height: 28px; max-width: 100%; }
+}
+
 .back-to-top-holder { display: flex; justify-content: flex-end; margin-bottom: 1.5rem; }
 .back-to-top {
     display: inline-flex;
