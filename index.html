@@ -127,7 +127,7 @@
                 <a href="index.html" lang="it" hreflang="it" data-language-link aria-label="Leggi in italiano" aria-current="page">IT</a>
                 <a href="en/index.html" lang="en" hreflang="en" data-language-link aria-label="Read in English">EN</a>
             </div>
-            <a href="#" class="nav-order hidden sm:block text-[10px] md:text-xs tracking-[0.2em] uppercase border-b border-transparent hover:border-[var(--accent-gold)] hover:text-[var(--accent-gold)] transition-all py-1">Ordina Ora</a>
+            <a href="ordina.html" class="nav-order hidden sm:block text-[10px] md:text-xs tracking-[0.2em] uppercase border-b border-transparent hover:border-[var(--accent-gold)] hover:text-[var(--accent-gold)] transition-all py-1">Ordina Ora</a>
             <a href="#" class="nav-booking btn-outline text-[10px] md:text-xs px-3 py-2 md:px-6 md:py-3">Prenota</a>
         </div>
         <div id="mobile-menu" hidden>
@@ -185,7 +185,7 @@
                 <div data-aos="fade-up" data-aos-delay="400" class="flex flex-col items-center justify-center gap-4">
                     <a href="#" class="btn-outline text-white">Prenota un tavolo</a>
                     <!-- Tasto Ordina visibile solo su mobile -->
-                    <a href="#" class="btn-outline text-[var(--accent-gold)] border-[var(--accent-gold)] hover:bg-[var(--accent-gold)] hover:text-black md:hidden">Ordina</a>
+                    <a href="ordina.html" class="btn-outline text-[var(--accent-gold)] border-[var(--accent-gold)] hover:bg-[var(--accent-gold)] hover:text-black md:hidden">Ordina</a>
                 </div>
             </div>
         </section>
@@ -276,7 +276,6 @@ Dal mare al piatto, ogni dettaglio conta.</p>
 
         <!-- Slider Concetti Orizzontale (Loop Infinito) -->
         <section class="content-section-darker py-20 overflow-hidden relative">
-            <!-- Rimosse le classi di snapping per permettere a JS di scorrere liberamente -->
             <div class="max-w-[100vw] mx-auto pl-6 md:pl-12">
                 <div id="horizontal-carousel" class="flex gap-6 md:gap-12 overflow-x-auto hide-scrollbar pb-12 pt-6">
                     
@@ -562,14 +561,12 @@ Dal mare al piatto, ogni dettaglio conta.</p>
         const speed = 1.0; 
 
         if (carousel) {
-            // Clona gli elementi per creare l'effetto infinito
             const items = Array.from(carousel.children);
             items.forEach(item => {
                 const clone = item.cloneNode(true);
                 carousel.appendChild(clone);
             });
 
-            // Calcola il punto esatto di reset in modo dinamico
             let resetPoint = 0;
             function calculateResetPoint() {
                 const firstOriginal = carousel.children[0];
@@ -577,16 +574,13 @@ Dal mare al piatto, ogni dettaglio conta.</p>
                 resetPoint = firstClone.offsetLeft - firstOriginal.offsetLeft;
             }
             
-            // Ricalcola in caso di ridimensionamento della finestra
             window.addEventListener('load', calculateResetPoint);
             window.addEventListener('resize', calculateResetPoint);
-            calculateResetPoint(); // Calcolo immediato
+            calculateResetPoint();
 
-            // Mette in pausa il carosello su desktop
             carousel.addEventListener('mouseenter', () => isHovered = true);
             carousel.addEventListener('mouseleave', () => isHovered = false);
 
-            // Mette in pausa il carosello su mobile se l'utente tocca lo schermo
             carousel.addEventListener('touchstart', () => isHovered = true, {passive: true});
             carousel.addEventListener('touchend', () => {
                 setTimeout(() => { isHovered = false; }, 1000);
@@ -596,7 +590,6 @@ Dal mare al piatto, ogni dettaglio conta.</p>
                 if(!isHovered && carousel && resetPoint > 0) {
                     carousel.scrollLeft += speed;
                     
-                    // Reset invisibile
                     if (carousel.scrollLeft >= resetPoint) {
                         carousel.scrollLeft -= resetPoint;
                     }
