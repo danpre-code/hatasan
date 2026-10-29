@@ -41,9 +41,15 @@
         .btn-outline:hover { color: #000; border-color: #fff; }
         .btn-outline:hover::before { transform: scaleX(1); }
 
+        /* Scorrimento fluido per la barra categorie mobile */
         .hide-scrollbar::-webkit-scrollbar { display: none; }
-        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-        html { scroll-behavior: smooth; }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+            -webkit-overflow-scrolling: touch;
+            overscroll-behavior-x: contain;
+            touch-action: pan-x;
+        }
 
         .custom-scrollbar::-webkit-scrollbar { width: 4px; }
         .custom-scrollbar::-webkit-scrollbar-track { background: rgba(255,255,255,0.02); }
@@ -51,31 +57,34 @@
         .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: rgba(197, 160, 89, 0.6); }
 
         .cat-pill {
-            transition: all 0.25s ease;
+            transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
             white-space: nowrap;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
         }
         .cat-pill.active {
             background-color: var(--accent-gold);
             color: #000000;
             font-weight: 600;
             border-color: var(--accent-gold);
-            box-shadow: 0 0 15px rgba(197, 160, 89, 0.3);
         }
 
+        /* Card ottimizzate per 60fps su mobile (senza backdrop-filter pesante) */
         .dish-card {
-            background: rgba(12, 12, 12, 0.85);
-            backdrop-filter: blur(8px);
+            background-color: #0d0d0d;
             border: 1px solid rgba(255, 255, 255, 0.08);
-            transition: all 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
+            transition: border-color 0.2s ease, background-color 0.2s ease;
+            -webkit-tap-highlight-color: transparent;
         }
-        .dish-card:hover {
-            background: rgba(22, 22, 22, 0.95);
-            border-color: rgba(197, 160, 89, 0.45);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+        @media (hover: hover) {
+            .dish-card:hover {
+                background-color: #151515;
+                border-color: rgba(197, 160, 89, 0.45);
+            }
         }
         .dish-card.in-cart {
             border-left: 3px solid var(--accent-gold);
+            background-color: #12100c;
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -97,7 +106,7 @@
     </div>
 
     <!-- Navigazione Condivisa -->
-    <nav id="navbar" class="nav-scrolled fixed top-0 w-full z-50 transition-all duration-300 py-6 px-4 md:px-12 flex justify-between items-center">
+    <nav id="navbar" class="nav-scrolled fixed top-0 w-full z-50 transition-all duration-300 py-5 md:py-6 px-4 md:px-12 flex justify-between items-center">
         <div class="hidden lg:flex gap-6 xl:gap-8 w-1/3">
             <a href="menu.html" class="text-xs tracking-[0.2em] uppercase relative group">Il nostro menu<span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-[var(--accent-gold)] transition-all duration-300 group-hover:w-full"></span></a>
             <a href="eventi.html" class="text-xs tracking-[0.2em] uppercase relative group">Eventi<span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-[var(--accent-gold)] transition-all duration-300 group-hover:w-full"></span></a>
@@ -135,33 +144,33 @@
     </nav>
 
     <!-- CONTENUTO PRINCIPALE ORDINI -->
-    <div class="fire-content relative z-10 pt-24 md:pt-28 flex-1 flex flex-col">
+    <div class="fire-content relative z-10 pt-20 md:pt-28 flex-1 flex flex-col">
 
-        <!-- BARRA DI SERVIZIO (Stile Ippo Sushi / StoreKit) -->
-        <section class="bg-black/80 backdrop-blur-md border-b border-white/10 pt-4 pb-5 px-4 md:px-12">
+        <!-- BARRA DI SERVIZIO (Stile Ippo Sushi) -->
+        <section class="bg-black/90 border-b border-white/10 pt-4 pb-4 px-4 md:px-12">
             <div class="max-w-7xl mx-auto">
-                <a href="index.html" class="inline-flex items-center gap-2 text-[10px] tracking-[0.2em] uppercase text-gray-400 hover:text-[var(--accent-gold)] transition-colors mb-4">
+                <a href="index.html" class="inline-flex items-center gap-2 text-[10px] tracking-[0.2em] uppercase text-gray-400 hover:text-[var(--accent-gold)] transition-colors mb-3">
                     <svg class="icon-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg>
                     Torna alla home
                 </a>
 
-                <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
+                <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
                     <div>
-                        <div class="flex items-center gap-3 mb-2">
+                        <div class="flex items-center gap-3 mb-1.5">
                             <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-medium uppercase tracking-widest bg-emerald-950/80 text-emerald-400 border border-emerald-700/40">
                                 <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
                                 Take Away &amp; Delivery
                             </span>
                             <span class="text-xs text-gray-400 tracking-wider">Via Augusto Murri, 77 · Bologna</span>
                         </div>
-                        <h1 class="text-2xl md:text-3xl zuma-font text-white tracking-wider uppercase">
+                        <h1 class="text-xl md:text-3xl zuma-font text-white tracking-wider uppercase">
                             Ordina <span class="text-[var(--accent-gold)]">Online</span>
                         </h1>
                     </div>
 
                     <!-- Selettori Ritiro/Consegna + Fascia Oraria -->
-                    <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
-                        <div class="bg-zinc-900/90 p-1 rounded-lg border border-white/10 flex items-center">
+                    <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5">
+                        <div class="bg-zinc-900 p-1 rounded-lg border border-white/10 flex items-center">
                             <button id="btn-pickup" type="button" onclick="setServiceMode('pickup')" class="flex-1 sm:flex-initial px-4 py-2 rounded-md text-xs uppercase tracking-widest font-medium transition-all bg-[var(--accent-gold)] text-black">
                                 Ritiro (Pickup)
                             </button>
@@ -171,7 +180,7 @@
                         </div>
 
                         <div class="relative">
-                            <select id="time-slot-select" aria-label="Seleziona fascia oraria" onchange="updateTimeSlot(this.value)" class="w-full sm:w-auto appearance-none bg-zinc-900/90 border border-white/10 hover:border-[var(--accent-gold)]/50 text-white text-xs tracking-wider rounded-lg pl-9 pr-8 py-2.5 focus:outline-none focus:border-[var(--accent-gold)] transition-colors cursor-pointer">
+                            <select id="time-slot-select" aria-label="Seleziona fascia oraria" onchange="updateTimeSlot(this.value)" class="w-full sm:w-auto appearance-none bg-zinc-900 border border-white/10 hover:border-[var(--accent-gold)]/50 text-white text-xs tracking-wider rounded-lg pl-9 pr-8 py-2.5 focus:outline-none focus:border-[var(--accent-gold)] transition-colors cursor-pointer">
                                 <option value="Oggi • Appena possibile">Oggi • Appena possibile</option>
                                 <optgroup label="Pranzo (Ven – Dom 12:00 – 14:30)">
                                     <option value="Pranzo • 12:30">Pranzo • 12:30</option>
@@ -196,40 +205,65 @@
             </div>
         </section>
 
-        <!-- BARRA CATEGORIE STICKY + RICERCA -->
-        <div class="sticky top-[76px] md:top-[88px] z-30 bg-black/95 backdrop-blur-xl border-b border-white/10 shadow-lg">
-            <div class="max-w-7xl mx-auto px-4 md:px-12 py-3 flex flex-col md:flex-row items-stretch md:items-center gap-3">
-                <div class="relative w-full md:w-64 shrink-0">
+        <!-- BARRA CATEGORIE STICKY + RICERCA (Compatta e fluida su Mobile) -->
+        <div class="sticky top-[68px] md:top-[84px] z-30 bg-black/95 border-b border-white/10 shadow-lg">
+            <div class="max-w-7xl mx-auto px-4 md:px-12 py-2.5 flex items-center gap-2.5">
+                
+                <!-- Pulsante Lente Mobile (Apre/Chiude la barra di ricerca su smartphone per risparmiare spazio verticale) -->
+                <button type="button" onclick="toggleMobileSearch()" aria-label="Cerca nel menu" class="md:hidden shrink-0 w-9 h-9 rounded-full bg-zinc-900 border border-white/15 flex items-center justify-center text-gray-300 active:border-[var(--accent-gold)]">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                </button>
+
+                <!-- Campo Ricerca Desktop -->
+                <div class="hidden md:block relative w-60 shrink-0">
                     <input 
                         type="text" 
-                        id="search-input" 
+                        id="search-input-desktop" 
                         oninput="handleSearch(this.value)"
                         placeholder="Cerca piatto o ingrediente..." 
-                        class="w-full bg-zinc-900/90 border border-white/10 focus:border-[var(--accent-gold)] rounded-full pl-9 pr-8 py-1.5 text-xs text-white placeholder-gray-500 focus:outline-none transition-colors"
+                        class="w-full bg-zinc-900 border border-white/10 focus:border-[var(--accent-gold)] rounded-full pl-9 pr-8 py-1.5 text-xs text-white placeholder-gray-500 focus:outline-none transition-colors"
                     >
                     <svg class="w-3.5 h-3.5 text-gray-400 absolute left-3.5 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
-                    <button id="clear-search" type="button" onclick="clearSearch()" aria-label="Cancella ricerca" class="hidden absolute right-2.5 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white">
+                    <button id="clear-search-desktop" type="button" onclick="clearSearch()" aria-label="Cancella ricerca" class="hidden absolute right-2.5 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white">
                         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
                     </button>
                 </div>
 
-                <nav id="category-nav" aria-label="Categorie menu" class="flex items-center gap-2 overflow-x-auto hide-scrollbar py-0.5">
+                <!-- Barra Orizzontale Categorie Scorrevole -->
+                <nav id="category-nav" aria-label="Categorie menu" class="flex-1 flex items-center gap-2 overflow-x-auto hide-scrollbar py-1">
                     <!-- Popolato via JS -->
                 </nav>
+            </div>
+
+            <!-- Barra di Ricerca Mobile (Espandibile al click sulla lente) -->
+            <div id="mobile-search-bar" class="hidden md:hidden px-4 pb-2.5">
+                <div class="relative w-full">
+                    <input 
+                        type="text" 
+                        id="search-input-mobile" 
+                        oninput="handleSearch(this.value)"
+                        placeholder="Cerca piatto o ingrediente..." 
+                        class="w-full bg-zinc-900 border border-[var(--accent-gold)]/50 rounded-full pl-9 pr-8 py-2 text-xs text-white placeholder-gray-500 focus:outline-none"
+                    >
+                    <svg class="w-3.5 h-3.5 text-[var(--accent-gold)] absolute left-3.5 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                    <button type="button" onclick="clearSearch(); toggleMobileSearch(false);" aria-label="Chiudi ricerca" class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                    </button>
+                </div>
             </div>
         </div>
 
         <!-- LAYOUT A 2 COLONNE: MENU + CARRELLO STICKY -->
-        <main class="flex-1 max-w-7xl w-full mx-auto px-4 md:px-12 py-8 pb-28 lg:pb-16">
+        <main class="flex-1 max-w-7xl w-full mx-auto px-4 md:px-12 py-6 md:py-8 pb-28 lg:pb-16">
             <div class="flex flex-col lg:flex-row items-start gap-8">
                 
                 <!-- Colonna Sinistra: Piatti -->
-                <div id="menu-container" class="w-full lg:w-[66%] xl:w-[68%] space-y-12"></div>
+                <div id="menu-container" class="w-full lg:w-[66%] xl:w-[68%] space-y-10"></div>
 
                 <!-- Colonna Destra: Carrello Sticky (Desktop) -->
-                <aside class="hidden lg:block lg:w-[34%] xl:w-[32%] sticky top-40">
-                    <div class="bg-zinc-950/95 backdrop-blur-xl border border-white/10 rounded-xl overflow-hidden shadow-2xl">
-                        <div class="p-5 border-b border-white/10 bg-black/60 flex items-center justify-between">
+                <aside class="hidden lg:block lg:w-[34%] xl:w-[32%] sticky top-36">
+                    <div class="bg-zinc-950 border border-white/10 rounded-xl overflow-hidden shadow-2xl">
+                        <div class="p-5 border-b border-white/10 bg-black flex items-center justify-between">
                             <div>
                                 <h2 class="zuma-font text-lg text-white tracking-wider">IL TUO ORDINE</h2>
                                 <p id="desktop-cart-subtitle" class="text-[11px] text-[var(--accent-gold)] tracking-wider uppercase mt-0.5">
@@ -241,16 +275,9 @@
                             </span>
                         </div>
 
-                        <div id="desktop-cart-items" class="max-h-[40vh] overflow-y-auto custom-scrollbar p-5 space-y-4"></div>
+                        <div id="desktop-cart-items" class="max-h-[45vh] overflow-y-auto custom-scrollbar p-5 space-y-4"></div>
 
-                        <div class="px-5 py-3 bg-zinc-900/50 border-t border-white/5 flex items-center justify-between text-xs text-gray-300">
-                            <label for="chopsticks-toggle" class="cursor-pointer flex items-center gap-2">
-                                <span>Includi bacchette e salsa di soia</span>
-                            </label>
-                            <input type="checkbox" id="chopsticks-toggle" checked onchange="syncChopsticks(this.checked)" class="accent-[var(--accent-gold)] w-4 h-4 rounded cursor-pointer">
-                        </div>
-
-                        <div class="p-5 border-t border-white/10 bg-black/80 space-y-3">
+                        <div class="p-5 border-t border-white/10 bg-black space-y-3">
                             <div class="flex justify-between text-xs text-gray-400">
                                 <span>Subtotale</span>
                                 <span id="desktop-subtotal">€ 0,00</span>
@@ -298,7 +325,7 @@
 
     <!-- DRAWER CARRELLO MOBILE -->
     <div id="mobile-cart-drawer" class="fixed inset-0 z-50 hidden">
-        <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" onclick="toggleMobileCart(false)"></div>
+        <div class="absolute inset-0 bg-black/80" onclick="toggleMobileCart(false)"></div>
         <div class="absolute bottom-0 left-0 right-0 bg-zinc-950 border-t border-[var(--accent-gold)]/30 rounded-t-2xl max-h-[85vh] flex flex-col">
             <div class="p-4 border-b border-white/10 flex items-center justify-between">
                 <div>
@@ -311,10 +338,6 @@
             </div>
             <div id="mobile-cart-items" class="p-4 overflow-y-auto flex-1 space-y-4"></div>
             <div class="p-4 border-t border-white/10 bg-black space-y-3">
-                <div class="flex items-center justify-between text-xs text-gray-300 pb-2 border-b border-white/5">
-                    <span>Includi bacchette e salsa di soia</span>
-                    <input type="checkbox" id="mobile-chopsticks-toggle" checked onchange="syncChopsticks(this.checked)" class="accent-[var(--accent-gold)] w-4 h-4 rounded">
-                </div>
                 <div class="flex justify-between items-center text-white font-semibold">
                     <span class="zuma-font text-sm">TOTALE</span>
                     <span id="mobile-total" class="text-lg text-[var(--accent-gold)]">€ 0,00</span>
@@ -334,7 +357,7 @@
 
     <!-- MODALE DETTAGLIO PIATTO & NOTE -->
     <div id="dish-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4">
-        <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" onclick="closeDishModal()"></div>
+        <div class="absolute inset-0 bg-black/80" onclick="closeDishModal()"></div>
         <div class="relative bg-zinc-950 border border-[var(--accent-gold)]/40 rounded-xl max-w-md w-full p-6 shadow-2xl z-10">
             <button type="button" onclick="closeDishModal()" aria-label="Chiudi dettaglio piatto" class="absolute top-4 right-4 text-gray-400 hover:text-white">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
@@ -364,7 +387,7 @@
 
     <!-- MODALE DI CHECKOUT FINALE -->
     <div id="checkout-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 overflow-y-auto">
-        <div class="absolute inset-0 bg-black/85 backdrop-blur-md" onclick="closeCheckoutModal()"></div>
+        <div class="absolute inset-0 bg-black/85" onclick="closeCheckoutModal()"></div>
         <div class="relative bg-zinc-950 border border-[var(--accent-gold)]/40 rounded-xl max-w-lg w-full p-6 md:p-8 shadow-2xl z-10 my-8">
             <button type="button" onclick="closeCheckoutModal()" aria-label="Chiudi checkout" class="absolute top-5 right-5 text-gray-400 hover:text-white">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
@@ -397,7 +420,7 @@
                     <textarea id="cust-notes" rows="2" placeholder="Eventuali allergie, intolleranze o indicazioni..." class="w-full bg-black border border-white/15 rounded-lg px-3.5 py-2 text-xs text-white focus:outline-none focus:border-[var(--accent-gold)]"></textarea>
                 </div>
 
-                <div class="bg-black/80 border border-white/10 rounded-lg p-4 flex justify-between items-center">
+                <div class="bg-black border border-white/10 rounded-lg p-4 flex justify-between items-center">
                     <span class="text-xs uppercase tracking-widest text-gray-300">Totale da pagare</span>
                     <span id="checkout-modal-total" class="text-xl font-bold text-[var(--accent-gold)]">€ 0,00</span>
                 </div>
@@ -426,7 +449,7 @@
         <p class="mt-3">P.IVA 03965231206</p>
     </footer>
 
-    <!-- JAVASCRIPT: MENU TAKE-AWAY HATA SAN & LOGICA CARRELLO -->
+    <!-- JAVASCRIPT: MENU TAKE-AWAY HATA SAN & LOGICA CARRELLO OTTIMIZZATA -->
     <script>
         const menuData = [
             {
@@ -661,10 +684,11 @@
         let cart = {};
         let serviceMode = 'pickup';
         let selectedTime = 'Oggi • Appena possibile';
-        let includeChopsticks = true;
         let currentModalDish = null;
         let currentModalQty = 1;
         let searchQuery = '';
+        let activeCategoryId = menuData[0].id;
+        let isManualScrolling = false;
 
         const DELIVERY_FEE = 3.50;
 
@@ -685,22 +709,43 @@
                 <a href="#sec-${cat.id}" 
                    id="pill-${cat.id}"
                    onclick="scrollToCategory(event, '${cat.id}')"
-                   class="cat-pill ${idx === 0 ? 'active' : ''} text-xs uppercase tracking-[0.15em] px-4 py-1.5 rounded-full border border-white/10 text-gray-300 hover:border-[var(--accent-gold)]/50">
+                   class="cat-pill ${idx === 0 ? 'active' : ''} text-[11px] md:text-xs uppercase tracking-[0.14em] px-3.5 py-1.5 rounded-full border border-white/15 text-gray-300 hover:border-[var(--accent-gold)]/50">
                     ${cat.title}
                 </a>
             `).join('');
+        }
+
+        function setActivePill(catId) {
+            if (!catId || activeCategoryId === catId) return;
+            activeCategoryId = catId;
+
+            document.querySelectorAll('.cat-pill').forEach(pill => {
+                pill.classList.remove('active');
+            });
+
+            const activePill = document.getElementById(`pill-${catId}`);
+            const nav = document.getElementById('category-nav');
+            if (activePill && nav) {
+                activePill.classList.add('active');
+                // Scorre SOLO la barra orizzontale interna senza mai interrompere lo scroll verticale del telefono
+                const targetScrollLeft = activePill.offsetLeft - (nav.clientWidth / 2) + (activePill.clientWidth / 2);
+                nav.scrollTo({ left: Math.max(0, targetScrollLeft), behavior: 'smooth' });
+            }
         }
 
         function scrollToCategory(e, catId) {
             e.preventDefault();
             const target = document.getElementById(`sec-${catId}`);
             if (target) {
-                const offset = 155;
-                const bodyRect = document.body.getBoundingClientRect().top;
-                const elementRect = target.getBoundingClientRect().top;
-                const elementPosition = elementRect - bodyRect;
-                const offsetPosition = elementPosition - offset;
-                window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                isManualScrolling = true;
+                setActivePill(catId);
+
+                const isMobile = window.innerWidth < 768;
+                const offset = isMobile ? 130 : 155;
+                const elementPosition = target.getBoundingClientRect().top + window.pageYOffset;
+                window.scrollTo({ top: elementPosition - offset, behavior: 'smooth' });
+
+                setTimeout(() => { isManualScrolling = false; }, 650);
             }
         }
 
@@ -718,12 +763,12 @@
                 if (filteredItems.length === 0) return;
 
                 html += `
-                    <section id="sec-${cat.id}" data-cat-id="${cat.id}" class="menu-section scroll-mt-40">
-                        <div class="flex items-center justify-between border-b border-white/10 pb-3 mb-5">
-                            <h2 class="text-xl md:text-2xl zuma-font text-white tracking-wider">${cat.title}</h2>
-                            <span class="text-[11px] uppercase tracking-widest text-[var(--accent-gold)]">${filteredItems.length} piatti</span>
+                    <section id="sec-${cat.id}" data-cat-id="${cat.id}" class="menu-section scroll-mt-36">
+                        <div class="flex items-center justify-between border-b border-white/10 pb-2.5 mb-4">
+                            <h2 class="text-lg md:text-2xl zuma-font text-white tracking-wider">${cat.title}</h2>
+                            <span class="text-[10px] uppercase tracking-widest text-[var(--accent-gold)]">${filteredItems.length} piatti</span>
                         </div>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5 md:gap-4">
                             ${filteredItems.map(item => renderDishCard(item, cat.title)).join('')}
                         </div>
                     </section>
@@ -732,7 +777,7 @@
 
             if (!html) {
                 html = `
-                    <div class="text-center py-16 bg-zinc-950/60 border border-white/5 rounded-xl">
+                    <div class="text-center py-16 bg-zinc-950 border border-white/5 rounded-xl">
                         <p class="text-gray-400 text-sm mb-3">Nessun piatto trovato per "${searchQuery}"</p>
                         <button type="button" onclick="clearSearch()" class="text-xs uppercase tracking-widest text-[var(--accent-gold)] border-b border-[var(--accent-gold)] pb-0.5">Mostra tutto il menu</button>
                     </div>
@@ -747,10 +792,11 @@
             const hasNote = cart[item.id] && cart[item.id].note ? true : false;
 
             return `
-                <div onclick="openDishModal('${item.id}', '${catTitle}')" 
-                     class="dish-card ${inCartQty > 0 ? 'in-cart' : ''} rounded-xl p-4 md:p-5 flex flex-col justify-between cursor-pointer group">
+                <div id="card-${item.id}"
+                     onclick="openDishModal('${item.id}', '${catTitle}')" 
+                     class="dish-card ${inCartQty > 0 ? 'in-cart' : ''} rounded-xl p-4 flex flex-col justify-between cursor-pointer group">
                     <div>
-                        <div class="flex items-start justify-between gap-3 mb-1.5">
+                        <div class="flex items-start justify-between gap-3 mb-1">
                             <h3 class="text-sm md:text-base font-medium text-white group-hover:text-[var(--accent-gold)] transition-colors tracking-wide">
                                 ${item.name}
                             </h3>
@@ -758,30 +804,64 @@
                                 ${formatPrice(item.price)}
                             </span>
                         </div>
-                        ${item.desc ? `<p class="text-xs text-gray-400 font-light leading-relaxed line-clamp-2 mb-4">${item.desc}</p>` : '<div class="mb-4"></div>'}
+                        ${item.desc ? `<p class="text-xs text-gray-400 font-light leading-relaxed line-clamp-2 mb-3">${item.desc}</p>` : '<div class="mb-2"></div>'}
                     </div>
 
                     <div class="flex items-center justify-between pt-2 border-t border-white/5">
-                        <span class="text-[10px] text-gray-500 uppercase tracking-widest group-hover:text-gray-300 transition-colors">
+                        <span id="card-note-${item.id}" class="text-[10px] text-gray-500 uppercase tracking-widest">
                             ${hasNote ? '✓ Nota aggiunta' : 'Personalizza / Note'}
                         </span>
 
-                        ${inCartQty === 0 ? `
-                            <button type="button" onclick="quickAdd(event, '${item.id}')" 
-                                    class="w-8 h-8 rounded-full bg-zinc-900 border border-white/20 hover:border-[var(--accent-gold)] hover:bg-[var(--accent-gold)] hover:text-black text-white flex items-center justify-center transition-all"
-                                    title="Aggiungi al carrello">
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
-                            </button>
-                        ` : `
-                            <div onclick="event.stopPropagation()" class="flex items-center gap-2 bg-black border border-[var(--accent-gold)]/60 rounded-full px-2 py-0.5">
-                                <button type="button" onclick="updateQty('${item.id}', -1)" class="w-6 h-6 text-gray-300 hover:text-[var(--accent-gold)] font-bold text-xs">−</button>
-                                <span class="text-xs font-semibold text-[var(--accent-gold)] min-w-[16px] text-center">${inCartQty}</span>
-                                <button type="button" onclick="updateQty('${item.id}', 1)" class="w-6 h-6 text-gray-300 hover:text-[var(--accent-gold)] font-bold text-xs">+</button>
-                            </div>
-                        `}
+                        <div id="card-action-${item.id}" onclick="event.stopPropagation()">
+                            ${renderCardActionHtml(item.id, inCartQty)}
+                        </div>
                     </div>
                 </div>
             `;
+        }
+
+        function renderCardActionHtml(itemId, inCartQty) {
+            if (inCartQty === 0) {
+                return `
+                    <button type="button" onclick="quickAdd(event, '${itemId}')" 
+                            class="w-8 h-8 rounded-full bg-zinc-900 border border-white/20 hover:border-[var(--accent-gold)] active:bg-[var(--accent-gold)] active:text-black text-white flex items-center justify-center transition-colors"
+                            aria-label="Aggiungi al carrello">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                    </button>
+                `;
+            }
+            return `
+                <div class="flex items-center gap-2 bg-black border border-[var(--accent-gold)]/60 rounded-full px-2 py-0.5">
+                    <button type="button" onclick="updateQty('${itemId}', -1)" class="w-6 h-6 text-gray-300 hover:text-[var(--accent-gold)] font-bold text-xs">−</button>
+                    <span class="text-xs font-semibold text-[var(--accent-gold)] min-w-[16px] text-center">${inCartQty}</span>
+                    <button type="button" onclick="updateQty('${itemId}', 1)" class="w-6 h-6 text-gray-300 hover:text-[var(--accent-gold)] font-bold text-xs">+</button>
+                </div>
+            `;
+        }
+
+        // Aggiorna solo la singola card senza ricostruire le 97 schede
+        function updateSingleDishCardDOM(itemId) {
+            const card = document.getElementById(`card-${itemId}`);
+            if (!card) return;
+
+            const inCartQty = cart[itemId] ? cart[itemId].qty : 0;
+            const hasNote = cart[itemId] && cart[itemId].note ? true : false;
+
+            if (inCartQty > 0) {
+                card.classList.add('in-cart');
+            } else {
+                card.classList.remove('in-cart');
+            }
+
+            const noteEl = document.getElementById(`card-note-${itemId}`);
+            if (noteEl) {
+                noteEl.textContent = hasNote ? '✓ Nota aggiunta' : 'Personalizza / Note';
+            }
+
+            const actionEl = document.getElementById(`card-action-${itemId}`);
+            if (actionEl) {
+                actionEl.innerHTML = renderCardActionHtml(itemId, inCartQty);
+            }
         }
 
         function findDishById(id) {
@@ -812,7 +892,7 @@
                 }
             }
 
-            renderMenu();
+            updateSingleDishCardDOM(itemId);
             renderCart();
         }
 
@@ -852,14 +932,15 @@
 
         function confirmModalAdd() {
             if (!currentModalDish) return;
+            const dishId = currentModalDish.id;
             const note = document.getElementById('modal-dish-note').value.trim();
-            cart[currentModalDish.id] = {
+            cart[dishId] = {
                 item: currentModalDish,
                 qty: currentModalQty,
                 note: note
             };
             closeDishModal();
-            renderMenu();
+            updateSingleDishCardDOM(dishId);
             renderCart();
         }
 
@@ -946,27 +1027,44 @@
             renderCart();
         }
 
-        function syncChopsticks(checked) {
-            includeChopsticks = checked;
-            document.getElementById('chopsticks-toggle').checked = checked;
-            document.getElementById('mobile-chopsticks-toggle').checked = checked;
+        function toggleMobileSearch(forceState) {
+            const bar = document.getElementById('mobile-search-bar');
+            const input = document.getElementById('search-input-mobile');
+            const shouldShow = typeof forceState === 'boolean' ? forceState : bar.classList.contains('hidden');
+            if (shouldShow) {
+                bar.classList.remove('hidden');
+                setTimeout(() => input.focus(), 50);
+            } else {
+                bar.classList.add('hidden');
+            }
         }
 
         function handleSearch(val) {
             searchQuery = val;
-            const clearBtn = document.getElementById('clear-search');
-            if (val.trim().length > 0) {
-                clearBtn.classList.remove('hidden');
-            } else {
-                clearBtn.classList.add('hidden');
+            const deskInput = document.getElementById('search-input-desktop');
+            const mobInput = document.getElementById('search-input-mobile');
+            if (deskInput && deskInput.value !== val) deskInput.value = val;
+            if (mobInput && mobInput.value !== val) mobInput.value = val;
+
+            const clearBtn = document.getElementById('clear-search-desktop');
+            if (clearBtn) {
+                if (val.trim().length > 0) {
+                    clearBtn.classList.remove('hidden');
+                } else {
+                    clearBtn.classList.add('hidden');
+                }
             }
             renderMenu();
         }
 
         function clearSearch() {
             searchQuery = '';
-            document.getElementById('search-input').value = '';
-            document.getElementById('clear-search').classList.add('hidden');
+            const deskInput = document.getElementById('search-input-desktop');
+            const mobInput = document.getElementById('search-input-mobile');
+            if (deskInput) deskInput.value = '';
+            if (mobInput) mobInput.value = '';
+            const clearBtn = document.getElementById('clear-search-desktop');
+            if (clearBtn) clearBtn.classList.add('hidden');
             renderMenu();
         }
 
@@ -1035,7 +1133,6 @@
             if (serviceMode === 'delivery') {
                 msg += `*Indirizzo:* ${address}\n`;
             }
-            msg += `*Bacchette e Soia:* ${includeChopsticks ? 'Sì' : 'No'}\n`;
             msg += `----------------------------------\n*PIATTI ORDINATI:*\n`;
 
             entries.forEach(({ item, qty, note }) => {
@@ -1058,29 +1155,33 @@
             closeCheckoutModal();
         }
 
+        // ScrollSpy ottimizzato con requestAnimationFrame e listener passivo (non blocca mai il touch)
         function initScrollSpy() {
+            let ticking = false;
             window.addEventListener('scroll', () => {
-                const sections = document.querySelectorAll('.menu-section');
-                let currentCatId = '';
+                if (isManualScrolling) return;
+                if (!ticking) {
+                    window.requestAnimationFrame(() => {
+                        const sections = document.querySelectorAll('.menu-section');
+                        let currentCatId = '';
 
-                sections.forEach(sec => {
-                    const top = sec.getBoundingClientRect().top;
-                    if (top <= 190) {
-                        currentCatId = sec.getAttribute('data-cat-id');
-                    }
-                });
+                        for (let i = 0; i < sections.length; i++) {
+                            const top = sections[i].getBoundingClientRect().top;
+                            if (top <= 180) {
+                                currentCatId = sections[i].getAttribute('data-cat-id');
+                            } else {
+                                break;
+                            }
+                        }
 
-                if (currentCatId) {
-                    document.querySelectorAll('.cat-pill').forEach(pill => {
-                        pill.classList.remove('active');
+                        if (currentCatId) {
+                            setActivePill(currentCatId);
+                        }
+                        ticking = false;
                     });
-                    const activePill = document.getElementById(`pill-${currentCatId}`);
-                    if (activePill) {
-                        activePill.classList.add('active');
-                        activePill.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
-                    }
+                    ticking = true;
                 }
-            });
+            }, { passive: true });
         }
     </script>
 </body>
