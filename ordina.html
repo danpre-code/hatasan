@@ -7,7 +7,7 @@
     <link rel="alternate" hreflang="it" href="ordina.html">
     <link rel="alternate" hreflang="en" href="en/index.html">
     <link rel="alternate" hreflang="x-default" href="ordina.html">
-    <meta name="description" content="Ordina online Take Away e Delivery da Hata San a Bologna: Sushi, Tartare, Sashimi, Uramaki, Wagyu A5 e specialità alla griglia Robatayaki. Consegna gratuita entro 5 km.">
+    <meta name="description" content="Ordina online Take Away e Delivery da Hata San a Bologna: Sushi, Cruditè, Uramaki, Wagyu A5 e specialità alla griglia Robatayaki.">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="navigation.css">
@@ -69,7 +69,7 @@
             border-color: var(--accent-gold);
         }
 
-        /* Card ottimizzate per 60fps su mobile */
+        /* Card ottimizzate per 60fps su mobile (senza backdrop-filter pesante) */
         .dish-card {
             background-color: #0d0d0d;
             border: 1px solid rgba(255, 255, 255, 0.08);
@@ -146,7 +146,7 @@
     <!-- CONTENUTO PRINCIPALE ORDINI -->
     <div class="fire-content relative z-10 pt-20 md:pt-28 flex-1 flex flex-col">
 
-        <!-- BARRA DI SERVIZIO -->
+        <!-- BARRA DI SERVIZIO (Stile Ippo Sushi) -->
         <section class="bg-black/90 border-b border-white/10 pt-4 pb-4 px-4 md:px-12">
             <div class="max-w-7xl mx-auto">
                 <a href="index.html" class="inline-flex items-center gap-2 text-[10px] tracking-[0.2em] uppercase text-gray-400 hover:text-[var(--accent-gold)] transition-colors mb-3">
@@ -156,7 +156,7 @@
 
                 <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
                     <div>
-                        <div class="flex flex-wrap items-center gap-2.5 mb-1.5">
+                        <div class="flex items-center gap-3 mb-1.5">
                             <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-medium uppercase tracking-widest bg-emerald-950/80 text-emerald-400 border border-emerald-700/40">
                                 <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
                                 Take Away &amp; Delivery
@@ -166,13 +166,6 @@
                         <h1 class="text-xl md:text-3xl zuma-font text-white tracking-wider uppercase">
                             Ordina <span class="text-[var(--accent-gold)]">Online</span>
                         </h1>
-                        <!-- Badge Consegna Gratuita & Ordine Minimo (Visibile subito su Desktop e Mobile) -->
-                        <div class="mt-2.5 inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[var(--accent-gold)]/10 border border-[var(--accent-gold)]/35 text-[11px] md:text-xs text-[var(--accent-gold)] font-medium tracking-wide">
-                            <svg class="w-4 h-4 shrink-0 text-[var(--accent-gold)]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0"/>
-                            </svg>
-                            <span>Consegna gratuita (entro 5 km) - Ordine minimo 30€</span>
-                        </div>
                     </div>
 
                     <!-- Selettori Ritiro/Consegna + Fascia Oraria -->
@@ -216,7 +209,7 @@
         <div class="sticky top-[68px] md:top-[84px] z-30 bg-black/95 border-b border-white/10 shadow-lg">
             <div class="max-w-7xl mx-auto px-4 md:px-12 py-2.5 flex items-center gap-2.5">
                 
-                <!-- Pulsante Lente Mobile -->
+                <!-- Pulsante Lente Mobile (Apre/Chiude la barra di ricerca su smartphone per risparmiare spazio verticale) -->
                 <button type="button" onclick="toggleMobileSearch()" aria-label="Cerca nel menu" class="md:hidden shrink-0 w-9 h-9 rounded-full bg-zinc-900 border border-white/15 flex items-center justify-center text-gray-300 active:border-[var(--accent-gold)]">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
                 </button>
@@ -282,13 +275,7 @@
                             </span>
                         </div>
 
-                        <!-- Info Consegna nel Carrello Desktop -->
-                        <div class="px-5 py-2.5 bg-zinc-900/70 border-b border-white/5 flex items-center gap-2 text-[11px] text-gray-300">
-                            <span class="w-1.5 h-1.5 rounded-full bg-[var(--accent-gold)] shrink-0"></span>
-                            <span>Consegna gratuita (entro 5 km) - Ordine minimo 30€</span>
-                        </div>
-
-                        <div id="desktop-cart-items" class="max-h-[42vh] overflow-y-auto custom-scrollbar p-5 space-y-4"></div>
+                        <div id="desktop-cart-items" class="max-h-[45vh] overflow-y-auto custom-scrollbar p-5 space-y-4"></div>
 
                         <div class="p-5 border-t border-white/10 bg-black space-y-3">
                             <div class="flex justify-between text-xs text-gray-400">
@@ -296,12 +283,9 @@
                                 <span id="desktop-subtotal">€ 0,00</span>
                             </div>
                             <div id="desktop-delivery-row" class="hidden justify-between text-xs text-gray-400">
-                                <span>Consegna (entro 5 km)</span>
-                                <span class="text-emerald-400 font-medium">Gratuita</span>
+                                <span>Consegna a domicilio</span>
+                                <span>€ 3,50</span>
                             </div>
-                            <p id="desktop-min-order-warning" class="hidden text-[11px] text-amber-400/90 bg-amber-950/30 border border-amber-700/30 rounded-lg px-3 py-2">
-                                Ordine minimo 30€ per la consegna a domicilio.
-                            </p>
                             <div class="flex justify-between items-baseline text-base font-medium text-white pt-2 border-t border-white/10">
                                 <span class="zuma-font tracking-wider">TOTALE</span>
                                 <span id="desktop-total" class="text-xl text-[var(--accent-gold)] font-semibold">€ 0,00</span>
@@ -352,20 +336,8 @@
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
                 </button>
             </div>
-            <!-- Info Consegna nel Drawer Mobile -->
-            <div class="px-4 py-2 bg-zinc-900/80 border-b border-white/5 flex items-center gap-2 text-[11px] text-[var(--accent-gold)]">
-                <span class="w-1.5 h-1.5 rounded-full bg-[var(--accent-gold)] shrink-0"></span>
-                <span>Consegna gratuita (entro 5 km) - Ordine minimo 30€</span>
-            </div>
             <div id="mobile-cart-items" class="p-4 overflow-y-auto flex-1 space-y-4"></div>
             <div class="p-4 border-t border-white/10 bg-black space-y-3">
-                <div id="mobile-delivery-row" class="hidden justify-between text-xs text-gray-400">
-                    <span>Consegna (entro 5 km)</span>
-                    <span class="text-emerald-400 font-medium">Gratuita</span>
-                </div>
-                <p id="mobile-min-order-warning" class="hidden text-[11px] text-amber-400/90 bg-amber-950/30 border border-amber-700/30 rounded-lg px-3 py-2">
-                    Ordine minimo 30€ per la consegna a domicilio.
-                </p>
                 <div class="flex justify-between items-center text-white font-semibold">
                     <span class="zuma-font text-sm">TOTALE</span>
                     <span id="mobile-total" class="text-lg text-[var(--accent-gold)]">€ 0,00</span>
@@ -438,7 +410,7 @@
 
                 <div id="delivery-address-fields" class="hidden space-y-4">
                     <div>
-                        <label for="cust-address" class="block text-[11px] uppercase tracking-wider text-gray-400 mb-1.5">Indirizzo di Consegna (Bologna - entro 5 km) *</label>
+                        <label for="cust-address" class="block text-[11px] uppercase tracking-wider text-gray-400 mb-1.5">Indirizzo di Consegna (Bologna) *</label>
                         <input type="text" id="cust-address" placeholder="Via, Numero Civico, Citofono" class="w-full bg-black border border-white/15 rounded-lg px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-[var(--accent-gold)]">
                     </div>
                 </div>
@@ -477,188 +449,186 @@
         <p class="mt-3">P.IVA 03965231206</p>
     </footer>
 
-    <!-- JAVASCRIPT: MENU NOVEMBRE 2026 HATA SAN & LOGICA CARRELLO -->
+    <!-- JAVASCRIPT: MENU TAKE-AWAY HATA SAN & LOGICA CARRELLO OTTIMIZZATA -->
     <script>
         const menuData = [
             {
                 id: "degustazione",
                 title: "Degustazione",
                 items: [
-                    { id: "deg-1", name: "Degustazione Caldo", desc: "Edamame, degustazione dimsum 5pz, tempura ebiflower, uramaki kamikaze 8pz, XO kaisen gohan e salmone robatayaki. *Non sono possibili modifiche al menu degustazione.", price: 48 },
-                    { id: "deg-2", name: "Degustazione Classico", desc: "Edamame, tartare di tonno con ikura e salsa ponzu, degustazione dimsum 5pz, degustazione sashimi 7pz, uramaki 4pz, soba tè verde e salmone robatayaki. *Non sono possibili modifiche al menu degustazione.", price: 48 },
-                    { id: "deg-3", name: "Degustazione Premium", desc: "Spring di calamaro e gambero rosso, carpaccio di ricciola, dimsum (1pz wagyu, 1pz astice, 1pz capesante, 1pz black cod), sashimi 7pz, nigiri 4pz scelti dallo chef, O-toro don e black cod robatayaki. *Non sono possibili modifiche al menu degustazione.", price: 68 }
+                    { id: "deg-1", name: "Degustazione Classico", desc: "Edamame, tartare di tonno con ikura e salsa ponzu, degustazione dimsum 5 pz, degustazione sashimi 7 pz, uramaki 4 pz, soba al tè verde e salmone robatayaki.", price: 48 },
+                    { id: "deg-2", name: "Degustazione Caldo", desc: "Edamame, degustazione dimsum 5 pz, tempura ebiflower, uramaki kamikaze 8 pz, XO kaizen gohan e salmone robatayaki.", price: 48 },
+                    { id: "deg-3", name: "Degustazione Premium", desc: "Spring di calamaro e gambero rosso, carpaccio di ricciola, dimsum misti, sashimi 7 pz, nigiri dello chef, O-toro don e black cod robatayaki.", price: 68 }
                 ]
             },
             {
                 id: "signature",
                 title: "Signature",
                 items: [
-                    { id: "sig-1", name: "Usuzukuri Wagyu A5 con Tartufo", desc: "Carpaccio di wagyu A5 accompagnato con fette di tartufo sott'olio, sale maldon e salsa ponzu.", price: 25 },
-                    { id: "sig-2", name: "Wagyu Sando Hatasan", desc: "Sandwich di wagyu A5.", price: 18 },
-                    { id: "sig-3", name: "Wagyu Dim Sum (3pz)", desc: "Ravioli di wagyu A5 accompagnati con insalata.", price: 14 },
-                    { id: "sig-4", name: "Unagi Kabayaki", desc: "Anguilla grigliata alla robatayaki.", price: 19 },
-                    { id: "sig-5", name: "Unagi Don", desc: "Riso giapponese Wadachi-Mai (150g) accompagnato con unagi kabayaki.", price: 22 },
-                    { id: "sig-6", name: "Wagyu Don", desc: "Riso giapponese Wadachi-Mai (150g) accompagnato con fette di wagyu A5, tuorlo d'uovo marinato alla soia e salsa yakiniku.", price: 38 },
-                    { id: "sig-7", name: "Wagyu Tartar", desc: "Tartare di wagyu glassata con salsa a base di miele e wasabi, accompagnata con cetrioli sott'aceto e uova di quaglia.", price: 24 },
-                    { id: "sig-8", name: "Tempura Wagyu Shiso", desc: "Tempura di wagyu A5 avvolta da foglia di basilico giapponese accompagnata da verdure di stagione in tempura.", price: 22 },
-                    { id: "sig-9", name: "Wagyu Striploin A5 (all'etto)", desc: "Taglio da 80/200g (70€ all'etto). Indicare nelle note la pezzatura desiderata (disponibilità soggetta a conferma).", price: 70 }
+                    { id: "sig-1", name: "Wagyu Sando Hatasan", desc: "Sandwich di wagyu A5.", price: 18 },
+                    { id: "sig-2", name: "Wagyu Tartare", desc: "Tartare di wagyu glassata con salsa al miele e wasabi, cetrioli sott'aceto e uova di quaglia.", price: 24 },
+                    { id: "sig-3", name: "Unagi Kabayaki", desc: "Anguilla grigliata alla robatayaki.", price: 19 },
+                    { id: "sig-4", name: "Unagi Don", desc: "Riso giapponese Wadachi-Mai (150g) accompagnato con unagi kabayaki.", price: 22 },
+                    { id: "sig-5", name: "Wagyu (3pz)", desc: "Ravioli ripieni di Wagyu A5 cotti al vapore e passati alla piastra con daikon marinato.", price: 14 },
+                    { id: "sig-6", name: "Wagyu Don", desc: "Riso giapponese Wadachi-Mai con wagyu A5, tuorlo marinato alla soia e salsa yakiniku.", price: 38 },
+                    { id: "sig-7", name: "Tempura Wagyu Shiso", desc: "Tempura di wagyu A5 avvolta da foglia di shiso con verdure di stagione.", price: 22 },
+                    { id: "sig-8", name: "Wagyu A5 Usuzukuri", desc: "Carpaccio di Manzo Giapponese Ozaki A5 servito con sale, pepe e salsa Hata San.", price: 25 },
+                    { id: "sig-9", name: "Unagi Robatayaki", desc: "Anguilla (200g) marinata e grigliata sulla robata con salsa unagi (tempo cottura minimo 35 minuti).", price: 28 }
                 ]
             },
             {
                 id: "antipasti",
                 title: "Antipasti",
                 items: [
-                    { id: "ant-1", name: "Misoshiru", desc: "Zuppa di miso.", price: 5 },
-                    { id: "ant-2", name: "Toro No Kaze (2pz)", desc: "Fetta di pane tostato in stile giapponese con tartare di ventresca di tonno rosso bluefin, cipollotto, sesamo e tartufo arricchita da una nota di salsa di soia.", price: 16 },
-                    { id: "ant-3", name: "Blossom Salmon (3pz)", desc: "Tempura di fior di zucca avvolta da salmone scottato, crema di asparagi e granella di pistacchio.", price: 12 },
-                    { id: "ant-4", name: "Sarada Misto", desc: "Insalata mista accompagnata da fette di mango e salsa di sesamo.", price: 7 },
-                    { id: "ant-5", name: "Goma Wakame", desc: "Insalata di alghe.", price: 5 },
-                    { id: "ant-6", name: "Ebi Stick (3pz)", desc: "Involtini di gamberi croccanti accompagnati da salsa agropiccante.", price: 6 },
-                    { id: "ant-7", name: "Edamame", desc: "Baccelli di soia al vapore.", price: 5 },
-                    { id: "ant-8", name: "Edamame Spicy", desc: "Baccelli di soia saltati con shichimi.", price: 6 },
-                    { id: "ant-9", name: "Ebi Dynamite", desc: "Bocconcini di gamberi in tempura con salsa spicy e polvere di peperoncino.", price: 8 },
-                    { id: "ant-10", name: "Umi No Hoseki (3pz)", desc: "Calamaro crudo avvolto attorno a gambero rosso, completato con riccio di mare e kizami wasabi.", price: 14 },
-                    { id: "ant-11", name: "Millefoglie Scampi", desc: "Millefoglie di avocado, scampi, tobiko e salsa maracuja.", price: 12 },
-                    { id: "ant-12", name: "Hamachi No Tataki", desc: "Ricciola scottata accompagnata con porro julienne fritto, sesamo e salsa yuzu.", price: 21 },
-                    { id: "ant-13", name: "Shiromi No Usuzukuri", desc: "Carpaccio di pesce bianco del giorno con salsa yuzu, olio di shiso e ikura.", price: 18 },
-                    { id: "ant-14", name: "Hamachi No Usuzukuri", desc: "Carpaccio di ricciola con salsa yuzu al tartufo.", price: 19 },
-                    { id: "ant-15", name: "Maguro Tataki", desc: "Tonno scottato accompagnato con salsa miso e teriyaki.", price: 21 }
-                ]
-            },
-            {
-                id: "tartare",
-                title: "Tartare",
-                items: [
-                    { id: "tar-1", name: "Tartare di Gamberi Rossi", desc: "Tartare di gamberi rossi con salsa di soia allo yuzu, mango e avocado.", price: 24 },
-                    { id: "tar-2", name: "Tartare di Capesante e Scampi", desc: "Tartare di scampi e capesante con caviale, arachidi, kizami wasabi e salsa di soia allo yuzu.", price: 24 },
-                    { id: "tar-3", name: "Tartare Shake e Avocado", desc: "Tartare di salmone, avocado, salsa di soia allo yuzu, riso croccante e ikura.", price: 12 },
-                    { id: "tar-4", name: "Tartare di Tonno", desc: "(Chutoro) ventresca di tonno rosso bluefin e parte akami, erba cipollina, salsa di soia allo yuzu e ikura.", price: 18 }
+                    { id: "ant-1", name: "Umi No Hoseki", desc: "Calamaro crudo avvolto attorno a gambero rosso con riccio di mare e kizami wasabi.", price: 14 },
+                    { id: "ant-2", name: "Millefoglie Scampi", desc: "Millefoglie di avocado, scampi, tobiko e salsa maracuja.", price: 12 },
+                    { id: "ant-3", name: "Hamachi No Tataki", desc: "Ricciola scottata con porro fritto, sesamo e salsa yuzu.", price: 21 },
+                    { id: "ant-4", name: "Shiromi No Usuzukuri", desc: "Carpaccio di pesce bianco con salsa yuzu, olio di shiso e ikura.", price: 18 },
+                    { id: "ant-5", name: "Hamachi No Usuzukuri", desc: "Carpaccio di ricciola con salsa yuzu al tartufo.", price: 19 },
+                    { id: "ant-6", name: "Maguro Tataki", desc: "Tonno scottato con salsa miso e teriyaki.", price: 21 },
+                    { id: "ant-7", name: "Sarada Misto", desc: "Insalata mista accompagnata con fette di mango e salsa al sesamo.", price: 7 },
+                    { id: "ant-8", name: "Misoshiru", desc: "Zuppa di miso.", price: 5 },
+                    { id: "ant-9", name: "Toro No Kaze", desc: "Fetta di pane tostato in stile giapponese con tartare di ventresca di tonno rosso bluefin, capasanta, foie gras, cipollotto, sesamo e tartufo arricchita da una nota di salsa di soia.", price: 16 },
+                    { id: "ant-10", name: "Karashi Su-Miso Toro", desc: "Fette di Chutoro scottato con salsa karashi su-miso (wasabi e miso all'aceto), topping di ikura ed erba cipollina.", price: 22 },
+                    { id: "ant-11", name: "Goma Wakame", desc: "Insalata di alghe.", price: 5 },
+                    { id: "ant-12", name: "Ebi Stick (3pz)", desc: "Involtino di gamberi croccanti accompagnato da salsa agropiccante.", price: 6 },
+                    { id: "ant-13", name: "Blossom Salmon (3pz)", desc: "Tempura di fior di zucca avvolto da Salmone scottato, crema di edamame e granella al pistacchio.", price: 12 },
+                    { id: "ant-14", name: "Edamame", desc: "Fagiolini di soia al vapore.", price: 5 },
+                    { id: "ant-15", name: "Edamame Spicy", desc: "Fagiolini di soia saltati con shichimi.", price: 6 },
+                    { id: "ant-16", name: "Ebi Dynamite", desc: "Bocconcini di gamberi in tempura con salsa spicy.", price: 8 }
                 ]
             },
             {
                 id: "dimsum",
                 title: "Dimsum",
                 items: [
-                    { id: "dim-1", name: "Degustazione 5 Ravioli", desc: "Capesante, seppie, verdure miste, black cod, ebi. *Selezione a cura dello chef, non sono previste modifiche al piatto.", price: 15 },
-                    { id: "dim-2", name: "Dimsum Black Cod Tartufo (3pz)", desc: "Ravioli ripieni di black cod e guarniti con tartufo nero.", price: 9 },
-                    { id: "dim-3", name: "Dimsum Astice (3pz)", desc: "Ravioli con ripieno di astice e guarniti con tobiko.", price: 13 },
-                    { id: "dim-4", name: "Dimsum Capesante (3pz)", desc: "Ravioli all'estratto di barbabietola rossa ripieni di capesante e guarniti con tobiko.", price: 10 },
-                    { id: "dim-5", name: "Dimsum Seppie (3pz)", desc: "Ravioli al nero di seppia e guarniti con tobiko.", price: 8 },
-                    { id: "dim-6", name: "Dimsum Verdure (3pz)", desc: "Ravioli all'estratto di spinaci ripieni di carote, funghi shiitake, cavolo cinese, zucchine e asparagi.", price: 6 },
-                    { id: "dim-7", name: "Dimsum Ebi (3pz)", desc: "Ravioli di gamberi trasparenti al vapore.", price: 8 }
+                    { id: "dim-1", name: "Degustazione 5 Ravioli", desc: "Capesante, seppie, verdure miste, black cod, ebi.", price: 15 },
+                    { id: "dim-2", name: "Dimsum Astice (3pz)", desc: "Ravioli con ripieno astice e black tobikko.", price: 13 },
+                    { id: "dim-3", name: "Wagyu (3pz)", desc: "Ravioli ripieni di Wagyu A5 cotti al vapore e passati alla piastra con daikon marinato.", price: 14 },
+                    { id: "dim-4", name: "Dimsum Black Cod Tartufo (3pz)", desc: "Ravioli ripieni di black cod e guarniti con tartufo nero, crema al tartufo e shiitake.", price: 9 },
+                    { id: "dim-5", name: "Dimsum Capesante (3pz)", desc: "Ravioli all'estratto di barbabietola rossa ripieni di capesante e black tobikko.", price: 10 },
+                    { id: "dim-6", name: "Dimsum Seppie (3pz)", desc: "Ravioli al nero di seppia e tobikko.", price: 8 },
+                    { id: "dim-7", name: "Dimsum Verdure (3pz)", desc: "Ravioli alle verdure al vapore.", price: 6 },
+                    { id: "dim-8", name: "Dimsum Ebi (3pz)", desc: "Ravioli di gamberi trasparenti al vapore.", price: 8 }
                 ]
             },
             {
-                id: "sashimi",
-                title: "Sashimi",
+                id: "crudite",
+                title: "Cruditè",
                 items: [
-                    { id: "sas-1", name: "Sashimi Tonno (3pz)", desc: "Tonno rosso bluefin.", price: 9 },
-                    { id: "sas-2", name: "Sashimi O-Toro (3pz)", desc: "Ventresca di tonno rosso bluefin, la parte più grassa (allevamento Balfegò/Fuentes).", price: 14 },
-                    { id: "sas-3", name: "Sashimi Branzino (6pz)", desc: "Fette di branzino fresco selezionato.", price: 9 },
-                    { id: "sas-4", name: "Sashimi Ricciola (3pz)", desc: "Fette di ricciola Hamachi.", price: 9 },
-                    { id: "sas-5", name: "Sashimi Salmone (6pz)", desc: "Fette di salmone fresco selezionato.", price: 9 },
-                    { id: "sas-6", name: "Sashimi Scampi (2pz)", desc: "Scampi crudi selezionati.", price: 12 },
-                    { id: "sas-7", name: "Sashimi Gamberi Rossi (3pz)", desc: "Gamberi rossi crudi selezionati.", price: 10 },
-                    { id: "sas-8", name: "Sashimi Degustazione Classico (10pz)", desc: "*Selezione a cura dello chef, non sono previste modifiche al piatto.", price: 20 },
-                    { id: "sas-9", name: "Sashimi Degustazione (18pz)", desc: "*Selezione a cura dello chef, non sono previste modifiche al piatto.", price: 32 }
+                    { id: "cru-1", name: "Tartare di Gamberi Rossi", desc: "Tartare di gamberi rossi con salsa ponzu, mango e avocado.", price: 24 },
+                    { id: "cru-2", name: "Tartare di Capesante e Scampi", desc: "Tartare con salsa ponzu, mango e avocado.", price: 24 },
+                    { id: "cru-3", name: "Tartare Tonno", desc: "Chutoro, akami di tonno rosso bluefin, erba cipollina, salsa ponzu e ikura.", price: 18 },
+                    { id: "cru-4", name: "Tartare Sake e Avocado", desc: "Salmone, avocado, patata dolce in tempura e salsa ponzu.", price: 12 },
+                    { id: "cru-5", name: "Sashimi Tonno (3pz)", desc: "Tonno rosso bluefin.", price: 9 },
+                    { id: "cru-6", name: "Sashimi Otoro (3pz)", desc: "Ventresca di tonno rosso bluefin, la parte più grassa (allevamento Balfegó/Fuentes).", price: 14 },
+                    { id: "cru-7", name: "Sashimi Branzino (6pz)", desc: "Fette di branzino fresco selezionato.", price: 9 },
+                    { id: "cru-8", name: "Sashimi Salmone (6pz)", desc: "Fette di salmone fresco selezionato.", price: 9 },
+                    { id: "cru-9", name: "Sashimi Scampi (2pz)", desc: "Scampi crudi selezionati.", price: 12 },
+                    { id: "cru-10", name: "Sashimi Ricciola (3pz)", desc: "Fette di ricciola Hamachi.", price: 9 },
+                    { id: "cru-11", name: "Sashimi Gamberi Rossi (3pz)", desc: "Gamberi rossi crudi selezionati.", price: 10 },
+                    { id: "cru-12", name: "Sashimi Degustazione Classico (10pz)", desc: "Selezione dello chef di sashimi misto (10 pezzi).", price: 20 },
+                    { id: "cru-13", name: "Sashimi Degustazione (18pz)", desc: "Gran selezione dello chef di sashimi misto (18 pezzi).", price: 32 }
                 ]
             },
             {
                 id: "nigiri",
                 title: "Nigiri (2pz)",
                 items: [
-                    { id: "nig-1", name: "Degustazione Nigiri Speciale (6pz)", desc: "6pz di nigiri scelti dallo chef. *Selezione a cura dello chef, non sono previste modifiche al piatto.", price: 23 },
-                    { id: "nig-2", name: "Nigiri Shake (2pz)", desc: "Salmone.", price: 4 },
-                    { id: "nig-3", name: "Nigiri Nama Kurumaebi (2pz)", desc: "Gambero mazzancolla crudo.", price: 5 },
-                    { id: "nig-4", name: "Nigiri Yude Kurumaebi (2pz)", desc: "Gambero mazzancolla cotto.", price: 5 },
-                    { id: "nig-5", name: "Nigiri Suzuki (2pz)", desc: "Branzino.", price: 4 },
-                    { id: "nig-6", name: "Nigiri Maguro (2pz)", desc: "Tonno rosso bluefin.", price: 6 },
-                    { id: "nig-7", name: "Nigiri Hamachi (2pz)", desc: "Ricciola oceanica.", price: 5 },
-                    { id: "nig-8", name: "Nigiri O-Toro (2pz)", desc: "Ventresca di tonno rosso bluefin (Balfegò) o tonno rosso selvatico spagnolo.", price: 10 },
-                    { id: "nig-9", name: "Nigiri Akaebi (2pz)", desc: "Gambero rosso di Mazara del Vallo.", price: 12 },
-                    { id: "nig-10", name: "Nigiri Tenaga Ebi (2pz)", desc: "Scampo olandese.", price: 10 },
-                    { id: "nig-11", name: "Nigiri Hotate (2pz)", desc: "Capesante di Hokkaido.", price: 8 },
-                    { id: "nig-12", name: "Nigiri Wagyu A5 Scottato (2pz)", desc: "Wagyu A5 giapponese.", price: 10 },
-                    { id: "nig-13", name: "Nigiri Toro Binchotan (2pz)", desc: "Ventresca di tonno rosso bluefin (Balfegò) scottata al binchotan.", price: 10 },
-                    { id: "nig-14", name: "Nigiri Saba Binchotan (2pz)", desc: "Sgombro marinato scottato con binchotan.", price: 5 }
+                    { id: "nig-1", name: "Degustazione Nigiri Special (6pz)", desc: "Selezione speciale di 6 nigiri dello chef.", price: 23 },
+                    { id: "nig-2", name: "Nigiri Sake (2pz)", desc: "Salmone.", price: 4 },
+                    { id: "nig-3", name: "Nigiri Hotate (2pz)", desc: "Capesante.", price: 8 },
+                    { id: "nig-4", name: "Nigiri Nama Kurumaebi (2pz)", desc: "Gambero mazzancolla crudo.", price: 5 },
+                    { id: "nig-5", name: "Nigiri Yude Kurumaebi (2pz)", desc: "Gambero mazzancolla cotto.", price: 5 },
+                    { id: "nig-6", name: "Nigiri Suzuki (2pz)", desc: "Branzino.", price: 4 },
+                    { id: "nig-7", name: "Nigiri Maguro (2pz)", desc: "Tonno rosso bluefin.", price: 6 },
+                    { id: "nig-8", name: "Nigiri Hamachi (2pz)", desc: "Ricciola oceanica.", price: 5 },
+                    { id: "nig-9", name: "Nigiri O-Toro (2pz)", desc: "Ventresca di tonno bluefin (Balfegó) o tonno rosso selvatico spagnolo.", price: 10 },
+                    { id: "nig-10", name: "Nigiri Akaebi (2pz)", desc: "Gambero rosso di Mazara del Vallo.", price: 12 },
+                    { id: "nig-11", name: "Nigiri Tenaga Ebi (2pz)", desc: "Scampo olandese.", price: 10 },
+                    { id: "nig-12", name: "Nigiri Wagyu (2pz)", desc: "Pregiata carne bovina giapponese certificata Ozaki A5.", price: 10 },
+                    { id: "nig-13", name: "Nigiri Toro Binchotan (2pz)", desc: "Ventresca di tonno bluefin scottata al binchotan.", price: 10 },
+                    { id: "nig-14", name: "Nigiri Saba Binchotan (2pz)", desc: "Sgombro marinato scottato con carbone binchotan.", price: 5 }
                 ]
             },
             {
                 id: "gunkan",
-                title: "Gunkan (2pz)",
+                title: "Gunkan",
                 items: [
                     { id: "gun-1", name: "Gunkan Ikura (2pz)", desc: "Uova di salmone.", price: 6 },
-                    { id: "gun-2", name: "Gunkan Wagyu Tartufo (2pz)", desc: "Wagyu A5 e tartufo.", price: 12 },
-                    { id: "gun-3", name: "Gunkan Hamachi Scampi e Kizami Wasabi (2pz)", desc: "Ricciola, scampi e kizami wasabi.", price: 10 },
+                    { id: "gun-2", name: "Gunkan Hamachi, Scampi e Kizami Wasabi (2pz)", desc: "Ricciola, scampi e kizami wasabi.", price: 10 },
+                    { id: "gun-3", name: "Gunkan Wagyu Tartufo (2pz)", desc: "Wagyu A5 e tartufo.", price: 12 },
                     { id: "gun-4", name: "Gunkan Uova di Quaglia e Tartufo (2pz)", desc: "Uova di quaglia e tartufo.", price: 6 },
-                    { id: "gun-5", name: "Gunkan Tonno e O-Toro e Caviale (2pz)", desc: "Tonno rosso, ventresca O-Toro e caviale.", price: 9 },
+                    { id: "gun-5", name: "Gunkan Tonno, O-Toro e Caviale (2pz)", desc: "Tonno rosso, ventresca O-Toro e caviale.", price: 9 },
                     { id: "gun-6", name: "Gunkan Spicy Tuna (2pz)", desc: "Tartare di tonno piccante.", price: 7 },
-                    { id: "gun-7", name: "Gunkan Salmone e Gamberi Rossi (2pz)", desc: "Salmone e gamberi rossi.", price: 8 },
-                    { id: "gun-8", name: "Gunkan Capesante Wagyu e Salsa Curry (2pz)", desc: "Capesante, Wagyu A5 e salsa curry.", price: 12 }
+                    { id: "gun-7", name: "Gunkan Salmone e Gambero Rosso (2pz)", desc: "Salmone e gambero rosso.", price: 8 },
+                    { id: "gun-8", name: "Gunkan Capesante, Wagyu e Salsa Curry (2pz)", desc: "Capesante, Wagyu A5 e salsa curry.", price: 12 }
                 ]
             },
             {
                 id: "uramaki",
-                title: "Uramaki (8pz)",
+                title: "Uramaki",
                 items: [
-                    { id: "ura-1", name: "Degustazione Uramaki dello Chef (16pz)", desc: "Uramaki scelti dallo chef. *Selezione a cura dello chef, non sono previste modifiche al piatto.", price: 32 },
-                    { id: "ura-2", name: "Saudate du Brazil (6pz)", desc: "Riso pressato con tartare di salmone, avocado, tobiko e teriyaki.", price: 14 },
-                    { id: "ura-3", name: "New Ebi Flower Roll", desc: "Gamberoni argentini in tempura, avocado, ricoperto da tartare di salmone, fior di zucca in tempura e salsa teriyaki.", price: 16 },
+                    { id: "ura-1", name: "New Ebi Flower Roll", desc: "Avocado, gamberoni, tartare di salmone, fiori di zucca e black tobikko.", price: 16 },
+                    { id: "ura-2", name: "Degustazione Uramaki dello Chef", desc: "Selezione di uramaki a cura dello chef.", price: 32 },
+                    { id: "ura-3", name: "Saudade du Brazil", desc: "Riso pressato con tartare di salmone, avocado, tobiko e teriyaki.", price: 14 },
                     { id: "ura-4", name: "Black Dragon Roll", desc: "Polpa di granchio di neve cotto, maionese giapponese, avocado, ricoperto da anguilla kabayaki, teriyaki, erba cipollina e polvere di tempura.", price: 18 },
                     { id: "ura-5", name: "Scallops Roll", desc: "Gamberoni argentini in tempura, crema di tartufo e avocado, ricoperto da fette di capesante Hokkaido scottate con tartufo e teriyaki.", price: 18 },
-                    { id: "ura-6", name: "Vulcano Roll", desc: "Polpa di granchio di neve, avocado e maionese, ricoperto da tartare di tonno rosso bluefin con spicy mayo, erba cipollina e tobiko.", price: 18 },
+                    { id: "ura-6", name: "Vulcano Roll", desc: "Interno con granchio blu surimi, tartare di tonno, erba cipollina, salsa spicy e tobikko.", price: 18 },
                     { id: "ura-7", name: "Wagyu Roll", desc: "Interno di wagyu A5 alla robatayaki, avocado e ricoperto da carpaccio di wagyu A5, teriyaki ed erba cipollina.", price: 35 },
                     { id: "ura-8", name: "Lobster Roll", desc: "Merluzzo nero d'Alaska in tempura, crema di tartufo, avocado, ricoperto da tartare di astice cotto con maionese giapponese e tobiko.", price: 35 },
                     { id: "ura-9", name: "Spicy Scallops Roll", desc: "Interno di avocado e scampi, sopra capesante Hokkaido condite con spicy mayo, tobiko e granella di arachidi.", price: 20 },
-                    { id: "ura-10", name: "New Spicy Salmon Roll", desc: "Avocado, philadelphia e cetrioli, sopra tartare di salmone con spicy mayo e tobiko.", price: 14 },
-                    { id: "ura-11", name: "Hamachi Roll", desc: "Gamberoni argentini in tempura avvolti da carpaccio di ricciola hamachi, salsa allo yuzu, kizami nori e scaglie di katsuobushi.", price: 14 },
+                    { id: "ura-10", name: "New Spicy Salmon Roll", desc: "Avocado, philadelphia e cetrioli, sopra tartare di salmone, patata dolce fritta alla julienne con spicy mayo e tobiko.", price: 14 },
+                    { id: "ura-11", name: "Hamachi Roll", desc: "Interno di gamberoni in tempura avvolto da carpaccio ricciola Hamachi, salsa allo yuzu, kizami nori e polvere di katsuobushi.", price: 14 },
                     { id: "ura-12", name: "Royal Roll", desc: "Gambero rosso, ricciola, capesante ed erba cipollina ricoperti con tartare di ventresca di tonno rosso bluefin e caviale beluga.", price: 35 },
-                    { id: "ura-13", name: "Tiger Roll", desc: "Gamberoni argentini in tempura ricoperti con carpaccio di salmone, ikura e teriyaki.", price: 14 },
-                    { id: "ura-14", name: "Dragon Roll", desc: "Gamberoni argentini in tempura ricoperti con fette di avocado, ikura e teriyaki.", price: 16 },
-                    { id: "ura-15", name: "Salmone Avocado Roll", desc: "Salmone, avocado e sesamo.", price: 9 },
-                    { id: "ura-16", name: "Maguro Roll", desc: "Tonno rosso bluefin, avocado e sesamo.", price: 12 },
-                    { id: "ura-17", name: "Rock Tuna Roll", desc: "Avocado, tonno rosso bluefin e maionese, ricoperti con tartare di ventresca di tonno, spicy mayo, tobiko, erba cipollina e polvere di tempura croccante.", price: 20 },
-                    { id: "ura-18", name: "Kamikaze Roll", desc: "Gamberoni argentini in tempura e mango, ricoperti con tempura croccante e teriyaki.", price: 14 },
-                    { id: "ura-19", name: "Mazara Roll", desc: "Gambero rosso di Mazara del Vallo e avocado, ricoperto con fette di avocado, gambero rosso e tobiko.", price: 25 },
-                    { id: "ura-20", name: "Yasai Roll", desc: "Wakame, cetrioli, asparagi e sesamo.", price: 9 },
-                    { id: "ura-21", name: "Salmone Avocado Philadelphia", desc: "Salmone, avocado e philadelphia.", price: 10 },
-                    { id: "ura-22", name: "Spicy Onion Roll", desc: "Interno di salmone e cetrioli, ricoperto da carpaccio di salmone scottato, spicy mayo e cipolla croccante.", price: 14 },
-                    { id: "ura-23", name: "Tsurai Roll", desc: "Gamberoni argentini in tempura, carpaccio di salmone, spicy mayo e mandorle.", price: 16 }
+                    { id: "ura-13", name: "Tiger Roll", desc: "Gamberoni argentini in tempura ricoperti con salmone, fette di gambero rosso e ikura.", price: 14 },
+                    { id: "ura-14", name: "Dragon Roll", desc: "Gamberoni rossi argentini in tempura ricoperti con avocado, ikura e teriyaki.", price: 16 },
+                    { id: "ura-15", name: "Sake Avocado Roll", desc: "Salmone e avocado.", price: 9 },
+                    { id: "ura-16", name: "Salmone Avocado Philadelphia", desc: "Salmone, avocado e philadelphia.", price: 10 },
+                    { id: "ura-17", name: "Maguro Roll", desc: "Tonno e avocado.", price: 12 },
+                    { id: "ura-18", name: "Rock Tuna Roll", desc: "Avocado, tonno rosso bluefin e maionese, ricoperti con tartare di ventresca di tonno, spicy mayo, tobiko, erba cipollina e polvere di tempura croccante.", price: 20 },
+                    { id: "ura-19", name: "Crab Roll", desc: "Granchio morbido in tempura, avocado, maionese, salsa teriyaki e tobiko.", price: 16 },
+                    { id: "ura-20", name: "Kamikaze", desc: "Gamberoni argentini, mango, avocado, ricoperto di tempura croccante e teriyaki.", price: 14 },
+                    { id: "ura-21", name: "Yasai Roll", desc: "Wakame, cetrioli, rapa giapponese, sesamo.", price: 9 },
+                    { id: "ura-22", name: "Mazara Roll", desc: "Gambero rosso di Mazara del Vallo e avocado, ricoperto con fette di avocado, gambero rosso e tobiko.", price: 25 },
+                    { id: "ura-23", name: "Spicy Onion Roll", desc: "Interno di salmone e cetrioli, ricoperto da carpaccio di salmone scottato, spicy mayo e cipolla croccante.", price: 14 },
+                    { id: "ura-24", name: "Tsurai Roll", desc: "Gamberoni argentini in tempura, carpaccio di salmone, spicy mayo e mandorle.", price: 16 }
                 ]
             },
             {
                 id: "hosomaki",
-                title: "Hosomaki (6pz)",
+                title: "Hosomaki",
                 items: [
-                    { id: "hos-1", name: "Hosomaki Kappa (6pz)", desc: "Cetriolo.", price: 4 },
-                    { id: "hos-2", name: "Hosomaki Tekka (6pz)", desc: "Tonno rosso bluefin.", price: 7 },
-                    { id: "hos-3", name: "Hosomaki O-Toro (6pz)", desc: "Erba cipollina, ventresca di tonno rosso bluefin.", price: 10 },
-                    { id: "hos-4", name: "Hosomaki Shake (6pz)", desc: "Salmone.", price: 5 },
-                    { id: "hos-5", name: "Hosomaki Avocado (6pz)", desc: "Avocado.", price: 4 }
+                    { id: "hos-1", name: "Hosomaki Kappa", desc: "Cetriolo.", price: 4 },
+                    { id: "hos-2", name: "Hosomaki Otoro", desc: "Erba cipollina, ventresca di tonno rosso bluefin e gamberi rossi.", price: 10 },
+                    { id: "hos-3", name: "Hosomaki Sake", desc: "Salmone.", price: 5 },
+                    { id: "hos-4", name: "Hosomaki Avocado", desc: "Avocado.", price: 4 },
+                    { id: "hos-5", name: "Hosomaki Tekka", desc: "Tonno rosso bluefin.", price: 7 }
                 ]
             },
             {
                 id: "primi",
                 title: "Primi",
                 items: [
-                    { id: "pri-1", name: "XO Kaisen Gohan", desc: "Riso giapponese saltato con uova, verdure di stagione, capesante e salsa XO.", price: 12 },
-                    { id: "pri-2", name: "Ishimochi Robata Yakimeshi", desc: "Ombrina marinata e grigliata alla robata, su riso saltato con uova e verdure.", price: 14 },
-                    { id: "pri-3", name: "Gohan", desc: "Riso bianco giapponese al vapore.", price: 4 },
-                    { id: "pri-4", name: "Yasai Gohan", desc: "Riso saltato con uova e verdure di stagione.", price: 8 },
-                    { id: "pri-5", name: "Udon No Kaori", desc: "Udon mantecati con burro di soia, olio di shiso accompagnato con funghi champignon, tartare di gamberi rossi e ikura.", price: 14 },
-                    { id: "pri-6", name: "Yaki Udon", desc: "Pasta di grano duro saltata con uova, capesante, gamberi, branzino, verdure di stagione e katsuobushi.", price: 12 },
-                    { id: "pri-7", name: "Yaki Soba al Tè Verde", desc: "Spaghetti di tè verde al grano saraceno saltati con uova, verdure di stagione, salmone, gamberi e grattugiata di bottarga di muggine.", price: 12 },
-                    { id: "pri-8", name: "Foie Gras Don", desc: "Riso bianco giapponese “Wadachi-Mai”, foie gras alla piastra glassato in salsa teriyaki, cipollotti e verdure di stagione.", price: 18 },
-                    { id: "pri-9", name: "O-Toro Don", desc: "Riso bianco giapponese “Wadachi-Mai”, tartare di ventresca di tonno rosso bluefin, ikura, riccio di mare, salsa di soia, erba cipollina, sesamo e alga kizami.", price: 26 }
+                    { id: "pri-1", name: "Yasai Gohan", desc: "Riso saltato con verdure.", price: 8 },
+                    { id: "pri-2", name: "Wagyu Gohan", desc: "Riso saltato con uova, wagyu A5 Ozaki, tartufo, asparagi, erba cipollina e tartufo fresco grattugiato.", price: 26 },
+                    { id: "pri-3", name: "Gohan", desc: "Riso saltato con verdure miste, funghi shiitake e carne di manzo.", price: 4 },
+                    { id: "pri-4", name: "Yaki Udon", desc: "Spaghetti di farina di grano duro saltati con verdure, gamberi e katsuobushi.", price: 12 },
+                    { id: "pri-5", name: "Yaki Soba al Tè Verde", desc: "Spaghetti di tè verde al grano saraceno saltati con verdure, gamberi e katsuobushi.", price: 12 },
+                    { id: "pri-6", name: "XO Kaisen Gohan", desc: "Riso giapponese saltato con uova, verdure di stagione, capesante e salsa XO.", price: 12 },
+                    { id: "pri-7", name: "Ishimoshi Robata Yakimeshi", desc: "Ombrina marinata e grigliata alla robata, su riso saltato con uova e verdure.", price: 14 },
+                    { id: "pri-8", name: "Udon No Kaori", desc: "Udon mantecati con burro di soia, olio di shiso accompagnato con funghi champignon, tartare di gamberi rossi e ikura.", price: 14 },
+                    { id: "pri-9", name: "Foie Gras Don", desc: "Riso bianco giapponese “Wadachi-Mai”, foie gras alla piastra glassato in salsa teriyaki, cipollotti e verdure di stagione.", price: 18 },
+                    { id: "pri-10", name: "O-Toro Don", desc: "Riso bianco giapponese “Wadachi-Mai”, tartare di ventresca di tonno rosso bluefin, ikura, riccio di mare, salsa di soia, erba cipollina, sesamo e alga kizami.", price: 26 }
                 ]
             },
             {
                 id: "tempura",
                 title: "Tempura",
                 items: [
-                    { id: "tem-1", name: "Tempura Moriawase", desc: "Tempura di gamberi, ostrica, zucca, carota, fagiolini, funghi champignon, melanzana, foglia shiso e accompagnato con salsa a base di soia e zenzero.", price: 18 },
-                    { id: "tem-2", name: "Yasai Tempura", desc: "Tempura di zucca, carota, fagiolini, funghi champignon, patata dolce, melanzana, foglia di shiso e accompagnato con salsa a base di soia e zenzero.", price: 12 },
-                    { id: "tem-3", name: "Tempura Ebi Argentina (5pz)", desc: "Tempura di gamberoni argentini accompagnato con salsa a base di soia e zenzero.", price: 15 },
+                    { id: "tem-1", name: "Tempura Moriawase", desc: "Tempura di gamberi e verdura.", price: 18 },
+                    { id: "tem-2", name: "Yasai Tempura", desc: "Tempura di verdure miste.", price: 12 },
+                    { id: "tem-3", name: "Tempura Ebi Argentina (5pz)", desc: "Tempura di gamberoni argentini.", price: 15 },
                     { id: "tem-4", name: "Tempura Ebi Flower", desc: "Fior di zucca in tempura con all'interno tartare di gamberi mazzancolle condito e accompagnato con salsa a base di soia e zenzero.", price: 12 }
                 ]
             },
@@ -666,47 +636,47 @@
                 id: "robata-carne",
                 title: "Robata Carne",
                 items: [
-                    { id: "rbc-1", name: "Hitsuji", desc: "Costolette di agnello grigliate alla robata alla coreana piccante, accompagnate da cetriolo con salsa di sesamo.", price: 16 },
+                    { id: "rbc-1", name: "Hitsuji (3pz)", desc: "Costolette di agnello alla coreana piccante accompagnate da cetriolo al sesamo.", price: 16 },
                     { id: "rbc-2", name: "Gyuniku No Sumibiyaki", desc: "Filetto di manzo grigliato alla robata con salsa yakiniku leggermente speziata e sale maldon a parte.", price: 23 },
                     { id: "rbc-3", name: "Teion Chōri Gyū Sanyaki", desc: "Spare ribs di manzo marinate e cotte a bassa temperatura, rifinite sulla robata con salsa yakiniku leggermente speziata, accompagnate con purè di patate.", price: 26 },
                     { id: "rbc-4", name: "Hinadori No Sumibiyaki", desc: "Galletto marinato grigliato alla robata.", price: 18 },
-                    { id: "rbc-5", name: "Kamo No Hono", desc: "Anatra cotta a bassa temperatura, caramellata alla robata con salsa yakiniku.", price: 18 },
-                    { id: "rbc-6", name: "Wagyu Striploin A5 (all'etto)", desc: "Taglio da 80/200g (70€ all'etto). Indicare nelle note la pezzatura desiderata (disponibilità soggetta a conferma).", price: 70 }
+                    { id: "rbc-5", name: "Kamo No Hono", desc: "Anatra cotta a bassa temperatura, caramellata alla robata con salsa yakiniku.", price: 18 }
                 ]
             },
             {
                 id: "robata-pesce",
                 title: "Robata Pesce",
                 items: [
-                    { id: "rbp-1", name: "Buri Kama Sumibiyaki", desc: "Guanciale di ricciola grigliato alla robatayaki con salsa miso e yuzu.", price: 14 },
-                    { id: "rbp-2", name: "Black Cod No Miso-Yaki", desc: "Merluzzo black cod marinato con miso, grigliato alla robatayaki.", price: 22 },
+                    { id: "rbp-1", name: "Black Cod No Miso Yaki", desc: "Black Cod grigliato alla robatayaki con salsa miso e yuzu.", price: 22 },
+                    { id: "rbp-2", name: "Buri Kama Sumibiyaki", desc: "Guanciale di ricciola grigliato alla robatayaki con salsa miso e yuzu.", price: 14 },
                     { id: "rbp-3", name: "Hirame No Sumibiyaki", desc: "Rombo dry aged 3-7 giorni, grigliato alla robatayaki con salsa miso.", price: 22 },
-                    { id: "rbp-4", name: "Sāmon No Teriyaki", desc: "Filetto di salmone grigliato alla robatayaki con sale maldon e teriyaki.", price: 14 },
-                    { id: "rbp-5", name: "Hamachi No Hara No Shioyaki", desc: "Ricciola marinata al miso e grigliata alla robatayaki.", price: 18 },
+                    { id: "rbp-4", name: "Hamachi No Hara No Shioyaki", desc: "Ricciola marinata al miso e grigliata alla robatayaki.", price: 18 },
+                    { id: "rbp-5", name: "Sāmon No Teriyaki", desc: "Filetto di salmone grigliato alla robatayaki con sale maldon e teriyaki.", price: 14 },
                     { id: "rbp-6", name: "Tako No Yugen", desc: "Polpo a bassa temperatura, glassato al miso e burro e grigliato alla robata, su crema di patate e katsuobushi.", price: 18 },
-                    { id: "rbp-7", name: "Unagi Kabayaki", desc: "Anguilla marinata e grigliata alla robatayaki con salsa unagi.", price: 22 }
+                    { id: "rbp-7", name: "Unagi Kabayaki", desc: "Anguilla marinata e grigliata con salsa unagi.", price: 22 }
                 ]
             },
             {
                 id: "robata-yakitori",
                 title: "Robata Yakitori",
                 items: [
-                    { id: "rby-1", name: "Tori Negi Yakitori", desc: "Spiedini di pollo e cipollotti grigliati alla robata con salsa yakiniku.", price: 7 },
-                    { id: "rby-2", name: "Gyu Yakitori", desc: "Spiedini di manzo grigliati alla robata con salsa yakiniku.", price: 9 },
-                    { id: "rby-3", name: "Hotate Hokkaido", desc: "Spiedini di capesante di Hokkaido grigliati alla robata, accompagnati da salsa al miso.", price: 14 },
-                    { id: "rby-4", name: "Ebi (3pz)", desc: "Spiedini di mazzancolle grigliati alla robata con salsa a base di miso.", price: 12 }
+                    { id: "rby-1", name: "Hotate Hokkaido", desc: "Spiedini di capesante di Hokkaido grigliati alla robata, accompagnati da salsa al miso.", price: 14 },
+                    { id: "rby-2", name: "Tori Negi Yakitori", desc: "Spiedini di pollo e cipollotti con salsa.", price: 7 },
+                    { id: "rby-3", name: "Ebi", desc: "Spiedini di gamberi tigre grigliati alla robata con salsa a base di miso.", price: 12 },
+                    { id: "rby-4", name: "Gyu Yakitori", desc: "Spiedini di manzo e salsa yakiniku.", price: 9 }
                 ]
             },
             {
                 id: "contorni",
                 title: "Contorni",
                 items: [
-                    { id: "con-1", name: "Asuparagasu No Sumibiyaki", desc: "Asparagi con salsa caramellizzata.", price: 8 },
-                    { id: "con-2", name: "Baku Potato", desc: "Purè di patate Hata San.", price: 8 },
-                    { id: "con-3", name: "Yaki Tomorokoshi", desc: "Pannocchia alla robatayaki, glassata al miso e grigliata alla robatayaki.", price: 8 },
-                    { id: "con-4", name: "Yaki Nasu Miso", desc: "Melanzana asiatica alla robatayaki, glassata con salsa al miso.", price: 6 },
-                    { id: "con-5", name: "Zukkīnī", desc: "Zucchine alla robatayaki con salsa caramellizzata.", price: 6 },
-                    { id: "con-6", name: "Masshurūmu No Sumibiyaki", desc: "Funghi champignon alla robatayaki con salsa caramellizzata.", price: 6 }
+                    { id: "con-1", name: "Bakupotato", desc: "Hata San purè di patate.", price: 8 },
+                    { id: "con-2", name: "Nasu Miso", desc: "Melanzana con miso.", price: 6 },
+                    { id: "con-3", name: "Kabocha", desc: "Zucca giapponese / zucchine con salsa caramellizzata.", price: 6 },
+                    { id: "con-4", name: "Asuparagasu No Sumibiyaki", desc: "Asparagi con salsa caramellizzata.", price: 8 },
+                    { id: "con-5", name: "Yaki Tomorokoshi", desc: "Pannocchia alla robatayaki, glassata al miso e grigliata alla robatayaki.", price: 8 },
+                    { id: "con-6", name: "Zukkīnī", desc: "Zucchine alla robatayaki con salsa caramellizzata.", price: 6 },
+                    { id: "con-7", name: "Masshurūmu No Sumibiyaki", desc: "Funghi champignon alla robatayaki con salsa caramellizzata.", price: 6 }
                 ]
             }
         ];
@@ -720,8 +690,7 @@
         let activeCategoryId = menuData[0].id;
         let isManualScrolling = false;
 
-        const DELIVERY_FEE = 0;
-        const MIN_DELIVERY_ORDER = 30;
+        const DELIVERY_FEE = 3.50;
 
         function formatPrice(num) {
             return '€ ' + num.toFixed(2).replace('.', ',');
@@ -758,6 +727,7 @@
             const nav = document.getElementById('category-nav');
             if (activePill && nav) {
                 activePill.classList.add('active');
+                // Scorre SOLO la barra orizzontale interna senza mai interrompere lo scroll verticale del telefono
                 const targetScrollLeft = activePill.offsetLeft - (nav.clientWidth / 2) + (activePill.clientWidth / 2);
                 nav.scrollTo({ left: Math.max(0, targetScrollLeft), behavior: 'smooth' });
             }
@@ -869,6 +839,7 @@
             `;
         }
 
+        // Aggiorna solo la singola card senza ricostruire le 97 schede
         function updateSingleDishCardDOM(itemId) {
             const card = document.getElementById(`card-${itemId}`);
             if (!card) return;
@@ -992,41 +963,19 @@
             document.getElementById('mobile-bar-count').textContent = totalItems;
             document.getElementById('mobile-bar-total').textContent = formatPrice(finalTotal);
 
-            const delRowDesk = document.getElementById('desktop-delivery-row');
-            const delRowMob = document.getElementById('mobile-delivery-row');
+            const delRow = document.getElementById('desktop-delivery-row');
             if (serviceMode === 'delivery' && totalItems > 0) {
-                delRowDesk.classList.remove('hidden');
-                delRowDesk.classList.add('flex');
-                delRowMob.classList.remove('hidden');
-                delRowMob.classList.add('flex');
+                delRow.classList.remove('hidden');
+                delRow.classList.add('flex');
             } else {
-                delRowDesk.classList.add('hidden');
-                delRowDesk.classList.remove('flex');
-                delRowMob.classList.add('hidden');
-                delRowMob.classList.remove('flex');
-            }
-
-            const isBelowDeliveryMin = serviceMode === 'delivery' && totalItems > 0 && subtotal < MIN_DELIVERY_ORDER;
-            const warnDesk = document.getElementById('desktop-min-order-warning');
-            const warnMob = document.getElementById('mobile-min-order-warning');
-
-            if (isBelowDeliveryMin) {
-                const diff = formatPrice(MIN_DELIVERY_ORDER - subtotal);
-                const msg = `Mancano ${diff} per raggiungere l'ordine minimo di 30,00 € per la consegna.`;
-                warnDesk.textContent = msg;
-                warnMob.textContent = msg;
-                warnDesk.classList.remove('hidden');
-                warnMob.classList.remove('hidden');
-            } else {
-                warnDesk.classList.add('hidden');
-                warnMob.classList.add('hidden');
+                delRow.classList.add('hidden');
+                delRow.classList.remove('flex');
             }
 
             const desktopBtn = document.getElementById('desktop-checkout-btn');
             const mobileBtn = document.getElementById('mobile-checkout-btn');
-            const canCheckout = totalItems > 0 && !isBelowDeliveryMin;
-            desktopBtn.disabled = !canCheckout;
-            mobileBtn.disabled = !canCheckout;
+            desktopBtn.disabled = totalItems === 0;
+            mobileBtn.disabled = totalItems === 0;
 
             let itemsHtml = '';
             if (entries.length === 0) {
@@ -1133,8 +1082,6 @@
             if (entries.length === 0) return;
 
             const subtotal = entries.reduce((acc, c) => acc + (c.item.price * c.qty), 0);
-            if (serviceMode === 'delivery' && subtotal < MIN_DELIVERY_ORDER) return;
-
             const deliveryCost = serviceMode === 'delivery' ? DELIVERY_FEE : 0;
             const finalTotal = subtotal + deliveryCost;
 
@@ -1145,7 +1092,7 @@
             if (serviceMode === 'delivery') {
                 addressFields.classList.remove('hidden');
                 addressInput.required = true;
-                summaryTag.textContent = `Consegna a Domicilio Gratuita (entro 5 km) • ${selectedTime}`;
+                summaryTag.textContent = `Consegna a Domicilio • ${selectedTime}`;
             } else {
                 addressFields.classList.add('hidden');
                 addressInput.required = false;
@@ -1179,7 +1126,7 @@
 
             let msg = `*NUOVO ORDINE WEB - HATA SAN*\n`;
             msg += `----------------------------------\n`;
-            msg += `*Modalità:* ${serviceMode === 'pickup' ? 'Ritiro al Ristorante' : 'Consegna a Domicilio (Gratuita entro 5 km)'}\n`;
+            msg += `*Modalità:* ${serviceMode === 'pickup' ? 'Ritiro al Ristorante' : 'Consegna a Domicilio'}\n`;
             msg += `*Orario:* ${selectedTime}\n`;
             msg += `*Cliente:* ${name}\n`;
             msg += `*Telefono:* ${phone}\n`;
@@ -1195,7 +1142,8 @@
 
             msg += `----------------------------------\n`;
             if (serviceMode === 'delivery') {
-                msg += `Consegna (entro 5 km): Gratuita\n`;
+                msg += `Subtotale: ${formatPrice(subtotal)}\n`;
+                msg += `Consegna: ${formatPrice(DELIVERY_FEE)}\n`;
             }
             msg += `*TOTALE: ${formatPrice(finalTotal)}*\n`;
             if (notes) {
@@ -1207,7 +1155,7 @@
             closeCheckoutModal();
         }
 
-        // ScrollSpy ottimizzato con requestAnimationFrame e listener passivo
+        // ScrollSpy ottimizzato con requestAnimationFrame e listener passivo (non blocca mai il touch)
         function initScrollSpy() {
             let ticking = false;
             window.addEventListener('scroll', () => {
