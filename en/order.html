@@ -1,0 +1,1240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Online | Hata San Bologna</title>
+    <link rel="alternate" hreflang="it" href="../ordina.html">
+    <link rel="alternate" hreflang="en" href="order.html">
+    <link rel="alternate" hreflang="x-default" href="../ordina.html">
+    <meta name="description" content="Order Take Away and Delivery online from Hata San in Bologna: Sushi, Tartare, Sashimi, Uramaki, A5 Wagyu and Robatayaki grill specialties. Free delivery within 5 km.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../navigation.css">
+    <link rel="stylesheet" href="../fire-background.css">
+    <script src="../navigation.js" defer></script>
+    <style>
+        :root {
+            --bg-dark: #000000;
+            --text-light: #f5f5f5;
+            --accent-gold: #c5a059;
+            --accent-gold-hover: #d6b36a;
+        }
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+        .zuma-font { font-family: 'Cinzel', serif; }
+        .nav-scrolled { background-color: rgba(5, 5, 5, 0.95); backdrop-filter: blur(10px); }
+        .btn-outline {
+            border: 1px solid rgba(255,255,255,0.3); padding: 0.75rem 1.5rem; text-transform: uppercase;
+            letter-spacing: 0.2em; font-size: 0.75rem; transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            position: relative; overflow: hidden; display: inline-block; backdrop-filter: blur(5px);
+        }
+        .btn-outline::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: #fff;
+            transform: scaleX(0); transform-origin: left; transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); z-index: -1;
+        }
+        .btn-outline:hover { color: #000; border-color: #fff; }
+        .btn-outline:hover::before { transform: scaleX(1); }
+
+        /* Smooth horizontal scrolling for mobile category bar */
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+            -webkit-overflow-scrolling: touch;
+            overscroll-behavior-x: contain;
+            touch-action: pan-x;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: rgba(255,255,255,0.02); }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(197, 160, 89, 0.3); border-radius: 2px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: rgba(197, 160, 89, 0.6); }
+
+        .cat-pill {
+            transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+            white-space: nowrap;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .cat-pill.active {
+            background-color: var(--accent-gold);
+            color: #000000;
+            font-weight: 600;
+            border-color: var(--accent-gold);
+        }
+
+        /* 60fps mobile-optimized cards */
+        .dish-card {
+            background-color: #0d0d0d;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: border-color 0.2s ease, background-color 0.2s ease;
+            -webkit-tap-highlight-color: transparent;
+        }
+        @media (hover: hover) {
+            .dish-card:hover {
+                background-color: #151515;
+                border-color: rgba(197, 160, 89, 0.45);
+            }
+        }
+        .dish-card.in-cart {
+            border-left: 3px solid var(--accent-gold);
+            background-color: #12100c;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .btn-outline, .btn-outline::before, .dish-card, .cat-pill { transition: none; }
+        }
+    </style>
+</head>
+<body id="top">
+
+    <!-- ORGANIC FIRE AMBIENT EFFECT -->
+    <div class="fire-ambient" aria-hidden="true">
+        <div class="fire-container">
+            <div class="flame"></div>
+            <div class="flame"></div>
+            <div class="flame"></div>
+            <div class="flame"></div>
+        </div>
+        <div class="fire-overlay"></div>
+    </div>
+
+    <!-- Shared Navigation -->
+    <nav id="navbar" class="nav-scrolled fixed top-0 w-full z-50 transition-all duration-300 py-5 md:py-6 px-4 md:px-12 flex justify-between items-center">
+        <div class="hidden lg:flex gap-6 xl:gap-8 w-1/3">
+            <a href="menu.html" class="text-xs tracking-[0.2em] uppercase relative group">Our Menu<span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-[var(--accent-gold)] transition-all duration-300 group-hover:w-full"></span></a>
+            <a href="eventi.html" class="text-xs tracking-[0.2em] uppercase relative group">Events<span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-[var(--accent-gold)] transition-all duration-300 group-hover:w-full"></span></a>
+            <a href="contatti.html" class="text-xs tracking-[0.2em] uppercase relative group">Contacts<span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-[var(--accent-gold)] transition-all duration-300 group-hover:w-full"></span></a>
+        </div>
+        
+        <div class="nav-mobile-controls flex lg:hidden w-1/3">
+            <button id="mobile-menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="mobile-menu" class="text-gray-300 hover:text-[var(--accent-gold)] transition-colors">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path class="burger-line burger-top" stroke-linecap="round" stroke-width="2" d="M4 6h16"></path><path class="burger-line burger-middle" stroke-linecap="round" stroke-width="2" d="M4 12h16"></path><path class="burger-line burger-bottom" stroke-linecap="round" stroke-width="2" d="M4 18h16"></path></svg>
+            </button>
+            <div class="language-switch" role="group" aria-label="Website language">
+                <a href="../ordina.html" lang="it" hreflang="it" data-language-link aria-label="Leggi in italiano">IT</a>
+                <a href="order.html" lang="en" hreflang="en" data-language-link aria-label="Read in English" aria-current="page">EN</a>
+            </div>
+        </div>
+        
+        <a href="index.html" aria-label="Hata San — homepage" class="w-1/3 flex justify-center">
+            <img src="../img/hatasan-logo-orizzontale.svg" onerror="this.src='https://www.hatasanrestaurant.it/wp-content/uploads/2025/03/Livello_1.svg'" alt="Hata San" class="h-8 md:h-10 w-auto filter drop-shadow-md">
+        </a>
+        
+        <div class="nav-actions w-1/3 flex justify-end gap-3 md:gap-6 items-center">
+            <div class="language-switch language-switch-desktop" role="group" aria-label="Website language">
+                <a href="../ordina.html" lang="it" hreflang="it" data-language-link aria-label="Leggi in italiano">IT</a>
+                <a href="order.html" lang="en" hreflang="en" data-language-link aria-label="Read in English" aria-current="page">EN</a>
+            </div>
+            <a href="order.html" aria-current="page" class="nav-order hidden sm:block text-[10px] md:text-xs tracking-[0.2em] uppercase border-b border-[var(--accent-gold)] text-[var(--accent-gold)] transition-all py-1">Order Now</a>
+            <a href="contatti.html" class="nav-booking btn-outline text-[10px] md:text-xs px-3 py-2 md:px-6 md:py-3">Book a Table</a>
+        </div>
+        <div id="mobile-menu" hidden>
+            <a href="menu.html">Our Menu</a>
+            <a href="eventi.html">Events</a>
+            <a href="contatti.html">Contacts</a>
+            <a href="order.html" aria-current="page">Order Online</a>
+        </div>
+    </nav>
+
+    <!-- MAIN ORDERING CONTENT -->
+    <div class="fire-content relative z-10 pt-20 md:pt-28 flex-1 flex flex-col">
+
+        <!-- SERVICE BAR -->
+        <section class="bg-black/90 border-b border-white/10 pt-4 pb-4 px-4 md:px-12">
+            <div class="max-w-7xl mx-auto">
+                <a href="index.html" class="inline-flex items-center gap-2 text-[10px] tracking-[0.2em] uppercase text-gray-400 hover:text-[var(--accent-gold)] transition-colors mb-3">
+                    <svg class="icon-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg>
+                    Back to home
+                </a>
+
+                <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+                    <div>
+                        <div class="flex flex-wrap items-center gap-2.5 mb-1.5">
+                            <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-medium uppercase tracking-widest bg-emerald-950/80 text-emerald-400 border border-emerald-700/40">
+                                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                                Take Away &amp; Delivery
+                            </span>
+                            <span class="text-xs text-gray-400 tracking-wider">Via Augusto Murri, 77 · Bologna</span>
+                        </div>
+                        <h1 class="text-xl md:text-3xl zuma-font text-white tracking-wider uppercase">
+                            Order <span class="text-[var(--accent-gold)]">Online</span>
+                        </h1>
+                        <!-- Free Delivery & Minimum Order Badge (Desktop & Mobile) -->
+                        <div class="mt-2.5 inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[var(--accent-gold)]/10 border border-[var(--accent-gold)]/35 text-[11px] md:text-xs text-[var(--accent-gold)] font-medium tracking-wide">
+                            <svg class="w-4 h-4 shrink-0 text-[var(--accent-gold)]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0"/>
+                            </svg>
+                            <span>Free delivery (within 5 km) - Minimum order €30</span>
+                        </div>
+                    </div>
+
+                    <!-- Pickup/Delivery Switcher + Time Slot -->
+                    <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5">
+                        <div class="bg-zinc-900 p-1 rounded-lg border border-white/10 flex items-center">
+                            <button id="btn-pickup" type="button" onclick="setServiceMode('pickup')" class="flex-1 sm:flex-initial px-4 py-2 rounded-md text-xs uppercase tracking-widest font-medium transition-all bg-[var(--accent-gold)] text-black">
+                                Pickup
+                            </button>
+                            <button id="btn-delivery" type="button" onclick="setServiceMode('delivery')" class="flex-1 sm:flex-initial px-4 py-2 rounded-md text-xs uppercase tracking-widest font-medium transition-all text-gray-400 hover:text-white">
+                                Delivery
+                            </button>
+                        </div>
+
+                        <div class="relative">
+                            <select id="time-slot-select" aria-label="Select time slot" onchange="updateTimeSlot(this.value)" class="w-full sm:w-auto appearance-none bg-zinc-900 border border-white/10 hover:border-[var(--accent-gold)]/50 text-white text-xs tracking-wider rounded-lg pl-9 pr-8 py-2.5 focus:outline-none focus:border-[var(--accent-gold)] transition-colors cursor-pointer">
+                                <option value="Today • As soon as possible">Today • As soon as possible</option>
+                                <optgroup label="Lunch (Fri – Sun 12:00 – 14:30)">
+                                    <option value="Lunch • 12:30">Lunch • 12:30</option>
+                                    <option value="Lunch • 13:00">Lunch • 13:00</option>
+                                    <option value="Lunch • 13:30">Lunch • 13:30</option>
+                                    <option value="Lunch • 14:00">Lunch • 14:00</option>
+                                </optgroup>
+                                <optgroup label="Dinner (Mon – Sun 19:00 – 23:30)">
+                                    <option value="Dinner • 19:30">Dinner • 19:30</option>
+                                    <option value="Dinner • 20:00">Dinner • 20:00</option>
+                                    <option value="Dinner • 20:30">Dinner • 20:30</option>
+                                    <option value="Dinner • 21:00">Dinner • 21:00</option>
+                                    <option value="Dinner • 21:30">Dinner • 21:30</option>
+                                    <option value="Dinner • 22:00">Dinner • 22:00</option>
+                                </optgroup>
+                            </select>
+                            <svg class="w-4 h-4 text-[var(--accent-gold)] absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            <svg class="w-3.5 h-3.5 text-gray-400 absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- STICKY CATEGORY BAR + SEARCH -->
+        <div class="sticky top-[68px] md:top-[84px] z-30 bg-black/95 border-b border-white/10 shadow-lg">
+            <div class="max-w-7xl mx-auto px-4 md:px-12 py-2.5 flex items-center gap-2.5">
+                
+                <!-- Mobile Search Toggle Button -->
+                <button type="button" onclick="toggleMobileSearch()" aria-label="Search menu" class="md:hidden shrink-0 w-9 h-9 rounded-full bg-zinc-900 border border-white/15 flex items-center justify-center text-gray-300 active:border-[var(--accent-gold)]">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                </button>
+
+                <!-- Desktop Search Input -->
+                <div class="hidden md:block relative w-60 shrink-0">
+                    <input 
+                        type="text" 
+                        id="search-input-desktop" 
+                        oninput="handleSearch(this.value)"
+                        placeholder="Search dish or ingredient..." 
+                        class="w-full bg-zinc-900 border border-white/10 focus:border-[var(--accent-gold)] rounded-full pl-9 pr-8 py-1.5 text-xs text-white placeholder-gray-500 focus:outline-none transition-colors"
+                    >
+                    <svg class="w-3.5 h-3.5 text-gray-400 absolute left-3.5 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                    <button id="clear-search-desktop" type="button" onclick="clearSearch()" aria-label="Clear search" class="hidden absolute right-2.5 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white">
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                    </button>
+                </div>
+
+                <!-- Scrollable Category Pills -->
+                <nav id="category-nav" aria-label="Menu categories" class="flex-1 flex items-center gap-2 overflow-x-auto hide-scrollbar py-1">
+                    <!-- Populated via JS -->
+                </nav>
+            </div>
+
+            <!-- Expandable Mobile Search Bar -->
+            <div id="mobile-search-bar" class="hidden md:hidden px-4 pb-2.5">
+                <div class="relative w-full">
+                    <input 
+                        type="text" 
+                        id="search-input-mobile" 
+                        oninput="handleSearch(this.value)"
+                        placeholder="Search dish or ingredient..." 
+                        class="w-full bg-zinc-900 border border-[var(--accent-gold)]/50 rounded-full pl-9 pr-8 py-2 text-xs text-white placeholder-gray-500 focus:outline-none"
+                    >
+                    <svg class="w-3.5 h-3.5 text-[var(--accent-gold)] absolute left-3.5 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                    <button type="button" onclick="clearSearch(); toggleMobileSearch(false);" aria-label="Close search" class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2-COLUMN LAYOUT: MENU + STICKY CART -->
+        <main class="flex-1 max-w-7xl w-full mx-auto px-4 md:px-12 py-6 md:py-8 pb-28 lg:pb-16">
+            <div class="flex flex-col lg:flex-row items-start gap-8">
+                
+                <!-- Left Column: Dishes -->
+                <div id="menu-container" class="w-full lg:w-[66%] xl:w-[68%] space-y-10"></div>
+
+                <!-- Right Column: Sticky Cart (Desktop) -->
+                <aside class="hidden lg:block lg:w-[34%] xl:w-[32%] sticky top-36">
+                    <div class="bg-zinc-950 border border-white/10 rounded-xl overflow-hidden shadow-2xl">
+                        <div class="p-5 border-b border-white/10 bg-black flex items-center justify-between">
+                            <div>
+                                <h2 class="zuma-font text-lg text-white tracking-wider">YOUR ORDER</h2>
+                                <p id="desktop-cart-subtitle" class="text-[11px] text-[var(--accent-gold)] tracking-wider uppercase mt-0.5">
+                                    Pickup • Today • As soon as possible
+                                </p>
+                            </div>
+                            <span id="desktop-cart-badge" class="bg-[var(--accent-gold)]/20 text-[var(--accent-gold)] border border-[var(--accent-gold)]/40 text-xs font-semibold px-2.5 py-1 rounded-full">
+                                0 items
+                            </span>
+                        </div>
+
+                        <!-- Delivery Info inside Desktop Cart -->
+                        <div class="px-5 py-2.5 bg-zinc-900/70 border-b border-white/5 flex items-center gap-2 text-[11px] text-gray-300">
+                            <span class="w-1.5 h-1.5 rounded-full bg-[var(--accent-gold)] shrink-0"></span>
+                            <span>Free delivery (within 5 km) - Minimum order €30</span>
+                        </div>
+
+                        <div id="desktop-cart-items" class="max-h-[42vh] overflow-y-auto custom-scrollbar p-5 space-y-4"></div>
+
+                        <div class="p-5 border-t border-white/10 bg-black space-y-3">
+                            <div class="flex justify-between text-xs text-gray-400">
+                                <span>Subtotal</span>
+                                <span id="desktop-subtotal">€ 0,00</span>
+                            </div>
+                            <div id="desktop-delivery-row" class="hidden justify-between text-xs text-gray-400">
+                                <span>Delivery (within 5 km)</span>
+                                <span class="text-emerald-400 font-medium">Free</span>
+                            </div>
+                            <p id="desktop-min-order-warning" class="hidden text-[11px] text-amber-400/90 bg-amber-950/30 border border-amber-700/30 rounded-lg px-3 py-2">
+                                Minimum order €30 for home delivery.
+                            </p>
+                            <div class="flex justify-between items-baseline text-base font-medium text-white pt-2 border-t border-white/10">
+                                <span class="zuma-font tracking-wider">TOTAL</span>
+                                <span id="desktop-total" class="text-xl text-[var(--accent-gold)] font-semibold">€ 0,00</span>
+                            </div>
+
+                            <button 
+                                id="desktop-checkout-btn"
+                                type="button"
+                                onclick="openCheckoutModal()" 
+                                disabled
+                                class="w-full mt-2 py-3.5 px-6 rounded-lg bg-[var(--accent-gold)] hover:bg-[var(--accent-gold-hover)] disabled:bg-zinc-800 disabled:text-gray-500 text-black font-semibold text-xs uppercase tracking-[0.2em] transition-all cursor-pointer disabled:cursor-not-allowed shadow-lg"
+                            >
+                                Proceed to Checkout
+                            </button>
+                        </div>
+                    </div>
+                </aside>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- FIXED BOTTOM CART BAR (Mobile / Tablet) -->
+    <div id="mobile-cart-bar" class="lg:hidden fixed bottom-0 left-0 right-0 z-40 p-3 bg-gradient-to-t from-black via-black/95 to-transparent pointer-events-none">
+        <button 
+            type="button"
+            onclick="toggleMobileCart(true)"
+            class="pointer-events-auto w-full max-w-lg mx-auto bg-[var(--accent-gold)] text-black rounded-xl py-3.5 px-5 flex items-center justify-between shadow-[0_10px_30px_rgba(197,160,89,0.35)] font-semibold text-xs uppercase tracking-widest"
+        >
+            <div class="flex items-center gap-2.5">
+                <span id="mobile-bar-count" class="bg-black text-[var(--accent-gold)] w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold">0</span>
+                <span>View Order</span>
+            </div>
+            <span id="mobile-bar-total" class="text-sm font-bold">€ 0,00</span>
+        </button>
+    </div>
+
+    <!-- MOBILE CART DRAWER -->
+    <div id="mobile-cart-drawer" class="fixed inset-0 z-50 hidden">
+        <div class="absolute inset-0 bg-black/80" onclick="toggleMobileCart(false)"></div>
+        <div class="absolute bottom-0 left-0 right-0 bg-zinc-950 border-t border-[var(--accent-gold)]/30 rounded-t-2xl max-h-[85vh] flex flex-col">
+            <div class="p-4 border-b border-white/10 flex items-center justify-between">
+                <div>
+                    <h3 class="zuma-font text-base text-white tracking-wider">YOUR ORDER</h3>
+                    <p id="mobile-cart-subtitle" class="text-[10px] text-[var(--accent-gold)] uppercase tracking-wider">Pickup • Today</p>
+                </div>
+                <button type="button" onclick="toggleMobileCart(false)" aria-label="Close cart" class="p-2 text-gray-400 hover:text-white">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                </button>
+            </div>
+            <!-- Delivery Info inside Mobile Drawer -->
+            <div class="px-4 py-2 bg-zinc-900/80 border-b border-white/5 flex items-center gap-2 text-[11px] text-[var(--accent-gold)]">
+                <span class="w-1.5 h-1.5 rounded-full bg-[var(--accent-gold)] shrink-0"></span>
+                <span>Free delivery (within 5 km) - Minimum order €30</span>
+            </div>
+            <div id="mobile-cart-items" class="p-4 overflow-y-auto flex-1 space-y-4"></div>
+            <div class="p-4 border-t border-white/10 bg-black space-y-3">
+                <div id="mobile-delivery-row" class="hidden justify-between text-xs text-gray-400">
+                    <span>Delivery (within 5 km)</span>
+                    <span class="text-emerald-400 font-medium">Free</span>
+                </div>
+                <p id="mobile-min-order-warning" class="hidden text-[11px] text-amber-400/90 bg-amber-950/30 border border-amber-700/30 rounded-lg px-3 py-2">
+                    Minimum order €30 for home delivery.
+                </p>
+                <div class="flex justify-between items-center text-white font-semibold">
+                    <span class="zuma-font text-sm">TOTAL</span>
+                    <span id="mobile-total" class="text-lg text-[var(--accent-gold)]">€ 0,00</span>
+                </div>
+                <button 
+                    id="mobile-checkout-btn"
+                    type="button"
+                    onclick="toggleMobileCart(false); openCheckoutModal();" 
+                    disabled
+                    class="w-full py-3.5 rounded-lg bg-[var(--accent-gold)] disabled:bg-zinc-800 disabled:text-gray-500 text-black font-semibold text-xs uppercase tracking-[0.2em]"
+                >
+                    Proceed to Checkout
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- DISH DETAIL & NOTES MODAL -->
+    <div id="dish-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4">
+        <div class="absolute inset-0 bg-black/80" onclick="closeDishModal()"></div>
+        <div class="relative bg-zinc-950 border border-[var(--accent-gold)]/40 rounded-xl max-w-md w-full p-6 shadow-2xl z-10">
+            <button type="button" onclick="closeDishModal()" aria-label="Close dish details" class="absolute top-4 right-4 text-gray-400 hover:text-white">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+            <span id="modal-dish-category" class="text-[10px] uppercase tracking-[0.2em] text-[var(--accent-gold)] block mb-1">Category</span>
+            <h3 id="modal-dish-name" class="text-xl zuma-font text-white mb-2">Dish Name</h3>
+            <p id="modal-dish-desc" class="text-xs text-gray-300 font-light leading-relaxed mb-4">Description</p>
+            <div id="modal-dish-price" class="text-lg font-semibold text-[var(--accent-gold)] mb-5">€ 0,00</div>
+
+            <div class="mb-5">
+                <label for="modal-dish-note" class="block text-[11px] uppercase tracking-wider text-gray-400 mb-2">Kitchen notes or requests (optional)</label>
+                <textarea id="modal-dish-note" rows="2" placeholder="E.g. No sesame, sauce on the side, allergies..." class="w-full bg-black border border-white/15 rounded-lg p-2.5 text-xs text-white placeholder-gray-600 focus:outline-none focus:border-[var(--accent-gold)]"></textarea>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <div class="flex items-center border border-white/20 rounded-lg bg-black">
+                    <button type="button" onclick="changeModalQty(-1)" class="px-3.5 py-2.5 text-gray-300 hover:text-[var(--accent-gold)] text-sm font-bold">−</button>
+                    <span id="modal-dish-qty" class="px-3 text-sm font-semibold text-white">1</span>
+                    <button type="button" onclick="changeModalQty(1)" class="px-3.5 py-2.5 text-gray-300 hover:text-[var(--accent-gold)] text-sm font-bold">+</button>
+                </div>
+                <button type="button" onclick="confirmModalAdd()" class="flex-1 py-3 bg-[var(--accent-gold)] hover:bg-[var(--accent-gold-hover)] text-black font-semibold text-xs uppercase tracking-widest rounded-lg transition-colors">
+                    Add • <span id="modal-btn-total">€ 0,00</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- FINAL CHECKOUT MODAL -->
+    <div id="checkout-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 overflow-y-auto">
+        <div class="absolute inset-0 bg-black/85" onclick="closeCheckoutModal()"></div>
+        <div class="relative bg-zinc-950 border border-[var(--accent-gold)]/40 rounded-xl max-w-lg w-full p-6 md:p-8 shadow-2xl z-10 my-8">
+            <button type="button" onclick="closeCheckoutModal()" aria-label="Close checkout" class="absolute top-5 right-5 text-gray-400 hover:text-white">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+
+            <h3 class="text-2xl zuma-font text-white tracking-wider mb-1">COMPLETE YOUR ORDER</h3>
+            <p id="checkout-summary-tag" class="text-xs text-[var(--accent-gold)] uppercase tracking-widest mb-6">Pickup at Via Augusto Murri, 77</p>
+
+            <form id="checkout-form" onsubmit="submitOrder(event)" class="space-y-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label for="cust-name" class="block text-[11px] uppercase tracking-wider text-gray-400 mb-1.5">Full Name *</label>
+                        <input type="text" id="cust-name" required placeholder="John Doe" class="w-full bg-black border border-white/15 rounded-lg px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-[var(--accent-gold)]">
+                    </div>
+                    <div>
+                        <label for="cust-phone" class="block text-[11px] uppercase tracking-wider text-gray-400 mb-1.5">Phone *</label>
+                        <input type="tel" id="cust-phone" required placeholder="+39 333 1234567" class="w-full bg-black border border-white/15 rounded-lg px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-[var(--accent-gold)]">
+                    </div>
+                </div>
+
+                <div id="delivery-address-fields" class="hidden space-y-4">
+                    <div>
+                        <label for="cust-address" class="block text-[11px] uppercase tracking-wider text-gray-400 mb-1.5">Delivery Address (Bologna - within 5 km) *</label>
+                        <input type="text" id="cust-address" placeholder="Street, Building Number, Intercom" class="w-full bg-black border border-white/15 rounded-lg px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-[var(--accent-gold)]">
+                    </div>
+                </div>
+
+                <div>
+                    <label for="cust-notes" class="block text-[11px] uppercase tracking-wider text-gray-400 mb-1.5">Notes for the restaurant / Allergies</label>
+                    <textarea id="cust-notes" rows="2" placeholder="Any allergies, intolerances or delivery instructions..." class="w-full bg-black border border-white/15 rounded-lg px-3.5 py-2 text-xs text-white focus:outline-none focus:border-[var(--accent-gold)]"></textarea>
+                </div>
+
+                <div class="bg-black border border-white/10 rounded-lg p-4 flex justify-between items-center">
+                    <span class="text-xs uppercase tracking-widest text-gray-300">Total to pay</span>
+                    <span id="checkout-modal-total" class="text-xl font-bold text-[var(--accent-gold)]">€ 0,00</span>
+                </div>
+
+                <div class="pt-2 flex flex-col sm:flex-row gap-3">
+                    <button type="submit" class="flex-1 py-3.5 px-5 bg-[var(--accent-gold)] hover:bg-[var(--accent-gold-hover)] text-black font-semibold text-xs uppercase tracking-widest rounded-lg transition-all">
+                        Send Order via WhatsApp
+                    </button>
+                </div>
+                <p class="text-[10px] text-center text-gray-500">
+                    By clicking Send, your complete order summary will be pre-filled for instant confirmation with Hata San (+39 375 8067748).
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <!-- SHARED FOOTER -->
+    <footer class="fire-content py-8 px-6 text-center text-[10px] md:text-xs font-light text-gray-500 tracking-[0.1em]">
+        <div class="back-to-top-holder">
+            <a href="#top" class="back-to-top" aria-label="Back to top" title="Back to top">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5m-7 7 7-7 7 7"></path></svg>
+            </a>
+        </div>
+
+        <p>&copy; 2026 Hata San Restaurant. All rights reserved.</p>
+        <p class="mt-3">VAT 03965231206</p>
+    </footer>
+
+    <!-- JAVASCRIPT: NOVEMBER 2026 ENGLISH MENU & CART LOGIC -->
+    <script>
+        const menuData = [
+            {
+                id: "degustazione",
+                title: "Tasting Menus",
+                items: [
+                    { id: "deg-1", name: "Degustazione Caldo (Hot Tasting)", desc: "Edamame, 5 pcs dim sum selection, ebi flower tempura, 8 pcs kamikaze uramaki, XO kaisen gohan and robatayaki salmon. *No modifications or substitutions are possible for tasting menus.", price: 48 },
+                    { id: "deg-2", name: "Degustazione Classico (Classic Tasting)", desc: "Edamame, tuna tartare with ikura and ponzu sauce, 5 pcs dim sum selection, 7 pcs sashimi selection, 4 pcs uramaki, green tea soba and robatayaki salmon. *No modifications or substitutions are possible for tasting menus.", price: 48 },
+                    { id: "deg-3", name: "Degustazione Premium (Premium Tasting)", desc: "Squid and red prawn spring roll, amberjack carpaccio, dim sum (1 pc wagyu, 1 pc lobster, 1 pc scallop, 1 pc black cod), 7 pcs sashimi, 4 pcs chef's choice nigiri, O-toro don and robatayaki black cod. *No modifications or substitutions are possible for tasting menus.", price: 68 }
+                ]
+            },
+            {
+                id: "signature",
+                title: "Signature",
+                items: [
+                    { id: "sig-1", name: "Usuzukuri Wagyu A5 con Tartufo", desc: "A5 Wagyu carpaccio served with truffle slices in oil, Maldon salt and ponzu sauce.", price: 25 },
+                    { id: "sig-2", name: "Wagyu Sando Hatasan", desc: "A5 Wagyu sandwich.", price: 18 },
+                    { id: "sig-3", name: "Wagyu Dim Sum (3 pcs)", desc: "A5 Wagyu dumplings served with salad.", price: 14 },
+                    { id: "sig-4", name: "Unagi Kabayaki", desc: "Robatayaki-grilled eel.", price: 19 },
+                    { id: "sig-5", name: "Unagi Don", desc: "Japanese Wadachi-Mai rice (150g) served with unagi kabayaki.", price: 22 },
+                    { id: "sig-6", name: "Wagyu Don", desc: "Japanese Wadachi-Mai rice (150g) topped with sliced A5 Wagyu, soy-marinated egg yolk and yakiniku sauce.", price: 38 },
+                    { id: "sig-7", name: "Wagyu Tartar", desc: "Wagyu tartare glazed with honey and wasabi sauce, served with pickled cucumber and quail egg.", price: 24 },
+                    { id: "sig-8", name: "Tempura Wagyu Shiso", desc: "A5 Wagyu tempura wrapped in Japanese shiso leaf, served with seasonal vegetable tempura.", price: 22 },
+                    { id: "sig-9", name: "Wagyu Striploin A5 (per 100g)", desc: "80/200g cut (€70 per 100g). Please specify desired weight in the notes (subject to availability).", price: 70 }
+                ]
+            },
+            {
+                id: "antipasti",
+                title: "Starters",
+                items: [
+                    { id: "ant-1", name: "Misoshiru", desc: "Miso soup.", price: 5 },
+                    { id: "ant-2", name: "Toro No Kaze (2 pcs)", desc: "Japanese-style toasted bread topped with bluefin tuna belly tartare, spring onion, sesame and truffle enriched with a touch of soy sauce.", price: 16 },
+                    { id: "ant-3", name: "Blossom Salmon (3 pcs)", desc: "Courgette flower tempura wrapped in seared salmon, asparagus cream and crushed pistachios.", price: 12 },
+                    { id: "ant-4", name: "Sarada Misto", desc: "Mixed salad served with mango slices and sesame dressing.", price: 7 },
+                    { id: "ant-5", name: "Goma Wakame", desc: "Seaweed salad.", price: 5 },
+                    { id: "ant-6", name: "Ebi Stick (3 pcs)", desc: "Crispy prawn spring rolls served with sweet and spicy sauce.", price: 6 },
+                    { id: "ant-7", name: "Edamame", desc: "Steamed soybeans.", price: 5 },
+                    { id: "ant-8", name: "Edamame Spicy", desc: "Soybeans sautéed with shichimi.", price: 6 },
+                    { id: "ant-9", name: "Ebi Dynamite", desc: "Tempura prawn bites with spicy sauce and chilli powder.", price: 8 },
+                    { id: "ant-10", name: "Umi No Hoseki (3 pcs)", desc: "Raw squid wrapped around red prawn, topped with sea urchin and kizami wasabi.", price: 14 },
+                    { id: "ant-11", name: "Millefoglie Scampi", desc: "Avocado mille-feuille with langoustines, tobiko and passion fruit sauce.", price: 12 },
+                    { id: "ant-12", name: "Hamachi No Tataki", desc: "Seared amberjack served with crispy julienne leek, sesame and yuzu sauce.", price: 21 },
+                    { id: "ant-13", name: "Shiromi No Usuzukuri", desc: "Catch of the day white fish carpaccio with yuzu sauce, shiso oil and ikura.", price: 18 },
+                    { id: "ant-14", name: "Hamachi No Usuzukuri", desc: "Amberjack carpaccio with truffle yuzu sauce.", price: 19 },
+                    { id: "ant-15", name: "Maguro Tataki", desc: "Seared tuna served with miso and teriyaki sauce.", price: 21 }
+                ]
+            },
+            {
+                id: "tartare",
+                title: "Tartare",
+                items: [
+                    { id: "tar-1", name: "Tartare di Gamberi Rossi", desc: "Red prawn tartare with yuzu soy sauce, mango and avocado.", price: 24 },
+                    { id: "tar-2", name: "Tartare di Capesante e Scampi", desc: "Langoustine and scallop tartare with caviar, peanuts, kizami wasabi and yuzu soy sauce.", price: 24 },
+                    { id: "tar-3", name: "Tartare Shake e Avocado", desc: "Salmon and avocado tartare with yuzu soy sauce, crispy rice and ikura.", price: 12 },
+                    { id: "tar-4", name: "Tartare di Tonno", desc: "Bluefin tuna belly (Chutoro) and akami, chives, yuzu soy sauce and ikura.", price: 18 }
+                ]
+            },
+            {
+                id: "dimsum",
+                title: "Dim Sum",
+                items: [
+                    { id: "dim-1", name: "Degustazione 5 Ravioli (5 pcs)", desc: "Scallop, cuttlefish, mixed vegetables, black cod, ebi. *Chef's selection, no modifications allowed.", price: 15 },
+                    { id: "dim-2", name: "Dimsum Black Cod Tartufo (3 pcs)", desc: "Dumplings filled with black cod and garnished with black truffle.", price: 9 },
+                    { id: "dim-3", name: "Dimsum Astice (3 pcs)", desc: "Dumplings filled with lobster and garnished with tobiko.", price: 13 },
+                    { id: "dim-4", name: "Dimsum Capesante (3 pcs)", desc: "Red beetroot extract dumplings filled with scallops and garnished with tobiko.", price: 10 },
+                    { id: "dim-5", name: "Dimsum Seppie (3 pcs)", desc: "Cuttlefish ink dumplings garnished with tobiko.", price: 8 },
+                    { id: "dim-6", name: "Dimsum Verdure (3 pcs)", desc: "Spinach extract dumplings filled with carrots, shiitake mushrooms, Chinese cabbage, courgettes and asparagus.", price: 6 },
+                    { id: "dim-7", name: "Dimsum Ebi (3 pcs)", desc: "Steamed translucent prawn dumplings.", price: 8 }
+                ]
+            },
+            {
+                id: "sashimi",
+                title: "Sashimi",
+                items: [
+                    { id: "sas-1", name: "Sashimi Tonno (3 pcs)", desc: "Bluefin tuna.", price: 9 },
+                    { id: "sas-2", name: "Sashimi O-Toro (3 pcs)", desc: "Bluefin tuna belly, the richest cut (Balfegò/Fuentes).", price: 14 },
+                    { id: "sas-3", name: "Sashimi Branzino (6 pcs)", desc: "Selected fresh sea bass slices.", price: 9 },
+                    { id: "sas-4", name: "Sashimi Ricciola (3 pcs)", desc: "Hamachi amberjack slices.", price: 9 },
+                    { id: "sas-5", name: "Sashimi Salmone (6 pcs)", desc: "Selected fresh salmon slices.", price: 9 },
+                    { id: "sas-6", name: "Sashimi Scampi (2 pcs)", desc: "Selected raw langoustines.", price: 12 },
+                    { id: "sas-7", name: "Sashimi Gamberi Rossi (3 pcs)", desc: "Selected raw red prawns.", price: 10 },
+                    { id: "sas-8", name: "Sashimi Degustazione Classico (10 pcs)", desc: "*Chef's selection, no modifications allowed.", price: 20 },
+                    { id: "sas-9", name: "Sashimi Degustazione (18 pcs)", desc: "*Chef's selection, no modifications allowed.", price: 32 }
+                ]
+            },
+            {
+                id: "nigiri",
+                title: "Nigiri (2 pcs)",
+                items: [
+                    { id: "nig-1", name: "Degustazione Nigiri Speciale (6 pcs)", desc: "6 pcs of nigiri selected by the chef. *Chef's selection, no modifications allowed.", price: 23 },
+                    { id: "nig-2", name: "Nigiri Shake (2 pcs)", desc: "Salmon.", price: 4 },
+                    { id: "nig-3", name: "Nigiri Nama Kurumaebi (2 pcs)", desc: "Raw kuruma prawn.", price: 5 },
+                    { id: "nig-4", name: "Nigiri Yude Kurumaebi (2 pcs)", desc: "Cooked kuruma prawn.", price: 5 },
+                    { id: "nig-5", name: "Nigiri Suzuki (2 pcs)", desc: "Sea bass.", price: 4 },
+                    { id: "nig-6", name: "Nigiri Maguro (2 pcs)", desc: "Bluefin tuna.", price: 6 },
+                    { id: "nig-7", name: "Nigiri Hamachi (2 pcs)", desc: "Ocean amberjack.", price: 5 },
+                    { id: "nig-8", name: "Nigiri O-Toro (2 pcs)", desc: "Bluefin tuna belly (Balfegò) or wild Spanish bluefin tuna.", price: 10 },
+                    { id: "nig-9", name: "Nigiri Akaebi (2 pcs)", desc: "Mazara del Vallo red prawn.", price: 12 },
+                    { id: "nig-10", name: "Nigiri Tenaga Ebi (2 pcs)", desc: "Dutch langoustine.", price: 10 },
+                    { id: "nig-11", name: "Nigiri Hotate (2 pcs)", desc: "Hokkaido scallop.", price: 8 },
+                    { id: "nig-12", name: "Nigiri Wagyu A5 Scottato (2 pcs)", desc: "Seared Japanese A5 Wagyu.", price: 10 },
+                    { id: "nig-13", name: "Nigiri Toro Binchotan (2 pcs)", desc: "Binchotan-seared bluefin tuna belly (Balfegò).", price: 10 },
+                    { id: "nig-14", name: "Nigiri Saba Binchotan (2 pcs)", desc: "Marinated mackerel seared with binchotan charcoal.", price: 5 }
+                ]
+            },
+            {
+                id: "gunkan",
+                title: "Gunkan (2 pcs)",
+                items: [
+                    { id: "gun-1", name: "Gunkan Ikura (2 pcs)", desc: "Salmon roe.", price: 6 },
+                    { id: "gun-2", name: "Gunkan Wagyu Tartufo (2 pcs)", desc: "A5 Wagyu and truffle.", price: 12 },
+                    { id: "gun-3", name: "Gunkan Hamachi Scampi e Kizami Wasabi (2 pcs)", desc: "Amberjack, langoustine and kizami wasabi.", price: 10 },
+                    { id: "gun-4", name: "Gunkan Uova di Quaglia e Tartufo (2 pcs)", desc: "Quail egg and truffle.", price: 6 },
+                    { id: "gun-5", name: "Gunkan Tonno e O-Toro e Caviale (2 pcs)", desc: "Bluefin tuna, O-Toro belly and caviar.", price: 9 },
+                    { id: "gun-6", name: "Gunkan Spicy Tuna (2 pcs)", desc: "Spicy tuna tartare.", price: 7 },
+                    { id: "gun-7", name: "Gunkan Salmone e Gamberi Rossi (2 pcs)", desc: "Salmon and red prawns.", price: 8 },
+                    { id: "gun-8", name: "Gunkan Capesante Wagyu e Salsa Curry (2 pcs)", desc: "Scallops, A5 Wagyu and curry sauce.", price: 12 }
+                ]
+            },
+            {
+                id: "uramaki",
+                title: "Uramaki (8 pcs)",
+                items: [
+                    { id: "ura-1", name: "Degustazione Uramaki dello Chef (16 pcs)", desc: "Chef's choice uramaki. *Chef's selection, no modifications allowed.", price: 32 },
+                    { id: "ura-2", name: "Saudate du Brazil (6 pcs)", desc: "Pressed rice with salmon tartare, avocado, tobiko and teriyaki.", price: 14 },
+                    { id: "ura-3", name: "New Ebi Flower Roll", desc: "Tempura Argentine prawns and avocado, topped with salmon tartare, tempura courgette flower and teriyaki sauce.", price: 16 },
+                    { id: "ura-4", name: "Black Dragon Roll", desc: "Cooked snow crab meat, Japanese mayo and avocado, topped with kabayaki eel, teriyaki, chives and tempura flakes.", price: 18 },
+                    { id: "ura-5", name: "Scallops Roll", desc: "Tempura Argentine prawns, truffle cream and avocado, topped with seared Hokkaido scallops, truffle and teriyaki.", price: 18 },
+                    { id: "ura-6", name: "Vulcano Roll", desc: "Snow crab meat, avocado and mayo, topped with bluefin tuna tartare, spicy mayo, chives and tobiko.", price: 18 },
+                    { id: "ura-7", name: "Wagyu Roll", desc: "Robatayaki A5 Wagyu and avocado inside, topped with A5 Wagyu carpaccio, teriyaki and chives.", price: 35 },
+                    { id: "ura-8", name: "Lobster Roll", desc: "Tempura Alaskan black cod, truffle cream and avocado, topped with cooked lobster tartare, Japanese mayo and tobiko.", price: 35 },
+                    { id: "ura-9", name: "Spicy Scallops Roll", desc: "Avocado and langoustines inside, topped with Hokkaido scallops dressed with spicy mayo, tobiko and crushed peanuts.", price: 20 },
+                    { id: "ura-10", name: "New Spicy Salmon Roll", desc: "Avocado, cream cheese and cucumber, topped with salmon tartare, spicy mayo and tobiko.", price: 14 },
+                    { id: "ura-11", name: "Hamachi Roll", desc: "Tempura Argentine prawns wrapped in hamachi amberjack carpaccio, yuzu sauce, kizami nori and katsuobushi flakes.", price: 14 },
+                    { id: "ura-12", name: "Royal Roll", desc: "Red prawn, amberjack, scallops and chives topped with bluefin tuna belly tartare and beluga caviar.", price: 35 },
+                    { id: "ura-13", name: "Tiger Roll", desc: "Tempura Argentine prawns topped with salmon carpaccio, ikura and teriyaki.", price: 14 },
+                    { id: "ura-14", name: "Dragon Roll", desc: "Tempura Argentine prawns topped with sliced avocado, ikura and teriyaki.", price: 16 },
+                    { id: "ura-15", name: "Salmone Avocado Roll", desc: "Salmon, avocado and sesame.", price: 9 },
+                    { id: "ura-16", name: "Maguro Roll", desc: "Bluefin tuna, avocado and sesame.", price: 12 },
+                    { id: "ura-17", name: "Rock Tuna Roll", desc: "Avocado, bluefin tuna and mayo, topped with tuna belly tartare, spicy mayo, tobiko, chives and crispy tempura flakes.", price: 20 },
+                    { id: "ura-18", name: "Kamikaze Roll", desc: "Tempura Argentine prawns and mango, topped with crispy tempura flakes and teriyaki.", price: 14 },
+                    { id: "ura-19", name: "Mazara Roll", desc: "Mazara del Vallo red prawn and avocado, topped with sliced avocado, red prawn and tobiko.", price: 25 },
+                    { id: "ura-20", name: "Yasai Roll", desc: "Wakame, cucumber, asparagus and sesame.", price: 9 },
+                    { id: "ura-21", name: "Salmone Avocado Philadelphia", desc: "Salmon, avocado and cream cheese.", price: 10 },
+                    { id: "ura-22", name: "Spicy Onion Roll", desc: "Salmon and cucumber inside, topped with seared salmon carpaccio, spicy mayo and crispy onion.", price: 14 },
+                    { id: "ura-23", name: "Tsurai Roll", desc: "Tempura Argentine prawns, salmon carpaccio, spicy mayo and almonds.", price: 16 }
+                ]
+            },
+            {
+                id: "hosomaki",
+                title: "Hosomaki (6 pcs)",
+                items: [
+                    { id: "hos-1", name: "Hosomaki Kappa (6 pcs)", desc: "Cucumber.", price: 4 },
+                    { id: "hos-2", name: "Hosomaki Tekka (6 pcs)", desc: "Bluefin tuna.", price: 7 },
+                    { id: "hos-3", name: "Hosomaki O-Toro (6 pcs)", desc: "Chives and bluefin tuna belly.", price: 10 },
+                    { id: "hos-4", name: "Hosomaki Shake (6 pcs)", desc: "Salmon.", price: 5 },
+                    { id: "hos-5", name: "Hosomaki Avocado (6 pcs)", desc: "Avocado.", price: 4 }
+                ]
+            },
+            {
+                id: "primi",
+                title: "Rice & Noodles",
+                items: [
+                    { id: "pri-1", name: "XO Kaisen Gohan", desc: "Wok-fried Japanese rice with egg, seasonal vegetables, scallops and XO sauce.", price: 12 },
+                    { id: "pri-2", name: "Ishimochi Robata Yakimeshi", desc: "Marinated robata-grilled croaker served over wok-fried rice with egg and vegetables.", price: 14 },
+                    { id: "pri-3", name: "Gohan", desc: "Steamed white Japanese rice.", price: 4 },
+                    { id: "pri-4", name: "Yasai Gohan", desc: "Wok-fried rice with egg and seasonal vegetables.", price: 8 },
+                    { id: "pri-5", name: "Udon No Kaori", desc: "Udon noodles tossed with soy butter and shiso oil, served with button mushrooms, red prawn tartare and ikura.", price: 14 },
+                    { id: "pri-6", name: "Yaki Udon", desc: "Stir-fried udon noodles with egg, scallops, prawns, sea bass, seasonal vegetables and katsuobushi.", price: 12 },
+                    { id: "pri-7", name: "Yaki Soba al Tè Verde", desc: "Stir-fried green tea buckwheat noodles with egg, seasonal vegetables, salmon, prawns and grated grey mullet bottarga.", price: 12 },
+                    { id: "pri-8", name: "Foie Gras Don", desc: "White Japanese “Wadachi-Mai” rice, pan-seared foie gras glazed in teriyaki sauce, spring onions and seasonal vegetables.", price: 18 },
+                    { id: "pri-9", name: "O-Toro Don", desc: "White Japanese “Wadachi-Mai” rice, bluefin tuna belly tartare, ikura, sea urchin, soy sauce, chives, sesame and kizami nori.", price: 26 }
+                ]
+            },
+            {
+                id: "tempura",
+                title: "Tempura",
+                items: [
+                    { id: "tem-1", name: "Tempura Moriawase", desc: "Tempura of prawns, oyster, pumpkin, carrot, green beans, button mushrooms, aubergine and shiso leaf, served with ginger soy dipping sauce.", price: 18 },
+                    { id: "tem-2", name: "Yasai Tempura", desc: "Tempura of pumpkin, carrot, green beans, button mushrooms, sweet potato, aubergine and shiso leaf, served with ginger soy dipping sauce.", price: 12 },
+                    { id: "tem-3", name: "Tempura Ebi Argentina (5 pcs)", desc: "Argentine red prawn tempura served with ginger soy dipping sauce.", price: 15 },
+                    { id: "tem-4", name: "Tempura Ebi Flower", desc: "Tempura courgette flower stuffed with seasoned kuruma prawn tartare, served with ginger soy dipping sauce.", price: 12 }
+                ]
+            },
+            {
+                id: "robata-carne",
+                title: "Robata Meat",
+                items: [
+                    { id: "rbc-1", name: "Hitsuji", desc: "Spicy Korean-style robata-grilled lamb chops, served with sesame cucumber.", price: 16 },
+                    { id: "rbc-2", name: "Gyuniku No Sumibiyaki", desc: "Robata-grilled beef fillet with lightly spiced yakiniku sauce and Maldon salt on the side.", price: 23 },
+                    { id: "rbc-3", name: "Teion Chōri Gyū Sanyaki", desc: "Slow-cooked marinated beef spare ribs finished on the robata grill with lightly spiced yakiniku sauce, served with mashed potatoes.", price: 26 },
+                    { id: "rbc-4", name: "Hinadori No Sumibiyaki", desc: "Marinated baby chicken grilled on the robata.", price: 18 },
+                    { id: "rbc-5", name: "Kamo No Hono", desc: "Slow-cooked duck, caramelized on the robata with yakiniku sauce.", price: 18 },
+                    { id: "rbc-6", name: "Wagyu Striploin A5 (per 100g)", desc: "80/200g cut (€70 per 100g). Please specify desired weight in the notes (subject to availability).", price: 70 }
+                ]
+            },
+            {
+                id: "robata-pesce",
+                title: "Robata Fish",
+                items: [
+                    { id: "rbp-1", name: "Buri Kama Sumibiyaki", desc: "Robatayaki-grilled amberjack collar with miso and yuzu sauce.", price: 14 },
+                    { id: "rbp-2", name: "Black Cod No Miso-Yaki", desc: "Miso-marinated black cod grilled on the robatayaki.", price: 22 },
+                    { id: "rbp-3", name: "Hirame No Sumibiyaki", desc: "3–7 days dry-aged turbot, grilled on the robatayaki with miso sauce.", price: 22 },
+                    { id: "rbp-4", name: "Sāmon No Teriyaki", desc: "Robatayaki-grilled salmon fillet with Maldon salt and teriyaki.", price: 14 },
+                    { id: "rbp-5", name: "Hamachi No Hara No Shioyaki", desc: "Miso-marinated amberjack grilled on the robatayaki.", price: 18 },
+                    { id: "rbp-6", name: "Tako No Yugen", desc: "Slow-cooked octopus glazed with miso and butter, grilled on the robata over potato cream and katsuobushi.", price: 18 },
+                    { id: "rbp-7", name: "Unagi Kabayaki", desc: "Marinated eel grilled on the robatayaki with unagi sauce.", price: 22 }
+                ]
+            },
+            {
+                id: "robata-yakitori",
+                title: "Robata Yakitori",
+                items: [
+                    { id: "rby-1", name: "Tori Negi Yakitori", desc: "Robata-grilled chicken and spring onion skewers with yakiniku sauce.", price: 7 },
+                    { id: "rby-2", name: "Gyu Yakitori", desc: "Robata-grilled beef skewers with yakiniku sauce.", price: 9 },
+                    { id: "rby-3", name: "Hotate Hokkaido", desc: "Robata-grilled Hokkaido scallop skewers served with miso sauce.", price: 14 },
+                    { id: "rby-4", name: "Ebi (3 pcs)", desc: "Robata-grilled kuruma prawn skewers with miso-based sauce.", price: 12 }
+                ]
+            },
+            {
+                id: "contorni",
+                title: "Sides",
+                items: [
+                    { id: "con-1", name: "Asuparagasu No Sumibiyaki", desc: "Asparagus with caramelized sauce.", price: 8 },
+                    { id: "con-2", name: "Baku Potato", desc: "Hata San mashed potatoes.", price: 8 },
+                    { id: "con-3", name: "Yaki Tomorokoshi", desc: "Miso-glazed sweetcorn grilled on the robatayaki.", price: 8 },
+                    { id: "con-4", name: "Yaki Nasu Miso", desc: "Asian aubergine grilled on the robatayaki and glazed with miso sauce.", price: 6 },
+                    { id: "con-5", name: "Zukkīnī", desc: "Courgettes grilled on the robatayaki with caramelized sauce.", price: 6 },
+                    { id: "con-6", name: "Masshurūmu No Sumibiyaki", desc: "Button mushrooms grilled on the robatayaki with caramelized sauce.", price: 6 }
+                ]
+            }
+        ];
+
+        let cart = {};
+        let serviceMode = 'pickup';
+        let selectedTime = 'Today • As soon as possible';
+        let currentModalDish = null;
+        let currentModalQty = 1;
+        let searchQuery = '';
+        let activeCategoryId = menuData[0].id;
+        let isManualScrolling = false;
+
+        const DELIVERY_FEE = 0;
+        const MIN_DELIVERY_ORDER = 30;
+
+        function formatPrice(num) {
+            return '€ ' + num.toFixed(2).replace('.', ',');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderCategoryNav();
+            renderMenu();
+            renderCart();
+            initScrollSpy();
+        });
+
+        function renderCategoryNav() {
+            const nav = document.getElementById('category-nav');
+            nav.innerHTML = menuData.map((cat, idx) => `
+                <a href="#sec-${cat.id}" 
+                   id="pill-${cat.id}"
+                   onclick="scrollToCategory(event, '${cat.id}')"
+                   class="cat-pill ${idx === 0 ? 'active' : ''} text-[11px] md:text-xs uppercase tracking-[0.14em] px-3.5 py-1.5 rounded-full border border-white/15 text-gray-300 hover:border-[var(--accent-gold)]/50">
+                    ${cat.title}
+                </a>
+            `).join('');
+        }
+
+        function setActivePill(catId) {
+            if (!catId || activeCategoryId === catId) return;
+            activeCategoryId = catId;
+
+            document.querySelectorAll('.cat-pill').forEach(pill => {
+                pill.classList.remove('active');
+            });
+
+            const activePill = document.getElementById(`pill-${catId}`);
+            const nav = document.getElementById('category-nav');
+            if (activePill && nav) {
+                activePill.classList.add('active');
+                const targetScrollLeft = activePill.offsetLeft - (nav.clientWidth / 2) + (activePill.clientWidth / 2);
+                nav.scrollTo({ left: Math.max(0, targetScrollLeft), behavior: 'smooth' });
+            }
+        }
+
+        function scrollToCategory(e, catId) {
+            e.preventDefault();
+            const target = document.getElementById(`sec-${catId}`);
+            if (target) {
+                isManualScrolling = true;
+                setActivePill(catId);
+
+                const isMobile = window.innerWidth < 768;
+                const offset = isMobile ? 130 : 155;
+                const elementPosition = target.getBoundingClientRect().top + window.pageYOffset;
+                window.scrollTo({ top: elementPosition - offset, behavior: 'smooth' });
+
+                setTimeout(() => { isManualScrolling = false; }, 650);
+            }
+        }
+
+        function renderMenu() {
+            const container = document.getElementById('menu-container');
+            const q = searchQuery.trim().toLowerCase();
+
+            let html = '';
+            menuData.forEach(cat => {
+                const filteredItems = cat.items.filter(item => 
+                    item.name.toLowerCase().includes(q) || 
+                    item.desc.toLowerCase().includes(q)
+                );
+
+                if (filteredItems.length === 0) return;
+
+                html += `
+                    <section id="sec-${cat.id}" data-cat-id="${cat.id}" class="menu-section scroll-mt-36">
+                        <div class="flex items-center justify-between border-b border-white/10 pb-2.5 mb-4">
+                            <h2 class="text-lg md:text-2xl zuma-font text-white tracking-wider">${cat.title}</h2>
+                            <span class="text-[10px] uppercase tracking-widest text-[var(--accent-gold)]">${filteredItems.length} dishes</span>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5 md:gap-4">
+                            ${filteredItems.map(item => renderDishCard(item, cat.title)).join('')}
+                        </div>
+                    </section>
+                `;
+            });
+
+            if (!html) {
+                html = `
+                    <div class="text-center py-16 bg-zinc-950 border border-white/5 rounded-xl">
+                        <p class="text-gray-400 text-sm mb-3">No dishes found for "${searchQuery}"</p>
+                        <button type="button" onclick="clearSearch()" class="text-xs uppercase tracking-widest text-[var(--accent-gold)] border-b border-[var(--accent-gold)] pb-0.5">Show full menu</button>
+                    </div>
+                `;
+            }
+
+            container.innerHTML = html;
+        }
+
+        function renderDishCard(item, catTitle) {
+            const inCartQty = cart[item.id] ? cart[item.id].qty : 0;
+            const hasNote = cart[item.id] && cart[item.id].note ? true : false;
+
+            return `
+                <div id="card-${item.id}"
+                     onclick="openDishModal('${item.id}', '${catTitle}')" 
+                     class="dish-card ${inCartQty > 0 ? 'in-cart' : ''} rounded-xl p-4 flex flex-col justify-between cursor-pointer group">
+                    <div>
+                        <div class="flex items-start justify-between gap-3 mb-1">
+                            <h3 class="text-sm md:text-base font-medium text-white group-hover:text-[var(--accent-gold)] transition-colors tracking-wide">
+                                ${item.name}
+                            </h3>
+                            <span class="text-sm font-semibold text-[var(--accent-gold)] shrink-0">
+                                ${formatPrice(item.price)}
+                            </span>
+                        </div>
+                        ${item.desc ? `<p class="text-xs text-gray-400 font-light leading-relaxed line-clamp-2 mb-3">${item.desc}</p>` : '<div class="mb-2"></div>'}
+                    </div>
+
+                    <div class="flex items-center justify-between pt-2 border-t border-white/5">
+                        <span id="card-note-${item.id}" class="text-[10px] text-gray-500 uppercase tracking-widest">
+                            ${hasNote ? '✓ Note added' : 'Customize / Notes'}
+                        </span>
+
+                        <div id="card-action-${item.id}" onclick="event.stopPropagation()">
+                            ${renderCardActionHtml(item.id, inCartQty)}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderCardActionHtml(itemId, inCartQty) {
+            if (inCartQty === 0) {
+                return `
+                    <button type="button" onclick="quickAdd(event, '${itemId}')" 
+                            class="w-8 h-8 rounded-full bg-zinc-900 border border-white/20 hover:border-[var(--accent-gold)] active:bg-[var(--accent-gold)] active:text-black text-white flex items-center justify-center transition-colors"
+                            aria-label="Add to cart">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                    </button>
+                `;
+            }
+            return `
+                <div class="flex items-center gap-2 bg-black border border-[var(--accent-gold)]/60 rounded-full px-2 py-0.5">
+                    <button type="button" onclick="updateQty('${itemId}', -1)" class="w-6 h-6 text-gray-300 hover:text-[var(--accent-gold)] font-bold text-xs">−</button>
+                    <span class="text-xs font-semibold text-[var(--accent-gold)] min-w-[16px] text-center">${inCartQty}</span>
+                    <button type="button" onclick="updateQty('${itemId}', 1)" class="w-6 h-6 text-gray-300 hover:text-[var(--accent-gold)] font-bold text-xs">+</button>
+                </div>
+            `;
+        }
+
+        function updateSingleDishCardDOM(itemId) {
+            const card = document.getElementById(`card-${itemId}`);
+            if (!card) return;
+
+            const inCartQty = cart[itemId] ? cart[itemId].qty : 0;
+            const hasNote = cart[itemId] && cart[itemId].note ? true : false;
+
+            if (inCartQty > 0) {
+                card.classList.add('in-cart');
+            } else {
+                card.classList.remove('in-cart');
+            }
+
+            const noteEl = document.getElementById(`card-note-${itemId}`);
+            if (noteEl) {
+                noteEl.textContent = hasNote ? '✓ Note added' : 'Customize / Notes';
+            }
+
+            const actionEl = document.getElementById(`card-action-${itemId}`);
+            if (actionEl) {
+                actionEl.innerHTML = renderCardActionHtml(itemId, inCartQty);
+            }
+        }
+
+        function findDishById(id) {
+            for (const cat of menuData) {
+                const found = cat.items.find(i => i.id === id);
+                if (found) return found;
+            }
+            return null;
+        }
+
+        function quickAdd(e, itemId) {
+            e.stopPropagation();
+            updateQty(itemId, 1);
+        }
+
+        function updateQty(itemId, delta) {
+            const dish = findDishById(itemId);
+            if (!dish) return;
+
+            if (!cart[itemId]) {
+                if (delta > 0) {
+                    cart[itemId] = { item: dish, qty: delta, note: '' };
+                }
+            } else {
+                cart[itemId].qty += delta;
+                if (cart[itemId].qty <= 0) {
+                    delete cart[itemId];
+                }
+            }
+
+            updateSingleDishCardDOM(itemId);
+            renderCart();
+        }
+
+        function openDishModal(itemId, catTitle) {
+            const dish = findDishById(itemId);
+            if (!dish) return;
+
+            currentModalDish = dish;
+            currentModalQty = cart[itemId] ? cart[itemId].qty : 1;
+
+            document.getElementById('modal-dish-category').textContent = catTitle;
+            document.getElementById('modal-dish-name').textContent = dish.name;
+            document.getElementById('modal-dish-desc').textContent = dish.desc || 'Freshly prepared to order by our chefs.';
+            document.getElementById('modal-dish-price').textContent = formatPrice(dish.price);
+            document.getElementById('modal-dish-note').value = cart[itemId] ? cart[itemId].note : '';
+            document.getElementById('modal-dish-qty').textContent = currentModalQty;
+            document.getElementById('modal-btn-total').textContent = formatPrice(dish.price * currentModalQty);
+
+            const modal = document.getElementById('dish-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeDishModal() {
+            const modal = document.getElementById('dish-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            currentModalDish = null;
+        }
+
+        function changeModalQty(delta) {
+            if (!currentModalDish) return;
+            currentModalQty = Math.max(1, currentModalQty + delta);
+            document.getElementById('modal-dish-qty').textContent = currentModalQty;
+            document.getElementById('modal-btn-total').textContent = formatPrice(currentModalDish.price * currentModalQty);
+        }
+
+        function confirmModalAdd() {
+            if (!currentModalDish) return;
+            const dishId = currentModalDish.id;
+            const note = document.getElementById('modal-dish-note').value.trim();
+            cart[dishId] = {
+                item: currentModalDish,
+                qty: currentModalQty,
+                note: note
+            };
+            closeDishModal();
+            updateSingleDishCardDOM(dishId);
+            renderCart();
+        }
+
+        function renderCart() {
+            const entries = Object.values(cart);
+            const totalItems = entries.reduce((acc, c) => acc + c.qty, 0);
+            const subtotal = entries.reduce((acc, c) => acc + (c.item.price * c.qty), 0);
+            const deliveryCost = (serviceMode === 'delivery' && totalItems > 0) ? DELIVERY_FEE : 0;
+            const finalTotal = subtotal + deliveryCost;
+
+            const modeLabel = serviceMode === 'pickup' ? 'Pickup' : 'Delivery';
+            const subtitleText = `${modeLabel} • ${selectedTime}`;
+            document.getElementById('desktop-cart-subtitle').textContent = subtitleText;
+            document.getElementById('mobile-cart-subtitle').textContent = subtitleText;
+
+            document.getElementById('desktop-cart-badge').textContent = `${totalItems} items`;
+            document.getElementById('desktop-subtotal').textContent = formatPrice(subtotal);
+            document.getElementById('desktop-total').textContent = formatPrice(finalTotal);
+            document.getElementById('mobile-total').textContent = formatPrice(finalTotal);
+            document.getElementById('mobile-bar-count').textContent = totalItems;
+            document.getElementById('mobile-bar-total').textContent = formatPrice(finalTotal);
+
+            const delRowDesk = document.getElementById('desktop-delivery-row');
+            const delRowMob = document.getElementById('mobile-delivery-row');
+            if (serviceMode === 'delivery' && totalItems > 0) {
+                delRowDesk.classList.remove('hidden');
+                delRowDesk.classList.add('flex');
+                delRowMob.classList.remove('hidden');
+                delRowMob.classList.add('flex');
+            } else {
+                delRowDesk.classList.add('hidden');
+                delRowDesk.classList.remove('flex');
+                delRowMob.classList.add('hidden');
+                delRowMob.classList.remove('flex');
+            }
+
+            const isBelowDeliveryMin = serviceMode === 'delivery' && totalItems > 0 && subtotal < MIN_DELIVERY_ORDER;
+            const warnDesk = document.getElementById('desktop-min-order-warning');
+            const warnMob = document.getElementById('mobile-min-order-warning');
+
+            if (isBelowDeliveryMin) {
+                const diff = formatPrice(MIN_DELIVERY_ORDER - subtotal);
+                const msg = `Add ${diff} more to reach the €30,00 minimum order for delivery.`;
+                warnDesk.textContent = msg;
+                warnMob.textContent = msg;
+                warnDesk.classList.remove('hidden');
+                warnMob.classList.remove('hidden');
+            } else {
+                warnDesk.classList.add('hidden');
+                warnMob.classList.add('hidden');
+            }
+
+            const desktopBtn = document.getElementById('desktop-checkout-btn');
+            const mobileBtn = document.getElementById('mobile-checkout-btn');
+            const canCheckout = totalItems > 0 && !isBelowDeliveryMin;
+            desktopBtn.disabled = !canCheckout;
+            mobileBtn.disabled = !canCheckout;
+
+            let itemsHtml = '';
+            if (entries.length === 0) {
+                itemsHtml = `
+                    <div class="text-center py-10">
+                        <svg class="w-10 h-10 text-zinc-700 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+                        <p class="text-xs text-gray-500">Your cart is empty.</p>
+                        <p class="text-[11px] text-gray-600 mt-1">Add your favorite dishes from the menu.</p>
+                    </div>
+                `;
+            } else {
+                itemsHtml = entries.map(({ item, qty, note }) => `
+                    <div class="flex items-start justify-between gap-3 pb-3 border-b border-white/5 last:border-none last:pb-0">
+                        <div class="flex-1">
+                            <h4 class="text-xs font-medium text-white">${item.name}</h4>
+                            ${note ? `<p class="text-[10px] text-[var(--accent-gold)] italic mt-0.5">"${note}"</p>` : ''}
+                            <span class="text-xs text-gray-400 block mt-1">${formatPrice(item.price * qty)}</span>
+                        </div>
+                        <div class="flex items-center gap-2 bg-zinc-900 border border-white/10 rounded-lg px-2 py-1">
+                            <button type="button" onclick="updateQty('${item.id}', -1)" class="text-gray-400 hover:text-white text-xs font-bold px-1">−</button>
+                            <span class="text-xs font-semibold text-[var(--accent-gold)] min-w-[14px] text-center">${qty}</span>
+                            <button type="button" onclick="updateQty('${item.id}', 1)" class="text-gray-400 hover:text-white text-xs font-bold px-1">+</button>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            document.getElementById('desktop-cart-items').innerHTML = itemsHtml;
+            document.getElementById('mobile-cart-items').innerHTML = itemsHtml;
+        }
+
+        function setServiceMode(mode) {
+            serviceMode = mode;
+            const btnPickup = document.getElementById('btn-pickup');
+            const btnDelivery = document.getElementById('btn-delivery');
+
+            if (mode === 'pickup') {
+                btnPickup.className = "flex-1 sm:flex-initial px-4 py-2 rounded-md text-xs uppercase tracking-widest font-medium transition-all bg-[var(--accent-gold)] text-black";
+                btnDelivery.className = "flex-1 sm:flex-initial px-4 py-2 rounded-md text-xs uppercase tracking-widest font-medium transition-all text-gray-400 hover:text-white";
+            } else {
+                btnDelivery.className = "flex-1 sm:flex-initial px-4 py-2 rounded-md text-xs uppercase tracking-widest font-medium transition-all bg-[var(--accent-gold)] text-black";
+                btnPickup.className = "flex-1 sm:flex-initial px-4 py-2 rounded-md text-xs uppercase tracking-widest font-medium transition-all text-gray-400 hover:text-white";
+            }
+            renderCart();
+        }
+
+        function updateTimeSlot(val) {
+            selectedTime = val;
+            renderCart();
+        }
+
+        function toggleMobileSearch(forceState) {
+            const bar = document.getElementById('mobile-search-bar');
+            const input = document.getElementById('search-input-mobile');
+            const shouldShow = typeof forceState === 'boolean' ? forceState : bar.classList.contains('hidden');
+            if (shouldShow) {
+                bar.classList.remove('hidden');
+                setTimeout(() => input.focus(), 50);
+            } else {
+                bar.classList.add('hidden');
+            }
+        }
+
+        function handleSearch(val) {
+            searchQuery = val;
+            const deskInput = document.getElementById('search-input-desktop');
+            const mobInput = document.getElementById('search-input-mobile');
+            if (deskInput && deskInput.value !== val) deskInput.value = val;
+            if (mobInput && mobInput.value !== val) mobInput.value = val;
+
+            const clearBtn = document.getElementById('clear-search-desktop');
+            if (clearBtn) {
+                if (val.trim().length > 0) {
+                    clearBtn.classList.remove('hidden');
+                } else {
+                    clearBtn.classList.add('hidden');
+                }
+            }
+            renderMenu();
+        }
+
+        function clearSearch() {
+            searchQuery = '';
+            const deskInput = document.getElementById('search-input-desktop');
+            const mobInput = document.getElementById('search-input-mobile');
+            if (deskInput) deskInput.value = '';
+            if (mobInput) mobInput.value = '';
+            const clearBtn = document.getElementById('clear-search-desktop');
+            if (clearBtn) clearBtn.classList.add('hidden');
+            renderMenu();
+        }
+
+        function toggleMobileCart(show) {
+            const drawer = document.getElementById('mobile-cart-drawer');
+            if (show) {
+                drawer.classList.remove('hidden');
+            } else {
+                drawer.classList.add('hidden');
+            }
+        }
+
+        function openCheckoutModal() {
+            const entries = Object.values(cart);
+            if (entries.length === 0) return;
+
+            const subtotal = entries.reduce((acc, c) => acc + (c.item.price * c.qty), 0);
+            if (serviceMode === 'delivery' && subtotal < MIN_DELIVERY_ORDER) return;
+
+            const deliveryCost = serviceMode === 'delivery' ? DELIVERY_FEE : 0;
+            const finalTotal = subtotal + deliveryCost;
+
+            const addressFields = document.getElementById('delivery-address-fields');
+            const addressInput = document.getElementById('cust-address');
+            const summaryTag = document.getElementById('checkout-summary-tag');
+
+            if (serviceMode === 'delivery') {
+                addressFields.classList.remove('hidden');
+                addressInput.required = true;
+                summaryTag.textContent = `Free Home Delivery (within 5 km) • ${selectedTime}`;
+            } else {
+                addressFields.classList.add('hidden');
+                addressInput.required = false;
+                summaryTag.textContent = `Pickup at Via Augusto Murri, 77 • ${selectedTime}`;
+            }
+
+            document.getElementById('checkout-modal-total').textContent = formatPrice(finalTotal);
+
+            const modal = document.getElementById('checkout-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeCheckoutModal() {
+            const modal = document.getElementById('checkout-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        function submitOrder(e) {
+            e.preventDefault();
+            const name = document.getElementById('cust-name').value.trim();
+            const phone = document.getElementById('cust-phone').value.trim();
+            const address = document.getElementById('cust-address').value.trim();
+            const notes = document.getElementById('cust-notes').value.trim();
+
+            const entries = Object.values(cart);
+            const subtotal = entries.reduce((acc, c) => acc + (c.item.price * c.qty), 0);
+            const deliveryCost = serviceMode === 'delivery' ? DELIVERY_FEE : 0;
+            const finalTotal = subtotal + deliveryCost;
+
+            let msg = `*NEW WEB ORDER (EN) - HATA SAN*\n`;
+            msg += `----------------------------------\n`;
+            msg += `*Service:* ${serviceMode === 'pickup' ? 'Restaurant Pickup' : 'Home Delivery (Free within 5 km)'}\n`;
+            msg += `*Time:* ${selectedTime}\n`;
+            msg += `*Customer:* ${name}\n`;
+            msg += `*Phone:* ${phone}\n`;
+            if (serviceMode === 'delivery') {
+                msg += `*Address:* ${address}\n`;
+            }
+            msg += `----------------------------------\n*ORDERED ITEMS:*\n`;
+
+            entries.forEach(({ item, qty, note }) => {
+                msg += `• ${qty}x ${item.name} (${formatPrice(item.price * qty)})\n`;
+                if (note) msg += `   _Note: ${note}_\n`;
+            });
+
+            msg += `----------------------------------\n`;
+            if (serviceMode === 'delivery') {
+                msg += `Delivery (within 5 km): Free\n`;
+            }
+            msg += `*TOTAL: ${formatPrice(finalTotal)}*\n`;
+            if (notes) {
+                msg += `\n*Customer Notes:* ${notes}`;
+            }
+
+            const waUrl = `https://wa.me/393758067748?text=${encodeURIComponent(msg)}`;
+            window.open(waUrl, '_blank');
+            closeCheckoutModal();
+        }
+
+        // ScrollSpy optimized with requestAnimationFrame and passive listener
+        function initScrollSpy() {
+            let ticking = false;
+            window.addEventListener('scroll', () => {
+                if (isManualScrolling) return;
+                if (!ticking) {
+                    window.requestAnimationFrame(() => {
+                        const sections = document.querySelectorAll('.menu-section');
+                        let currentCatId = '';
+
+                        for (let i = 0; i < sections.length; i++) {
+                            const top = sections[i].getBoundingClientRect().top;
+                            if (top <= 180) {
+                                currentCatId = sections[i].getAttribute('data-cat-id');
+                            } else {
+                                break;
+                            }
+                        }
+
+                        if (currentCatId) {
+                            setActivePill(currentCatId);
+                        }
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            }, { passive: true });
+        }
+    </script>
+</body>
+</html>
